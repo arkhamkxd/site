@@ -17,7 +17,6 @@
   --serif:'Instrument Serif',Georgia,serif;
   --body:'Newsreader',Georgia,serif;
   --pad:clamp(20px,5vw,72px);
-  --rail:clamp(0px,6vw,96px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -30,146 +29,135 @@ body{
     radial-gradient(700px 400px at 95% 10%, #17131f 0%, transparent 70%);
   background-attachment:fixed;
 }
-/* film grain */
 body::after{
   content:''; position:fixed; inset:0; pointer-events:none; z-index:999; opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 ::selection{background:var(--accent); color:#0b0a0f}
 a{color:inherit}
-
 .wrap{max-width:1180px; margin:0 auto; padding:0 var(--pad)}
 
-/* ---------- section scaffolding ---------- */
+/* ---------- sections ---------- */
 .sec{border-top:1px solid var(--line); padding:clamp(56px,8vw,104px) 0}
-.sec:first-of-type{border-top:0}
 .sec-head{display:flex; gap:20px; align-items:baseline; margin-bottom:clamp(28px,4vw,48px)}
-.sec-num{
-  font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--accent);
-  flex:0 0 auto; padding-top:6px;
-}
+.sec-num{font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--accent); flex:0 0 auto; padding-top:6px}
 .sec-title{font-family:var(--serif); font-size:clamp(26px,3.6vw,38px); font-weight:400; letter-spacing:-.01em}
 .sec-note{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--fg-faint); text-transform:uppercase; margin-left:auto; padding-top:8px; text-align:right}
 
 /* ---------- hero ---------- */
 header{padding:clamp(64px,13vw,150px) 0 clamp(40px,6vw,70px)}
-.eyebrow{
-  font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:uppercase;
-  color:var(--fg-faint); margin-bottom:26px; display:flex; align-items:center; gap:12px;
-}
+.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--fg-faint); margin-bottom:26px; display:flex; align-items:center; gap:12px}
 .eyebrow::before{content:''; width:28px; height:1px; background:var(--accent)}
-h1{
-  font-family:var(--serif); font-weight:400; letter-spacing:-.025em; line-height:.96;
-  font-size:clamp(50px,11vw,124px); margin-bottom:28px;
-}
+h1{font-family:var(--serif); font-weight:400; letter-spacing:-.025em; line-height:.96;
+  font-size:clamp(50px,11vw,124px); margin-bottom:28px}
 h1 .q{color:var(--accent); font-style:italic}
-.lede{
-  font-size:clamp(18px,2.1vw,23px); line-height:1.45; max-width:21ch; color:var(--fg);
-  font-weight:300; margin-bottom:34px;
-}
+.lede{font-size:clamp(18px,2.1vw,23px); line-height:1.45; max-width:21ch; color:var(--fg); font-weight:300; margin-bottom:14px}
 .lede b{font-weight:400; color:#fff; border-bottom:1px solid var(--accent-dim)}
-.sub{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--fg-faint); margin-bottom:34px}
+.sub{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-faint); margin-bottom:34px}
 .meta{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono); font-size:12px; color:var(--fg-dim)}
 .meta a{text-decoration:none; border-bottom:1px solid var(--line-2); padding-bottom:2px; transition:.18s}
 .meta a:hover{color:var(--accent); border-color:var(--accent)}
-.meta span.dot{color:var(--fg-faint)}
+.dl{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink); background:var(--accent); text-decoration:none; padding:10px 18px;
+  display:inline-block; transition:.18s; border:1px solid var(--accent)}
+.dl:hover{background:transparent; color:var(--accent)}
 
-/* ---------- what i do ---------- */
+/* ---------- capabilities ---------- */
 .cap-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; background:var(--line)}
 .cap{background:var(--ink); padding:26px 24px 30px; transition:background .25s}
 .cap:hover{background:var(--ink-2)}
 .cap h3{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; font-weight:500}
 .cap p{font-size:15px; line-height:1.55; color:var(--fg-dim)}
 
+/* ---------- companies ---------- */
+.co{display:grid; grid-template-columns:62px minmax(0,1.35fr) minmax(0,1.1fr) 112px;
+  gap:clamp(14px,2.6vw,30px); align-items:center;
+  padding:16px 10px; border-bottom:1px solid var(--line); transition:background .22s}
+.co:first-of-type{border-top:1px solid var(--line)}
+.co:hover{background:var(--ink-2)}
+.co-mark{width:46px; height:46px; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--line-2); border-radius:3px; background:#0f0d14; overflow:hidden}
+.co-mark img{max-width:32px; max-height:30px; width:auto; height:auto; display:block}
+.co-mark span{font-family:var(--mono); font-size:15px; color:var(--fg-faint)}
+.co-name{font-family:var(--serif); font-size:clamp(19px,2vw,23px); line-height:1.2; letter-spacing:-.01em}
+.co-role{font-family:var(--mono); font-size:11.5px; color:var(--fg-dim); margin-top:4px}
+.co-what{font-size:14.5px; color:var(--fg-dim); line-height:1.45}
+.co-when{font-family:var(--mono); font-size:11px; color:var(--fg-faint); text-align:right; letter-spacing:.03em}
+
 /* ---------- filter ---------- */
 .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:34px}
-.filters button{
-  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+.filters button{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
   background:transparent; color:var(--fg-dim); border:1px solid var(--line-2);
-  padding:8px 15px; cursor:pointer; transition:.18s; border-radius:1px;
-}
+  padding:8px 15px; cursor:pointer; transition:.18s; border-radius:1px}
 .filters button:hover{color:var(--fg); border-color:var(--fg-faint)}
 .filters button[aria-pressed="true"]{background:var(--accent); color:#0b0a0f; border-color:var(--accent); font-weight:500}
 .count{font-family:var(--mono); font-size:11px; color:var(--fg-faint); margin-left:auto; align-self:center}
 
-/* ---------- work ---------- */
+/* ---------- projects ---------- */
 .work{display:grid; gap:1px; background:var(--line)}
-.item{
-  background:var(--ink); padding:clamp(26px,3.4vw,40px) clamp(22px,3vw,38px);
-  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:clamp(18px,4vw,52px);
-  transition:background .25s;
-}
+.item{background:var(--ink); padding:clamp(26px,3.4vw,40px) clamp(22px,3vw,38px);
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:clamp(18px,4vw,52px);
+  transition:background .25s}
 .item:hover{background:var(--ink-2)}
 .item[hidden]{display:none}
 .i-left{min-width:0; position:sticky; top:40px; align-self:start}
-.tag{
-  font-family:var(--mono); font-size:10px; letter-spacing:.17em; text-transform:uppercase;
-  color:var(--accent); display:block; margin-bottom:14px;
-}
+.tag{font-family:var(--mono); font-size:10px; letter-spacing:.17em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:14px}
 .item h3{font-family:var(--serif); font-size:clamp(23px,2.6vw,31px); font-weight:400; letter-spacing:-.015em; line-height:1.14; margin-bottom:10px}
 .role{font-family:var(--mono); font-size:11.5px; color:var(--fg-dim); line-height:1.75}
 .role em{color:var(--fg-faint); font-style:normal}
 .i-right{min-width:0}
 .i-right p{font-size:15.5px; line-height:1.6; color:var(--fg-dim); margin-bottom:14px}
-.i-right p:last-of-type{margin-bottom:0}
-.i-right strong{color:var(--fg); font-weight:400}
-.figs{display:flex; flex-wrap:wrap; gap:8px 30px; margin-top:22px; padding-top:18px; border-top:1px solid var(--line)}
-.fig{min-width:0}
-.fig b{display:block; font-family:var(--mono); font-size:16px; font-weight:500; color:var(--accent); letter-spacing:-.01em}
-.fig span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--fg-faint)}
-
+.i-right p:last-child{margin-bottom:0}
 .i-right p.punch{font-family:var(--serif); font-size:clamp(22px,2.7vw,31px); line-height:1.22;
   color:#fff; letter-spacing:-.018em; margin-bottom:22px; max-width:26ch}
+.i-right strong{color:var(--fg); font-weight:400}
+.appicon{width:42px; height:42px; border-radius:9px; margin-bottom:14px; display:block}
+
+/* progressive disclosure — detail is there if you want it, folded if you don't */
+details{margin-top:4px}
+details summary{font-family:var(--mono); font-size:11px; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--fg-faint); cursor:pointer; list-style:none; display:inline-flex; align-items:center;
+  gap:8px; padding:7px 0; transition:.18s; user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:'+'; color:var(--accent); font-size:13px; line-height:1}
+details[open] summary::before{content:'–'}
+details summary:hover{color:var(--fg)}
+details .body{padding-top:10px}
+details[open] .body{animation:fade .35s ease}
+@keyframes fade{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+
 .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px}
-.links a{
-  font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+.links a{font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
   color:var(--fg-dim); text-decoration:none; border:1px solid var(--line-2);
-  padding:8px 14px; transition:.18s; display:inline-flex; align-items:center; gap:7px;
-}
+  padding:8px 14px; transition:.18s; display:inline-flex; align-items:center; gap:7px}
 .links a:hover{color:var(--accent); border-color:var(--accent)}
 .links a::after{content:'↗'; font-size:10px; opacity:.6}
+
 .shots{display:flex; gap:10px; overflow-x:auto; padding-bottom:10px; margin-bottom:22px;
   scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
 .shots::-webkit-scrollbar{height:4px}
 .shots::-webkit-scrollbar-thumb{background:var(--line-2)}
 .shots img{height:290px; width:auto; flex:0 0 auto; border:1px solid var(--line-2);
   border-radius:3px; scroll-snap-align:start; background:var(--ink-2)}
-.appicon{width:42px; height:42px; border-radius:9px; margin-bottom:14px; display:block}
-.dl{
-  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--ink); background:var(--accent); text-decoration:none; padding:10px 18px;
-  display:inline-block; transition:.18s; border:1px solid var(--accent);
-}
-.dl:hover{background:transparent; color:var(--accent)}
+.photo{width:100%; height:auto; border:1px solid var(--line-2); border-radius:3px; margin-bottom:22px; display:block}
 
-/* ---------- stack ---------- */
+.figs{display:flex; flex-wrap:wrap; gap:8px 30px; margin-top:22px; padding-top:18px; border-top:1px solid var(--line)}
+.fig b{display:block; font-family:var(--mono); font-size:16px; font-weight:500; color:var(--accent); letter-spacing:-.01em}
+.fig span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--fg-faint)}
+
+/* ---------- now / stack ---------- */
+.now{border-left:2px solid var(--accent); padding-left:clamp(18px,3vw,30px); max-width:62ch}
+.now p{font-size:16.5px; line-height:1.65; color:var(--fg-dim)}
+.now p + p{margin-top:13px}
+.now strong{color:var(--fg); font-weight:400}
 .stack{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:34px 48px}
 .stack h3{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; font-weight:500}
 .stack ul{list-style:none; display:flex; flex-wrap:wrap; gap:7px}
 .stack li{font-family:var(--mono); font-size:12px; color:var(--fg-dim); border:1px solid var(--line-2); padding:5px 10px; border-radius:1px}
 
-/* ---------- timeline ---------- */
-.tl{display:grid; gap:0}
-.tl-row{
-  display:grid; grid-template-columns:118px minmax(0,1fr) minmax(0,.9fr);
-  gap:clamp(12px,3vw,34px); padding:15px 0; border-bottom:1px solid var(--line);
-  font-size:15px; align-items:baseline;
-}
-.tl-row:first-child{border-top:1px solid var(--line)}
-.tl-when{font-family:var(--mono); font-size:11px; color:var(--fg-faint); letter-spacing:.04em}
-.tl-what{color:var(--fg)}
-.tl-what b{font-weight:400}
-.tl-where{font-family:var(--mono); font-size:11.5px; color:var(--fg-dim)}
-
-/* ---------- now ---------- */
-.now{border-left:2px solid var(--accent); padding-left:clamp(18px,3vw,30px); max-width:62ch}
-.now p{font-size:16.5px; line-height:1.65; color:var(--fg-dim)}
-.now p + p{margin-top:13px}
-.now strong{color:var(--fg); font-weight:400}
-
-/* ---------- contact ---------- */
-footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(44px,6vw,70px)}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(60px,7vw,90px)}
 .cta{font-family:var(--serif); font-size:clamp(30px,5.6vw,62px); font-weight:400; letter-spacing:-.02em; line-height:1.06; margin-bottom:32px; max-width:17ch}
 .cta a{color:var(--accent); text-decoration:none; border-bottom:2px solid transparent; transition:.2s}
 .cta a:hover{border-color:var(--accent)}
@@ -177,7 +165,7 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
 .foot-meta a{text-decoration:none; color:var(--fg-dim); transition:.18s}
 .foot-meta a:hover{color:var(--accent)}
 
-/* ---------- entrance ---------- */
+/* ---------- motion ---------- */
 @media (prefers-reduced-motion:no-preference){
   .rise{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
   @keyframes rise{to{opacity:1; transform:none}}
@@ -185,12 +173,13 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
   .js .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1)}
   .js .reveal.in{opacity:1; transform:none}
 }
-
 @media (max-width:820px){
   .item{grid-template-columns:1fr; gap:18px}
   .i-left{position:static}
-  .tl-row{grid-template-columns:96px 1fr; }
-  .tl-where{grid-column:2; font-size:11px; color:var(--fg-faint)}
+  .co{grid-template-columns:44px 1fr; gap:14px; padding:14px 4px}
+  .co-mark{width:38px; height:38px}
+  .co-what{grid-column:2; font-size:13.5px}
+  .co-when{grid-column:2; text-align:left}
   .sec-note{display:none}
 }
 </style>
@@ -213,7 +202,7 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
   <div style="margin-top:30px"><a class="dl rise d4" href="Arqum Khan CV.pdf" download>Download CV ↓</a></div>
 </header>
 
-<!-- 01 ---------------------------------------------------------------- -->
+<!-- 01 -->
 <section class="sec reveal">
   <div class="sec-head">
     <div class="sec-num">01</div>
@@ -221,30 +210,118 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
     <div class="sec-note">Four disciplines, one method</div>
   </div>
   <div class="cap-grid">
-    <div class="cap">
-      <h3>Product</h3>
-      <p>Own the thing end to end — discovery, specs, roadmap, release. Comfortable being the only person in the room who speaks to business, design and engineering.</p>
-    </div>
-    <div class="cap">
-      <h3>AI &amp; Engineering</h3>
-      <p>LLM integration, conversational agents, local models, data pipelines. Computer Systems Engineering degree; I ship code, not just specs.</p>
-    </div>
-    <div class="cap">
-      <h3>Brand &amp; Design</h3>
-      <p>Identity, collateral, creative direction, and once an entire retail interior. Design that has to survive contact with a real business.</p>
-    </div>
-    <div class="cap">
-      <h3>Community</h3>
-      <p>Built one of Pakistan's most active developer chapters from zero, and co-founded Karachi's first Figma community.</p>
-    </div>
+    <div class="cap"><h3>Product</h3><p>Own the thing end to end — discovery, specs, roadmap, release. Usually the only person in the room who speaks to business, design and engineering.</p></div>
+    <div class="cap"><h3>AI &amp; Engineering</h3><p>LLM integration, conversational agents, local models, data pipelines. Computer Systems Engineering degree; I ship code, not just specs.</p></div>
+    <div class="cap"><h3>Brand &amp; Design</h3><p>Identity, collateral, creative direction, and once an entire retail interior. Design that has to survive contact with a real business.</p></div>
+    <div class="cap"><h3>Community</h3><p>Built one of Pakistan's most active developer chapters from zero, and co-founded Karachi's first Figma community.</p></div>
   </div>
 </section>
 
-<!-- 02 ---------------------------------------------------------------- -->
+<!-- 02 -->
 <section class="sec reveal">
   <div class="sec-head">
     <div class="sec-num">02</div>
-    <h2 class="sec-title">Selected work</h2>
+    <h2 class="sec-title">Where I've worked</h2>
+    <div class="sec-note">2018 — present</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><img src="img/logo/wondertree.svg" alt="WonderTree"></div>
+    <div><div class="co-name">WonderTree</div><div class="co-role">Product &amp; Growth Manager</div></div>
+    <div class="co-what">Therapeutic games for children with special needs. I own product, web and platform.</div>
+    <div class="co-when">Jan 2026 —</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><img src="img/logo/shipkaro.svg" alt="ShipKaro"></div>
+    <div><div class="co-name">ShipKaro</div><div class="co-role">Product Engineer</div></div>
+    <div class="co-what">Product studio. Concepts to shipped web and mobile apps, fast. Formerly RemoteKaro.</div>
+    <div class="co-when">2024 — 2026</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><img src="img/logo/tabeeb.svg" alt="Tabeeb Medicos"></div>
+    <div><div class="co-name">Tabeeb Medicos</div><div class="co-role">Brand &amp; Retail Design · contract</div></div>
+    <div class="co-what">Independent pharmacy. Identity, collateral and the entire retail interior.</div>
+    <div class="co-when">2025</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>K</span></div>
+    <div><div class="co-name">Kamion Pharma</div><div class="co-role">Media Director · contract</div></div>
+    <div class="co-what">Market-entry campaign for their Pakistan launch, aimed at local investors.</div>
+    <div class="co-when">2025</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>F</span></div>
+    <div><div class="co-name">Friends of Figma, Karachi</div><div class="co-role">Co-Founder &amp; Co-Lead</div></div>
+    <div class="co-what">Karachi's first Figma design community. Selected and funded by Figma.</div>
+    <div class="co-when">2024 —</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>L</span></div>
+    <div><div class="co-name">Lappy.pk</div><div class="co-role">Co-Founder</div></div>
+    <div class="co-what">Computer hardware import and wholesale. Sourcing, stock and clients.</div>
+    <div class="co-when">2023 —</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>P</span></div>
+    <div><div class="co-name">Passed Recordings</div><div class="co-role">Brand &amp; Community Manager</div></div>
+    <div class="co-what">Independent record label, team across Scandinavia, Europe, the US and UK.</div>
+    <div class="co-when">2023 — 2025</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>A</span></div>
+    <div><div class="co-name">Al Rahim Textile</div><div class="co-role">Product Engineer</div></div>
+    <div class="co-what">Manufacturer supplying Target and Walmart. Built their AI quality platform.</div>
+    <div class="co-when">2023 — 2024</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>A</span></div>
+    <div><div class="co-name">Frutaz / AFABCO</div><div class="co-role">Media Director · contract</div></div>
+    <div class="co-what">AFABCO International Conference — delegates from Pakistan, the UAE and South Africa.</div>
+    <div class="co-when">2023</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>M</span></div>
+    <div><div class="co-name">MLSA Online</div><div class="co-role">Founder</div></div>
+    <div class="co-what">DevCon Pakistan — a two-day virtual developer conference, 20+ international speakers.</div>
+    <div class="co-when">2023</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>G</span></div>
+    <div><div class="co-name">Google Developer Student Clubs, DUET</div><div class="co-role">Founding Lead</div></div>
+    <div class="co-what">Built from zero into one of Pakistan's most active chapters.</div>
+    <div class="co-when">2022 — 2023</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>A</span></div>
+    <div><div class="co-name">Anjuman Mufad-e-Niswan</div><div class="co-role">IT Manager · internship</div></div>
+    <div class="co-what">NGO running tech upskilling for women. Rebuilt lab and server infrastructure.</div>
+    <div class="co-when">2022</div>
+  </div>
+
+  <div class="co">
+    <div class="co-mark"><span>—</span></div>
+    <div><div class="co-name">Freelance</div><div class="co-role">Multimedia Producer</div></div>
+    <div class="co-what">Branding, social and video. The Hijab Company (239K) and others.</div>
+    <div class="co-when">2018 — 2023</div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sec reveal">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <h2 class="sec-title">Things I've built</h2>
     <div class="sec-note">Filter by discipline</div>
   </div>
 
@@ -259,32 +336,12 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
 
   <div class="work" id="work">
 
-    <article class="item" data-k="product ai">
+    <article class="item" data-k="ai product">
       <div class="i-left">
-        <span class="tag">Product · AI</span>
-        <h3>WonderTree</h3>
-        <p class="role">Product &amp; Growth Manager<br><em>Jan 2026 — present · Remote, UAE</em><br><em>Therapeutic games for children with special needs</em></p>
-        <div class="links"><a href="https://wondertree.co" target="_blank" rel="noopener">wondertree.co</a></div>
-      </div>
-      <div class="i-right">
-        <p class="punch">I own product, web and platform end to end.</p>
-        <p>Replaced the WordPress stack with a <strong>custom content system across 64 releases</strong>, and shipped the <strong>Arabic layer</strong> that opened a second-language market.</p>
-        <p>Built the company's first combined product, behaviour and search review — it surfaced a <strong>69% activation gap</strong> nobody had measured.</p>
-        <div class="figs">
-          <div class="fig"><b>64</b><span>releases</span></div>
-          <div class="fig"><b>+152%</b><span>organic search</span></div>
-          <div class="fig"><b>69%</b><span>activation gap found</span></div>
-          <div class="fig"><b>en + ar</b><span>two markets</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="ai">
-      <div class="i-left">
-        <img class="appicon" src="img/mydiary-icon.webp" alt="MyDiary AI icon" width="42" height="42" loading="lazy">
+        <img class="appicon" src="img/mydiary-icon.webp" alt="" width="42" height="42" loading="lazy">
         <span class="tag">AI &amp; Engineering</span>
         <h3>MyDiary AI</h3>
-        <p class="role">Product Engineer · ShipKaro<br><em>2024 — 2026 · Remote, US</em><br><em>Shipped to Google Play</em></p>
+        <p class="role">ShipKaro<br><em>Shipped to Google Play · Acquired</em></p>
         <div class="links">
           <a href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
           <a href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
@@ -293,15 +350,20 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       <div class="i-right">
         <p class="punch">An audio journal that listens back.</p>
         <div class="shots">
-          <img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts in your pocket" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-2.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-3.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-4.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-5.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-6.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-2.webp" alt="MyDiary AI progress view" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-3.webp" alt="MyDiary AI language settings" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-4.webp" alt="MyDiary AI backup and restore" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-5.webp" alt="MyDiary AI screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-6.webp" alt="MyDiary AI screen" loading="lazy" width="440" height="956">
         </div>
-        <p>Speech captured and transcribed with <strong>Whisper</strong>, then passed to an <strong>LLM that writes back</strong> — so the journal answers instead of just recording.</p>
-        <p>My highest-input product at the studio, concept to store listing. <strong>It was acquired.</strong></p>
+        <details>
+          <summary>How it works</summary>
+          <div class="body">
+            <p>Speech captured and transcribed with <strong>Whisper</strong>, then passed to an <strong>LLM that writes back</strong> — so the journal answers instead of just recording.</p>
+            <p>My highest-input product at the studio, concept through to store listing. <strong>It was acquired.</strong></p>
+          </div>
+        </details>
         <div class="figs">
           <div class="fig"><b>Acquired</b><span>outcome</span></div>
           <div class="fig"><b>Whisper + LLM</b><span>stack</span></div>
@@ -312,14 +374,55 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
 
     <article class="item" data-k="ai product">
       <div class="i-left">
+        <img class="appicon" src="img/focus5-icon.webp" alt="" width="42" height="42" loading="lazy">
+        <span class="tag">Product · AI</span>
+        <h3>Focus5</h3>
+        <p class="role">ShipKaro<br><em>Shipped to Google Play</em></p>
+        <div class="links">
+          <a href="https://play.google.com/store/apps/details?id=dev.shipkaro.focus5" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </div>
+      <div class="i-right">
+        <p class="punch">A planner built the other way round — you only get five.</p>
+        <div class="shots">
+          <img src="img/f5-1.webp" alt="Focus5 — plan five tasks a day" loading="lazy" width="440" height="782">
+          <img src="img/f5-2.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+          <img src="img/f5-3.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+          <img src="img/f5-4.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+          <img src="img/f5-5.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+          <img src="img/f5-6.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+        </div>
+        <details>
+          <summary>The idea</summary>
+          <div class="body">
+            <p>Most planners let you add everything, so you end the day having finished none of it. Focus5 caps you at five and makes you choose — <strong>the constraint is the product</strong>.</p>
+            <p>Speak a brain-dump and it turns that into tasks. Categories, streaks, and a progress view that shows how far you've actually come.</p>
+          </div>
+        </details>
+        <div class="figs">
+          <div class="fig"><b>5</b><span>tasks, hard cap</span></div>
+          <div class="fig"><b>Voice → tasks</b><span>capture</span></div>
+          <div class="fig"><b>Google Play</b><span>shipped</span></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="item" data-k="ai product">
+      <div class="i-left">
         <span class="tag">AI &amp; Engineering</span>
         <h3>AI quality platform</h3>
-        <p class="role">Product Engineer · Al Rahim Textile<br><em>Aug 2023 — Aug 2024 · Karachi</em><br><em>Manufacturer supplying Target &amp; Walmart</em></p>
+        <p class="role">Al Rahim Textile<br><em>Aug 2023 — Aug 2024 · Karachi</em></p>
       </div>
       <div class="i-right">
         <p class="punch">I was nineteen, and a manufacturer needed to know what customers actually said.</p>
-        <p>So I built the thing that found out — <strong>data pipeline, sentiment and defect analysis, a chatbot, and a configurable web application</strong>.</p>
-        <p><strong>Technical lead across both modules</strong>, and the only point of contact between the university and industry sides. <strong>The client resold it to their US trade partner.</strong></p>
+        <details>
+          <summary>What I built</summary>
+          <div class="body">
+            <p>So I built the thing that found out — <strong>data pipeline, sentiment and defect analysis, a chatbot, and a configurable web application</strong>.</p>
+            <p><strong>Technical lead across both modules</strong>, and the only point of contact between the university and industry sides, through delivery and on-site demos. Dawood University's first industry-collaborated final year project with official certification.</p>
+            <p><strong>The client resold it to their US trade partner.</strong></p>
+          </div>
+        </details>
         <div class="figs">
           <div class="fig"><b>8 / 2</b><span>people / teams</span></div>
           <div class="fig"><b>1st</b><span>industry FYP at DUET</span></div>
@@ -332,11 +435,16 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       <div class="i-left">
         <span class="tag">AI &amp; Engineering</span>
         <h3>Conversational assistant</h3>
-        <p class="role">WonderTree<br><em>2026 · Node · Express · Cosmos DB</em></p>
+        <p class="role">WonderTree<br><em>Node · Express · Cosmos DB</em></p>
       </div>
       <div class="i-right">
         <p class="punch">Not a wrapper around a prompt.</p>
-        <p>A context-grounded assistant that answers from the product's own content — with a dedicated security module, CRM integration and a test suite. <strong>Built to be audited.</strong></p>
+        <details>
+          <summary>What's in it</summary>
+          <div class="body">
+            <p>A context-grounded assistant that answers from the product's own content — with a dedicated security module, CRM integration and a test suite. <strong>Built to be audited.</strong></p>
+          </div>
+        </details>
         <div class="figs">
           <div class="fig"><b>Node · Cosmos</b><span>stack</span></div>
           <div class="fig"><b>Tested</b><span>+ security module</span></div>
@@ -344,16 +452,48 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       </div>
     </article>
 
+    <article class="item" data-k="product">
+      <div class="i-left">
+        <span class="tag">Product · Growth</span>
+        <h3>WonderTree platform</h3>
+        <p class="role">WonderTree<br><em>Jan 2026 — present</em></p>
+        <div class="links"><a href="https://wondertree.co" target="_blank" rel="noopener">wondertree.co</a></div>
+      </div>
+      <div class="i-right">
+        <p class="punch">Replaced a WordPress stack with something we actually control.</p>
+        <details>
+          <summary>What changed</summary>
+          <div class="body">
+            <p>A <strong>custom content system across 64 releases</strong>, plus the <strong>Arabic layer</strong> that opened a second-language market. Consolidated 20 competing pages into 4 and rebuilt the architecture.</p>
+            <p>Built the company's first combined product, behaviour and search review — it surfaced a <strong>69% activation gap</strong> nobody had measured. Proposed the move from a 14-day trial to freemium; approved in principle.</p>
+          </div>
+        </details>
+        <div class="figs">
+          <div class="fig"><b>64</b><span>releases</span></div>
+          <div class="fig"><b>+152%</b><span>organic search</span></div>
+          <div class="fig"><b>69%</b><span>activation gap found</span></div>
+          <div class="fig"><b>en + ar</b><span>two markets</span></div>
+        </div>
+      </div>
+    </article>
+
     <article class="item" data-k="brand">
       <div class="i-left">
+        <div class="co-mark" style="margin-bottom:14px"><img src="img/logo/tabeeb.svg" alt=""></div>
         <span class="tag">Brand &amp; Design</span>
         <h3>Tabeeb Medicos</h3>
-        <p class="role">Brand &amp; Retail Design<br><em>2025 · Karachi</em><br><em>Independent pharmacy</em></p>
+        <p class="role">Brand &amp; Retail Design<br><em>2025 · Karachi</em></p>
       </div>
       <div class="i-right">
         <p class="punch">A pharmacy existed as an idea and a rented room. I designed everything else.</p>
-        <p>Identity, collateral, counters, cabinets, shelving, and how a customer moves through the space — fitted to one room and a real budget.</p>
-        <p><strong>It opened. It makes money.</strong></p>
+        <img class="photo" src="img/tabeeb-1.webp" alt="Tabeeb Medicos — the finished store" loading="lazy" width="1100" height="828">
+        <details>
+          <summary>The brief</summary>
+          <div class="body">
+            <p>Identity, collateral, counters, cabinets, shelving, and how a customer moves through the space — fitted to one room and a real budget. To work out what good looked like we studied the largest pharmacy chain in the country.</p>
+            <p><strong>It opened. It makes money.</strong></p>
+          </div>
+        </details>
         <div class="figs">
           <div class="fig"><b>100%</b><span>of the design</span></div>
           <div class="fig"><b>Profitable</b><span>still trading</span></div>
@@ -361,33 +501,21 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       </div>
     </article>
 
-    <article class="item" data-k="brand community">
-      <div class="i-left">
-        <span class="tag">Brand · Community</span>
-        <h3>Passed Recordings</h3>
-        <p class="role">Brand &amp; Community Manager<br><em>Apr 2023 — Aug 2025 · Remote, global</em><br><em>Independent record label</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">I worked for free for a year because I believed in it. Then it started paying.</p>
-        <p>Brand, website, creative direction, artist relations and the release pipeline for a team across <strong>Scandinavia, Europe, the US and the UK</strong>.</p>
-        <div class="figs">
-          <div class="fig"><b>+27%</b><span>audience</span></div>
-          <div class="fig"><b>+47%</b><span>revenue</span></div>
-          <div class="fig"><b>~1,000</b><span>community built</span></div>
-        </div>
-      </div>
-    </article>
-
     <article class="item" data-k="community">
       <div class="i-left">
         <span class="tag">Community</span>
-        <h3>Google Developer Student Clubs</h3>
-        <p class="role">Founding Lead · DUET<br><em>2022 — 2023 · Karachi</em><br><em>Built from zero</em></p>
+        <h3>GDSC DUET</h3>
+        <p class="role">Founding Lead<br><em>2022 — 2023 · Built from zero</em></p>
       </div>
       <div class="i-right">
         <p class="punch">A university with no industry access. I went and got some.</p>
-        <p><strong>30 events in one tenure, 3,000 unique attendees</strong>, a team of 30+. Distributed <strong>500 DataCamp licences</strong> free to students in Syria, Egypt, Brazil and Pakistan.</p>
-        <p>Secured <strong>PKR 250,000+</strong> in sponsorship and spent all of it on the students.</p>
+        <details>
+          <summary>What it took</summary>
+          <div class="body">
+            <p><strong>30 events in one tenure, 3,000 unique attendees</strong>, a team of 30+. Distributed <strong>500 DataCamp licences</strong> free to students in Syria, Egypt, Brazil and Pakistan, and enrolled 500+ in Google Career Certificates.</p>
+            <p>Secured <strong>PKR 250,000+</strong> in sponsorship and spent every rupee of it on the students.</p>
+          </div>
+        </details>
         <div class="figs">
           <div class="fig"><b>600+</b><span>members</span></div>
           <div class="fig"><b>3,000</b><span>attendees</span></div>
@@ -396,118 +524,84 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       </div>
     </article>
 
-    <article class="item" data-k="community brand">
+    <article class="item" data-k="brand community">
       <div class="i-left">
-        <span class="tag">Community</span>
-        <h3>Friends of Figma, Karachi</h3>
-        <p class="role">Co-Founder &amp; Co-Lead<br><em>2024 — present · Karachi</em></p>
+        <span class="tag">Brand · Community</span>
+        <h3>Passed Recordings</h3>
+        <p class="role">Brand &amp; Community Manager<br><em>Apr 2023 — Aug 2025 · Remote, global</em></p>
       </div>
       <div class="i-right">
-        <p class="punch">Karachi's first Figma community — selected and funded by Figma.</p>
-        <p>Co-founded alongside two other leads. We run regular events for designers across the city.</p>
-      </div>
-    </article>
-
-    <article class="item" data-k="product">
-      <div class="i-left">
-        <span class="tag">Business</span>
-        <h3>Lappy.pk</h3>
-        <p class="role">Co-Founder<br><em>2023 — present · Karachi</em><br><em>Computer hardware</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">Video editing money went into flipping PCs, which became a hardware import business.</p>
-        <p>Sourcing, wholesale, stock and client relationships. <strong>I still run it.</strong></p>
+        <p class="punch">I worked for free for a year because I believed in it. Then it started paying.</p>
+        <details>
+          <summary>What I owned</summary>
+          <div class="body">
+            <p>Brand, website, creative direction, artist relations and the release pipeline for a team across <strong>Scandinavia, Europe, the US and the UK</strong>. Built <strong>Ambient Soundscapes</strong>, a community of roughly a thousand people worldwide.</p>
+          </div>
+        </details>
+        <div class="figs">
+          <div class="fig"><b>+27%</b><span>audience</span></div>
+          <div class="fig"><b>+47%</b><span>revenue</span></div>
+          <div class="fig"><b>~1,000</b><span>community built</span></div>
+        </div>
       </div>
     </article>
 
   </div>
 </section>
 
-<!-- 03 ---------------------------------------------------------------- -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">03</div>
-    <h2 class="sec-title">Currently</h2>
-  </div>
-  <div class="now">
-    <p>Building a <strong>Model Context Protocol server</strong> so an agent can work directly against the tools I use at work — I already run MCP integrations daily against Search Console, Microsoft 365 and browser automation, and this turns using them into building them.</p>
-    <p>Adding <strong>retrieval-augmented generation</strong> to the conversational assistant above, so it answers from embedded documentation rather than fixed context.</p>
-    <p>Running <strong>local models through Ollama</strong> — currently deepseek-r1 and dolphin-llama3 — for work that shouldn't leave the machine.</p>
-  </div>
-</section>
-
-<!-- 04 ---------------------------------------------------------------- -->
+<!-- 04 -->
 <section class="sec reveal">
   <div class="sec-head">
     <div class="sec-num">04</div>
+    <h2 class="sec-title">Currently</h2>
+  </div>
+  <div class="now">
+    <p>Building a <strong>Model Context Protocol server</strong> so an agent can work directly against the tools I use at work — I already run MCP integrations daily against Search Console, Microsoft 365 and browser automation.</p>
+    <p>Adding <strong>retrieval-augmented generation</strong> to the assistant above, so it answers from embedded documentation rather than fixed context.</p>
+    <p>Running <strong>local models through Ollama</strong> for work that shouldn't leave the machine.</p>
+  </div>
+</section>
+
+<!-- 05 -->
+<section class="sec reveal">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
     <h2 class="sec-title">Stack</h2>
     <div class="sec-note">Things I have actually shipped with</div>
   </div>
   <div class="stack">
-    <div>
-      <h3>Engineering</h3>
-      <ul>
-        <li>TypeScript</li><li>JavaScript / Node</li><li>Python</li><li>Express</li><li>Handlebars</li>
-        <li>Dart / Flutter</li><li>React Native</li><li>REST APIs</li><li>SQL / SQLite</li><li>Cosmos DB</li><li>Git</li>
-      </ul>
-    </div>
-    <div>
-      <h3>AI</h3>
-      <ul>
-        <li>LLM integration</li><li>Gemini</li><li>Llama</li><li>Ollama — local models</li>
-        <li>Model Context Protocol</li><li>Prompt engineering</li><li>Function calling</li>
-        <li>Whisper — speech to text</li><li>Sentiment analysis</li><li>Data pipelines</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Product</h3>
-      <ul>
-        <li>PRD / BRD</li><li>Roadmapping</li><li>Backlog</li><li>Agile</li><li>Scrum</li>
-        <li>Jira</li><li>ClickUp</li><li>Technical SEO</li><li>Web analytics</li><li>Pricing</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Design</h3>
-      <ul>
-        <li>Figma</li><li>Brand identity</li><li>Creative direction</li><li>UX</li><li>Wireframing</li><li>Spatial / retail design</li>
-      </ul>
-    </div>
+    <div><h3>Engineering</h3><ul>
+      <li>TypeScript</li><li>JavaScript / Node</li><li>Python</li><li>Express</li><li>Handlebars</li>
+      <li>Dart / Flutter</li><li>React Native</li><li>REST APIs</li><li>SQL / SQLite</li><li>Cosmos DB</li><li>Git</li></ul></div>
+    <div><h3>AI</h3><ul>
+      <li>LLM integration</li><li>Gemini</li><li>Llama</li><li>Ollama — local models</li>
+      <li>Model Context Protocol</li><li>Prompt engineering</li><li>Function calling</li>
+      <li>Whisper — speech to text</li><li>Sentiment analysis</li><li>Data pipelines</li></ul></div>
+    <div><h3>Product</h3><ul>
+      <li>PRD / BRD</li><li>Roadmapping</li><li>Backlog</li><li>Agile</li><li>Scrum</li>
+      <li>Jira</li><li>ClickUp</li><li>Technical SEO</li><li>Web analytics</li><li>Pricing</li></ul></div>
+    <div><h3>Design</h3><ul>
+      <li>Figma</li><li>Brand identity</li><li>Creative direction</li><li>UX</li><li>Wireframing</li><li>Spatial / retail design</li></ul></div>
   </div>
 </section>
 
-<!-- 05 ---------------------------------------------------------------- -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">05</div>
-    <h2 class="sec-title">Everything, in order</h2>
-    <div class="sec-note">2018 — present</div>
-  </div>
-  <div class="tl">
-    <div class="tl-row"><div class="tl-when">2026 —</div><div class="tl-what"><b>Product &amp; Growth Manager</b></div><div class="tl-where">WonderTree · Remote, UAE</div></div>
-    <div class="tl-row"><div class="tl-when">2024 — 2026</div><div class="tl-what"><b>Product Engineer</b></div><div class="tl-where">ShipKaro · Remote, US</div></div>
-    <div class="tl-row"><div class="tl-when">2025</div><div class="tl-what"><b>Media Director</b> <em>(contract)</em></div><div class="tl-where">Kamion Pharma · Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2025</div><div class="tl-what"><b>Brand &amp; Retail Design</b> <em>(contract)</em></div><div class="tl-where">Tabeeb Medicos · Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2024 —</div><div class="tl-what"><b>Co-Founder &amp; Co-Lead</b></div><div class="tl-where">Friends of Figma Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2023 —</div><div class="tl-what"><b>Co-Founder</b></div><div class="tl-where">Lappy.pk · Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2023 — 2025</div><div class="tl-what"><b>Brand &amp; Community Manager</b></div><div class="tl-where">Passed Recordings · Remote, global</div></div>
-    <div class="tl-row"><div class="tl-when">2023 — 2024</div><div class="tl-what"><b>Product Engineer</b></div><div class="tl-where">Al Rahim Textile · Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2023</div><div class="tl-what"><b>Media Director</b> <em>(contract)</em></div><div class="tl-where">Frutaz / AFABCO · Karachi &amp; Lahore</div></div>
-    <div class="tl-row"><div class="tl-when">2023</div><div class="tl-what"><b>Founder, MLSA Online</b> — DevCon Pakistan</div><div class="tl-where">Microsoft Learn Student Ambassadors</div></div>
-    <div class="tl-row"><div class="tl-when">2022 — 2023</div><div class="tl-what"><b>Founding Lead</b></div><div class="tl-where">Google Developer Student Clubs, DUET</div></div>
-    <div class="tl-row"><div class="tl-when">2022</div><div class="tl-what"><b>IT Manager</b> <em>(internship)</em></div><div class="tl-where">Anjuman Mufad-e-Niswan · Karachi</div></div>
-    <div class="tl-row"><div class="tl-when">2018 — 2023</div><div class="tl-what"><b>Multimedia Producer</b> <em>(freelance)</em></div><div class="tl-where">The Hijab Company (239K) &amp; others</div></div>
-  </div>
-</section>
-
-<!-- 06 ---------------------------------------------------------------- -->
+<!-- 06 -->
 <section class="sec reveal">
   <div class="sec-head">
     <div class="sec-num">06</div>
     <h2 class="sec-title">Education</h2>
   </div>
-  <div class="tl">
-    <div class="tl-row"><div class="tl-when">2024</div><div class="tl-what"><b>BE, Computer Systems Engineering</b></div><div class="tl-where">Dawood University of Engineering &amp; Technology</div></div>
-    <div class="tl-row"><div class="tl-when">—</div><div class="tl-what"><b>Google UX Design</b> <em>(specialisation)</em></div><div class="tl-where">Coursera</div></div>
+  <div class="co">
+    <div class="co-mark"><span>D</span></div>
+    <div><div class="co-name">Dawood University of Engineering &amp; Technology</div><div class="co-role">BE, Computer Systems Engineering</div></div>
+    <div class="co-what">Karachi</div>
+    <div class="co-when">2024</div>
+  </div>
+  <div class="co">
+    <div class="co-mark"><span>G</span></div>
+    <div><div class="co-name">Google UX Design</div><div class="co-role">Specialisation · Coursera</div></div>
+    <div class="co-what"></div>
+    <div class="co-when">—</div>
   </div>
 </section>
 
@@ -517,6 +611,7 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
     <a href="mailto:arkham.workmail@gmail.com">arkham.workmail@gmail.com</a>
     <a href="https://linkedin.com/in/arkhamkxd" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/arkhamkxd" target="_blank" rel="noopener">GitHub</a>
+    <a href="Arqum Khan CV.pdf" download>CV (PDF)</a>
     <span>Karachi · GMT+5</span>
   </div>
 </footer>
@@ -524,13 +619,11 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
 </div>
 
 <script>
-/* --- filter --- */
 const items = [...document.querySelectorAll('.item')];
 const count = document.getElementById('count');
 document.getElementById('filters').addEventListener('click', e => {
   const btn = e.target.closest('button'); if (!btn) return;
-  document.querySelectorAll('#filters button').forEach(b =>
-    b.setAttribute('aria-pressed', String(b === btn)));
+  document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
   const f = btn.dataset.f;
   let n = 0;
   items.forEach(it => {
@@ -540,18 +633,17 @@ document.getElementById('filters').addEventListener('click', e => {
   count.textContent = f === 'all' ? '' : n + (n === 1 ? ' project' : ' projects');
 });
 
-/* --- reveal on scroll --- */
 const reveals = document.querySelectorAll('.reveal');
 if (document.documentElement.classList.contains('js') && 'IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => es.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
   }), { rootMargin: '0px 0px -8% 0px' });
   reveals.forEach(el => io.observe(el));
-  /* belt and braces: if anything stalls, show everything after 2.5s */
   setTimeout(() => reveals.forEach(el => el.classList.add('in')), 2500);
 } else {
   reveals.forEach(el => el.classList.add('in'));
 }
 </script>
+<script src="cat.js"></script>
 </body>
 </html>
