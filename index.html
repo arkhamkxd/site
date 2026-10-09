@@ -102,7 +102,7 @@ h1 .q{color:var(--accent); font-style:italic}
 }
 .item:hover{background:var(--ink-2)}
 .item[hidden]{display:none}
-.i-left{min-width:0}
+.i-left{min-width:0; position:sticky; top:40px; align-self:start}
 .tag{
   font-family:var(--mono); font-size:10px; letter-spacing:.17em; text-transform:uppercase;
   color:var(--accent); display:block; margin-bottom:14px;
@@ -118,6 +118,30 @@ h1 .q{color:var(--accent); font-style:italic}
 .fig{min-width:0}
 .fig b{display:block; font-family:var(--mono); font-size:16px; font-weight:500; color:var(--accent); letter-spacing:-.01em}
 .fig span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--fg-faint)}
+
+.punch{font-family:var(--serif); font-size:clamp(22px,2.7vw,31px); line-height:1.22;
+  color:#fff; letter-spacing:-.018em; margin-bottom:22px; max-width:26ch}
+.links{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px}
+.links a{
+  font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--fg-dim); text-decoration:none; border:1px solid var(--line-2);
+  padding:8px 14px; transition:.18s; display:inline-flex; align-items:center; gap:7px;
+}
+.links a:hover{color:var(--accent); border-color:var(--accent)}
+.links a::after{content:'↗'; font-size:10px; opacity:.6}
+.shots{display:flex; gap:10px; overflow-x:auto; padding-bottom:10px; margin-bottom:22px;
+  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+.shots::-webkit-scrollbar{height:4px}
+.shots::-webkit-scrollbar-thumb{background:var(--line-2)}
+.shots img{height:290px; width:auto; flex:0 0 auto; border:1px solid var(--line-2);
+  border-radius:3px; scroll-snap-align:start; background:var(--ink-2)}
+.appicon{width:42px; height:42px; border-radius:9px; margin-bottom:14px; display:block}
+.dl{
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink); background:var(--accent); text-decoration:none; padding:10px 18px;
+  display:inline-block; transition:.18s; border:1px solid var(--accent);
+}
+.dl:hover{background:transparent; color:var(--accent)}
 
 /* ---------- stack ---------- */
 .stack{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:34px 48px}
@@ -185,6 +209,7 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
     <a href="https://linkedin.com/in/arkhamkxd" target="_blank" rel="noopener">linkedin.com/in/arkhamkxd</a>
     <a href="https://github.com/arkhamkxd" target="_blank" rel="noopener">github.com/arkhamkxd</a>
   </div>
+  <div style="margin-top:30px"><a class="dl rise d4" href="Arqum Khan CV.pdf" download>Download CV ↓</a></div>
 </header>
 
 <!-- 01 ---------------------------------------------------------------- -->
@@ -238,11 +263,12 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <span class="tag">Product · AI</span>
         <h3>WonderTree</h3>
         <p class="role">Product &amp; Growth Manager<br><em>Jan 2026 — present · Remote, UAE</em><br><em>Therapeutic games for children with special needs</em></p>
+        <div class="links"><a href="https://wondertree.co" target="_blank" rel="noopener">wondertree.co</a></div>
       </div>
       <div class="i-right">
-        <p>I own product, web and platform end to end, working between the business and engineering teams.</p>
-        <p>Replaced the WordPress stack with a <strong>custom content system across 64 releases</strong>, and shipped the <strong>Arabic localisation layer</strong> that opened a second-language market. Consolidated 20 competing pages into 4 and rebuilt the site architecture.</p>
-        <p>Built the company's first combined product, behaviour and search review, which surfaced a <strong>69% activation gap</strong> nobody had measured. Proposed the move from a 14-day trial to freemium; approved in principle and now in design review.</p>
+        <p class="punch">I own product, web and platform end to end.</p>
+        <p>Replaced the WordPress stack with a <strong>custom content system across 64 releases</strong>, and shipped the <strong>Arabic layer</strong> that opened a second-language market.</p>
+        <p>Built the company's first combined product, behaviour and search review — it surfaced a <strong>69% activation gap</strong> nobody had measured.</p>
         <div class="figs">
           <div class="fig"><b>64</b><span>releases</span></div>
           <div class="fig"><b>+152%</b><span>organic search</span></div>
@@ -254,16 +280,31 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
 
     <article class="item" data-k="ai">
       <div class="i-left">
+        <img class="appicon" src="img/mydiary-icon.webp" alt="MyDiary AI icon" width="42" height="42" loading="lazy">
         <span class="tag">AI &amp; Engineering</span>
         <h3>MyDiary AI</h3>
-        <p class="role">Product Engineer · ShipKaro<br><em>2024 — 2026 · Remote, US</em><br><em>AI audio journaling</em></p>
+        <p class="role">Product Engineer · ShipKaro<br><em>2024 — 2026 · Remote, US</em><br><em>Shipped to Google Play</em></p>
+        <div class="links">
+          <a href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
+          <a href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
+        </div>
       </div>
       <div class="i-right">
-        <p>An audio journal that listens back. Speech captured and transcribed with <strong>Whisper</strong>, then passed to an <strong>LLM that writes a reflective response</strong> — so the journal answers instead of just recording.</p>
-        <p>My highest-input product at the studio, taken from concept to shipped. <strong>It was acquired.</strong></p>
+        <p class="punch">An audio journal that listens back.</p>
+        <div class="shots">
+          <img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts in your pocket" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-2.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-3.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-4.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-5.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+          <img src="img/mydiary-6.webp" alt="MyDiary AI app screen" loading="lazy" width="440" height="956">
+        </div>
+        <p>Speech captured and transcribed with <strong>Whisper</strong>, then passed to an <strong>LLM that writes back</strong> — so the journal answers instead of just recording.</p>
+        <p>My highest-input product at the studio, concept to store listing. <strong>It was acquired.</strong></p>
         <div class="figs">
           <div class="fig"><b>Acquired</b><span>outcome</span></div>
           <div class="fig"><b>Whisper + LLM</b><span>stack</span></div>
+          <div class="fig"><b>Google Play</b><span>shipped</span></div>
         </div>
       </div>
     </article>
@@ -275,9 +316,9 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <p class="role">Product Engineer · Al Rahim Textile<br><em>Aug 2023 — Aug 2024 · Karachi</em><br><em>Manufacturer supplying Target &amp; Walmart</em></p>
       </div>
       <div class="i-right">
-        <p>I was nineteen. A manufacturer needed to know what customers actually said about their product, so I built the thing that found out — <strong>data pipeline, sentiment and defect analysis, a chatbot, and a configurable web application</strong>.</p>
-        <p><strong>Technical lead across both modules — eight people over two teams</strong> — and the only point of contact between the university and industry sides, through delivery and on-site demos.</p>
-        <p>Dawood University's first industry-collaborated final year project with official certification. <strong>The client went on to resell the platform to their US trade partner.</strong></p>
+        <p class="punch">I was nineteen, and a manufacturer needed to know what customers actually said.</p>
+        <p>So I built the thing that found out — <strong>data pipeline, sentiment and defect analysis, a chatbot, and a configurable web application</strong>.</p>
+        <p><strong>Technical lead across both modules</strong>, and the only point of contact between the university and industry sides. <strong>The client resold it to their US trade partner.</strong></p>
         <div class="figs">
           <div class="fig"><b>8 / 2</b><span>people / teams</span></div>
           <div class="fig"><b>1st</b><span>industry FYP at DUET</span></div>
@@ -290,11 +331,11 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
       <div class="i-left">
         <span class="tag">AI &amp; Engineering</span>
         <h3>Conversational assistant</h3>
-        <p class="role">WonderTree<br><em>2026 · Node, Express, Cosmos DB</em></p>
+        <p class="role">WonderTree<br><em>2026 · Node · Express · Cosmos DB</em></p>
       </div>
       <div class="i-right">
-        <p>A context-grounded assistant for an ed-tech platform — built on Node and Express with a Cosmos DB store, a dedicated security module, CRM integration and a test suite.</p>
-        <p>Not a wrapper around a prompt: it answers from the product's own content, logs what it's asked, and was built to be audited.</p>
+        <p class="punch">Not a wrapper around a prompt.</p>
+        <p>A context-grounded assistant that answers from the product's own content — with a dedicated security module, CRM integration and a test suite. <strong>Built to be audited.</strong></p>
         <div class="figs">
           <div class="fig"><b>Node · Cosmos</b><span>stack</span></div>
           <div class="fig"><b>Tested</b><span>+ security module</span></div>
@@ -309,8 +350,8 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <p class="role">Brand &amp; Retail Design<br><em>2025 · Karachi</em><br><em>Independent pharmacy</em></p>
       </div>
       <div class="i-right">
-        <p>A pharmacy existed as an idea and a rented room. <strong>I designed everything else</strong> — identity, collateral, counters, cabinets, shelving, and how a customer moves through the space.</p>
-        <p>To work out what good looked like we studied the largest pharmacy chain in the country, then built something that fit a single room and a real budget.</p>
+        <p class="punch">A pharmacy existed as an idea and a rented room. I designed everything else.</p>
+        <p>Identity, collateral, counters, cabinets, shelving, and how a customer moves through the space — fitted to one room and a real budget.</p>
         <p><strong>It opened. It makes money.</strong></p>
         <div class="figs">
           <div class="fig"><b>100%</b><span>of the design</span></div>
@@ -326,12 +367,12 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <p class="role">Brand &amp; Community Manager<br><em>Apr 2023 — Aug 2025 · Remote, global</em><br><em>Independent record label</em></p>
       </div>
       <div class="i-right">
-        <p>I worked for free for a year because I believed in it. Then it started paying.</p>
-        <p>Brand identity, website, creative direction, artist relations and the release pipeline, for a team spread across <strong>Scandinavia, Europe, the US and the UK</strong>. Built <strong>Ambient Soundscapes</strong>, a community of roughly a thousand people worldwide.</p>
+        <p class="punch">I worked for free for a year because I believed in it. Then it started paying.</p>
+        <p>Brand, website, creative direction, artist relations and the release pipeline for a team across <strong>Scandinavia, Europe, the US and the UK</strong>.</p>
         <div class="figs">
           <div class="fig"><b>+27%</b><span>audience</span></div>
           <div class="fig"><b>+47%</b><span>revenue</span></div>
-          <div class="fig"><b>~1,000</b><span>community</span></div>
+          <div class="fig"><b>~1,000</b><span>community built</span></div>
         </div>
       </div>
     </article>
@@ -339,13 +380,13 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
     <article class="item" data-k="community">
       <div class="i-left">
         <span class="tag">Community</span>
-        <h3>Google Developer Student Clubs, DUET</h3>
-        <p class="role">Founding Lead<br><em>2022 — 2023 · Karachi</em><br><em>Built from zero</em></p>
+        <h3>Google Developer Student Clubs</h3>
+        <p class="role">Founding Lead · DUET<br><em>2022 — 2023 · Karachi</em><br><em>Built from zero</em></p>
       </div>
       <div class="i-right">
-        <p>A university with a bad reputation and no industry access. I went and got some — <strong>30 events in one tenure reaching 3,000 unique attendees</strong>, a team of 30+, and partnerships I negotiated myself.</p>
-        <p>Distributed <strong>500 DataCamp licences</strong> free to students in Syria, Egypt, Brazil and across Pakistan, and enrolled <strong>500+ students</strong> in Google Career Certificates. Became DataCamp's onboarding contact for new Pakistani chapters.</p>
-        <p>Secured <strong>PKR 250,000+</strong> in sponsorship — and spent all of it on the students.</p>
+        <p class="punch">A university with no industry access. I went and got some.</p>
+        <p><strong>30 events in one tenure, 3,000 unique attendees</strong>, a team of 30+. Distributed <strong>500 DataCamp licences</strong> free to students in Syria, Egypt, Brazil and Pakistan.</p>
+        <p>Secured <strong>PKR 250,000+</strong> in sponsorship and spent all of it on the students.</p>
         <div class="figs">
           <div class="fig"><b>600+</b><span>members</span></div>
           <div class="fig"><b>3,000</b><span>attendees</span></div>
@@ -361,7 +402,8 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <p class="role">Co-Founder &amp; Co-Lead<br><em>2024 — present · Karachi</em></p>
       </div>
       <div class="i-right">
-        <p>Karachi's first Figma design community — selected by Figma alongside two other leads, and funded by Figma. We run regular events for designers across the city.</p>
+        <p class="punch">Karachi's first Figma community — selected and funded by Figma.</p>
+        <p>Co-founded alongside two other leads. We run regular events for designers across the city.</p>
       </div>
     </article>
 
@@ -372,8 +414,8 @@ footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(4
         <p class="role">Co-Founder<br><em>2023 — present · Karachi</em><br><em>Computer hardware</em></p>
       </div>
       <div class="i-right">
-        <p>Money from editing videos went into flipping PCs, which went into laptops, which became a real business with real stock and real problems — import, wholesale, sourcing and client relationships.</p>
-        <p>I still run it.</p>
+        <p class="punch">Video editing money went into flipping PCs, which became a hardware import business.</p>
+        <p>Sourcing, wholesale, stock and client relationships. <strong>I still run it.</strong></p>
       </div>
     </article>
 
