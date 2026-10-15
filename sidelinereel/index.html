@@ -108,15 +108,15 @@ function list(){
   }).join('');
   app.innerHTML =
     '<div class="banner"><div>&#9888;&#65039;</div><div><b>' + queue.length
-    + ' clips need your confirmation</b> before this week\'s reels go out. '
-    + 'We were not sure which player these belong to, so we have held them rather than guess.</div></div>'
+    + ' clips need your confirmation</b> before those players get their reels. '
+    + 'We were not sure who they belong to, so we held them rather than guess. Everyone else on the team is sending on schedule.</div></div>'
     + '<div class="card"><h2>Waiting on you</h2>'
-    + '<p>Everything else has been matched and is ready to send.</p>' + rows
+    + '<p>Everything else has been matched and has already gone out.</p>' + rows
     + '<div class="stat"><div><b>47</b>matched automatically</div>'
-    + '<div><b>' + queue.length + '</b>need a look</div><div><b>0</b>sent so far</div></div></div>'
-    + '<button class="go" disabled>Send this week\'s reels</button>'
+    + '<div><b>' + queue.length + '</b>need a look</div><div><b>44</b>already sent</div></div></div>'
+    + '<button class="go" disabled>Release the held reels</button>'
     + '<div style="text-align:center;font-size:12px;color:#9aa1ac;margin-top:8px">'
-    + 'Reels send once the queue is clear.</div>';
+    + '44 reels already sent. Only the players these clips might belong to are waiting.</div>';
 }
 
 function open_(id){
@@ -161,7 +161,7 @@ function done(){
   var plural = corrected === 1;
   app.innerHTML =
     '<div class="card done"><div class="tick">&#10003;</div><h1>All clear</h1>'
-    + '<p>Every clip is matched to a player. This week\'s reels are sending now.</p>'
+    + '<p>Every clip is matched. The held reels are sending now.</p>'
     + '<div class="stat" style="justify-content:center">'
     + '<div><b>' + confirmed + '</b>you confirmed</div>'
     + '<div><b>' + corrected + '</b>you corrected</div>'
