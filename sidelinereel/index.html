@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SidelineReel — Roster Check</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#15181d; --muted:#6b7280; --line:#e4e7ec;
+    --accent:#1f6feb; --warn:#b45309; --warnbg:#fef6e7; --ok:#067647; --okbg:#ecfdf3;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  .wrap{max-width:560px;margin:0 auto;padding:16px 16px 64px}
+  header{display:flex;align-items:center;gap:10px;padding:14px 0 18px}
+  .logo{width:28px;height:28px;border-radius:7px;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-weight:700;font-size:13px}
+  .brand{font-weight:650;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px}
+  h1{font-size:20px;margin:0 0 6px;letter-spacing:-.02em}
+  h2{font-size:16px;margin:0 0 4px;letter-spacing:-.01em}
+  p{margin:0 0 12px;color:var(--muted)}
+  .banner{display:flex;gap:10px;align-items:flex-start;background:var(--warnbg);
+    border:1px solid #f3d9a4;color:#7c4a03;border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:14px}
+  .banner b{color:#7c4a03}
+  .row{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+  .row:hover{background:#fafbfc}
+  .thumb{width:68px;height:44px;border-radius:7px;flex:none;background:#2b3240;
+    display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px;position:relative;overflow:hidden}
+  .thumb small{position:absolute;bottom:3px;right:5px;font-size:9px;font-weight:600;opacity:.75}
+  .rowmain{flex:1;min-width:0}
+  .rowmain .t{font-weight:600}
+  .rowmain .s{font-size:13px;color:var(--muted)}
+  .chev{color:#b6bcc6}
+  .vid{aspect-ratio:16/9;border-radius:11px;background:linear-gradient(145deg,#2b3240,#434d60);
+    display:grid;place-items:center;color:#fff;margin-bottom:14px;position:relative}
+  .vid .big{font-size:44px;font-weight:800;letter-spacing:-.03em}
+  .vid .cap{position:absolute;bottom:9px;left:12px;font-size:12px;opacity:.8}
+  .opt{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:11px;
+    padding:11px 13px;margin-bottom:8px;cursor:pointer;background:#fff;width:100%;text-align:left;font:inherit}
+  .opt:hover{border-color:#c3cbd6}
+  .opt.sel{border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,111,235,.12)}
+  .num{width:34px;height:34px;border-radius:9px;background:#eef1f5;display:grid;place-items:center;
+    font-weight:700;font-size:13px;flex:none}
+  .opt .nm{font-weight:600}
+  .opt .meta{font-size:12px;color:var(--muted)}
+  button.go{width:100%;padding:13px;border:0;border-radius:11px;background:var(--accent);color:#fff;
+    font:inherit;font-weight:650;cursor:pointer;margin-top:4px}
+  button.go:disabled{background:#c5d3e8;cursor:not-allowed}
+  button.ghost{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;background:#fff;
+    font:inherit;color:var(--muted);cursor:pointer;margin-top:8px}
+  .why{font-size:13px;background:#f3f5f8;border-radius:10px;padding:11px 13px;color:#4b5563;margin-bottom:14px}
+  .done{text-align:center;padding:30px 18px}
+  .tick{width:52px;height:52px;border-radius:50%;background:var(--okbg);color:var(--ok);
+    display:grid;place-items:center;font-size:26px;margin:0 auto 14px;border:1px solid #aee5c3}
+  footer{text-align:center;color:#9aa1ac;font-size:12px;padding-top:22px}
+  footer a{color:#9aa1ac}
+  .stat{display:flex;gap:18px;margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+  .stat div{font-size:12px;color:var(--muted)}
+  .stat b{display:block;font-size:17px;color:var(--ink);font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">SR</div>
+    <div>
+      <div class="brand">SidelineReel</div>
+      <div class="sub">Ridgeline Youth Soccer &middot; U12 Red &middot; Coach view</div>
+    </div>
+  </header>
+  <div id="app"></div>
+  <footer>Prototype &middot; SidelineReel is part of <a href="https://ajaia.ai" target="_blank" rel="noopener">ajaia.ai</a></footer>
+</div>
+
+<script>
+// Only clips the matcher was NOT confident about reach this queue.
+// Confident matches are assigned automatically and never shown to the coach.
+var roster = [
+  {n:1,  name:"Ava Lindqvist"},
+  {n:4,  name:"Sam Patel"},
+  {n:11, name:"Noor Haddad"},
+  {n:14, name:"Maya Chen"},
+  {n:18, name:"Ellie Brooks"},
+  {n:13, name:"Zoe Ferreira"}
+];
+var queue = [
+  {id:1, read:14, guess:14, alt:4,  conf:0.61, clip:"2nd half &middot; 31:04",
+   note:"Jersey read as 14, but 4 is also on this roster and the digits overlap at this angle."},
+  {id:2, read:1,  guess:11, alt:1,  conf:0.54, clip:"1st half &middot; 12:48",
+   note:"Only part of the number is visible. Could be 1 or 11 &mdash; both are on this roster."},
+  {id:3, read:13, guess:13, alt:18, conf:0.66, clip:"2nd half &middot; 44:22",
+   note:"Motion blur on the turn. 13 and 18 are both rostered and read similarly here."}
+];
+var i = 0, picked = null, confirmed = 0, corrected = 0;
+function who(n){ for (var k=0;k<roster.length;k++) if (roster[k].n===n) return roster[k]; }
+var app = document.getElementById('app');
+
+function list(){
+  var rows = queue.map(function(c){
+    return '<div class="row" onclick="open_(' + c.id + ')">'
+      + '<div class="thumb">#' + c.read + '<small>?</small></div>'
+      + '<div class="rowmain"><div class="t">Possible match &middot; #' + c.guess + ' ' + who(c.guess).name + '</div>'
+      + '<div class="s">' + c.clip + ' &middot; could also be #' + c.alt + '</div></div>'
+      + '<div class="chev">&rsaquo;</div></div>';
+  }).join('');
+  app.innerHTML =
+    '<div class="banner"><div>&#9888;&#65039;</div><div><b>' + queue.length
+    + ' clips need your confirmation</b> before this week\'s reels go out. '
+    + 'We were not sure which player these belong to, so we have held them rather than guess.</div></div>'
+    + '<div class="card"><h2>Waiting on you</h2>'
+    + '<p>Everything else has been matched and is ready to send.</p>' + rows
+    + '<div class="stat"><div><b>47</b>matched automatically</div>'
+    + '<div><b>' + queue.length + '</b>need a look</div><div><b>0</b>sent so far</div></div></div>'
+    + '<button class="go" disabled>Send this week\'s reels</button>'
+    + '<div style="text-align:center;font-size:12px;color:#9aa1ac;margin-top:8px">'
+    + 'Reels send once the queue is clear.</div>';
+}
+
+function open_(id){
+  for (var k=0;k<queue.length;k++) if (queue[k].id===id) i = k;
+  picked = null; review();
+}
+
+function review(){
+  var c = queue[i];
+  var opts = [c.guess, c.alt].map(function(n){
+    return '<button class="opt ' + (picked===n?'sel':'') + '" onclick="pick(' + n + ')">'
+      + '<div class="num">#' + n + '</div><div><div class="nm">' + who(n).name + '</div>'
+      + '<div class="meta">' + (n===c.guess ? 'Our best guess' : 'Also on this roster') + '</div></div></button>';
+  }).join('');
+  app.innerHTML =
+    '<div class="card"><div class="vid"><div class="big">#' + c.read + '</div>'
+    + '<div class="cap">' + c.clip + ' &middot; Ridgeline vs Brightwater</div></div>'
+    + '<h2>Who is this?</h2>'
+    + '<p>We read the jersey as <b>#' + c.read + '</b> but we are only '
+    + Math.round(c.conf*100) + '% sure.</p>'
+    + '<div class="why">' + c.note + '</div>' + opts
+    + '<button class="opt ' + (picked===0?'sel':'') + '" onclick="pick(0)">'
+    + '<div class="num">&mdash;</div><div><div class="nm">Neither &mdash; not one of my players</div>'
+    + '<div class="meta">We will drop this clip</div></div></button>'
+    + '<button class="go" ' + (picked===null?'disabled':'') + ' onclick="save()">'
+    + (picked===null ? 'Choose one to continue' : 'Confirm and continue') + '</button>'
+    + '<button class="ghost" onclick="list()">Back to queue</button></div>'
+    + '<div style="text-align:center;font-size:12px;color:#9aa1ac">' + queue.length
+    + ' left &middot; your answer trains the matcher for this roster</div>';
+}
+
+function pick(n){ picked = n; review(); }
+
+function save(){
+  var c = queue[i];
+  if (picked === c.guess) confirmed++; else corrected++;
+  queue.splice(i,1); picked = null;
+  if (queue.length) { i = 0; review(); } else { done(); }
+}
+
+function done(){
+  var plural = corrected === 1;
+  app.innerHTML =
+    '<div class="card done"><div class="tick">&#10003;</div><h1>All clear</h1>'
+    + '<p>Every clip is matched to a player. This week\'s reels are sending now.</p>'
+    + '<div class="stat" style="justify-content:center">'
+    + '<div><b>' + confirmed + '</b>you confirmed</div>'
+    + '<div><b>' + corrected + '</b>you corrected</div>'
+    + '<div><b>47</b>matched automatically</div></div></div>'
+    + '<div class="card"><h2>Why we asked</h2><p style="margin:0">The ' + corrected
+    + ' correction' + (plural?'':'s') + ' you made ' + (plural?'is':'are')
+    + ' the only way we learn our real error rate &mdash; and ' + (plural?'that clip':'those clips')
+    + ' would otherwise have landed in the wrong child\'s reel.</p></div>'
+    + '<button class="go" onclick="location.reload()">Run through it again</button>';
+}
+
+list();
+</script>
+</body>
+</html>
