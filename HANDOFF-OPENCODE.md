@@ -31,7 +31,6 @@ interviewing.
 | File | What it is |
 |---|---|
 | `index.html` | **The rebuild, and what is deployed.** ~990 lines, single file, no build step, no dependencies. This is the only file you edit. |
-| `v1.html` | The OLD site. Dark, scrolling, 660 lines — but **complete**: all 8 projects written up. Kept as a fallback and linked from the live page's work-in-progress note. Don't edit it. |
 | `img/` | 508KB. App screenshots (`mydiary-*`, `f5-*`), `tabeeb-1`, logos, and 5 character portraits `me-{neutral,grin,brow,point,deadpan}.webp` |
 | `sidelinereel/` | A separate interactive prototype from a job assessment. Leave it alone. |
 | `Arqum Khan CV.pdf` | Served at `/Arqum%20Khan%20CV.pdf`. Don't regenerate. |
@@ -124,10 +123,15 @@ red shirt, glasses, skin left as bare paper). Five expressions.
 
 ## Where it's up to
 
-**Deployed** at `https://arkhamkhan.vercel.app`, with a work-in-progress note in
-the bottom margin linking to `v1.html`. Three URLs were submitted in a live job
-application and must keep resolving: `/`, `/sidelinereel/`,
-`/Arqum%20Khan%20CV.pdf`.
+**Deployed** at `https://arkhamkhan.vercel.app`, with a small handwritten
+work-in-progress note in the bottom margin.
+
+The previous version of the site has been **deleted** — he judged it not worth
+showing. It is recoverable from git history (`git show 74dc1ca~1:index.html`) but
+do not restore it or link to it.
+
+Three URLs were submitted in a live job application and must keep resolving:
+`/`, `/sidelinereel/`, `/Arqum%20Khan%20CV.pdf`.
 
 **3 of ~11 pages built:**
 
