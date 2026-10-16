@@ -4,657 +4,992 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arqum Khan — Product &amp; AI Engineering</title>
-<meta name="description" content="Arqum &quot;Arkham&quot; Khan — builds products from zero and ships them. Product, AI engineering, brand and community. Karachi.">
+<meta name="description" content="Arqum &quot;Arkham&quot; Khan — product manager who builds. Shipped to Google Play, one acquired. Karachi.">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Bebas+Neue&family=Caveat:wght@500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#0b0a0f; --ink-2:#121018; --line:#221f2b; --line-2:#2e2a3a;
-  --fg:#e9e5ee; --fg-dim:#9b94a8; --fg-faint:#6b6478;
-  --accent:#ff5c39; --accent-dim:#b03f28;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
+  /* three inks on paper. nothing else. */
+  --paper:#efe9dd;
+  --paper-2:#f7f3ea;
+  --ink:#16130f;
+  --ink-soft:#4a443c;
+  --ink-faint:#8a8175;
+  --red:#e0432a;        /* riso red  */
+  --blue:#2f4bd8;       /* riso blue */
+  --tape:rgba(242,214,122,.62);
+
+  --display:'Archivo Black',Impact,sans-serif;
   --serif:'Instrument Serif',Georgia,serif;
   --body:'Newsreader',Georgia,serif;
-  --pad:clamp(20px,5vw,72px);
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --hand:'Caveat',cursive;
+
+  --pad:clamp(18px,4.5vw,64px);
+  --col:1180px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+@media (min-width:861px) and (prefers-reduced-motion:no-preference){
+  html{scroll-snap-type:y mandatory}
+  header,.proj{scroll-snap-align:start}
+}
 body{
-  background:var(--ink); color:var(--fg);
-  font-family:var(--body); font-size:17px; line-height:1.62;
+  background:var(--paper); color:var(--ink);
+  font-family:var(--body); font-size:17.5px; line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  background-image:
-    radial-gradient(900px 500px at 12% -5%, #1b1524 0%, transparent 70%),
-    radial-gradient(700px 400px at 95% 10%, #17131f 0%, transparent 70%);
-  background-attachment:fixed;
+  overflow:hidden; height:100%;
 }
-body::after{
-  content:''; position:fixed; inset:0; pointer-events:none; z-index:999; opacity:.035;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+/* paper grain — the one thing that sells "this is a physical object" */
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:900; opacity:.5;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
 }
-::selection{background:var(--accent); color:#0b0a0f}
+.wrap{max-width:var(--col); margin:0 auto; padding:0 var(--pad); position:relative}
+::selection{background:var(--red); color:var(--paper)}
 a{color:inherit}
-.wrap{max-width:1180px; margin:0 auto; padding:0 var(--pad)}
+img{display:block}
 
-/* ---------- sections ---------- */
-.sec{border-top:1px solid var(--line); padding:clamp(56px,8vw,104px) 0}
-.sec-head{display:flex; gap:20px; align-items:baseline; margin-bottom:clamp(28px,4vw,48px)}
-.sec-num{font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--accent); flex:0 0 auto; padding-top:6px}
-.sec-title{font-family:var(--serif); font-size:clamp(26px,3.6vw,38px); font-weight:400; letter-spacing:-.01em}
-.sec-note{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--fg-faint); text-transform:uppercase; margin-left:auto; padding-top:8px; text-align:right}
+/* ---------- cursor ---------- */
+/* drawn, not generated: an SVG cursor keeps the hotspot exact and stays crisp at 28px. */
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 2.5 L4.5 23 L9.6 18.2 L13.2 25.6 L16.6 23.9 L13.1 16.8 L20 16.1 Z' fill='%23f7f3ea' stroke='%2316130f' stroke-width='2.1' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 4 2, auto}
+a,button,summary,.pic,.opt,[role=button]{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M4 2.5 L4.5 23 L9.6 18.2 L13.2 25.6 L16.6 23.9 L13.1 16.8 L20 16.1 Z' fill='%23e0432a' stroke='%2316130f' stroke-width='2.1' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 4 2, pointer}
+
+/* ---------- masthead ---------- */
+.masthead{display:flex; align-items:center; gap:14px; padding:0; flex:none;
+  font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--ink-faint)}
+.masthead .bar{flex:1; height:1px; background:var(--ink); opacity:.22}
+.masthead b{color:var(--ink); font-weight:700}
+
+/* scissor cut-line — the zine signature, used sparingly */
+.cut{display:flex; align-items:center; gap:10px; margin:clamp(22px,3vw,34px) 0;
+  font-family:var(--mono); font-size:11px; letter-spacing:.2em; color:var(--ink-faint);
+  text-transform:uppercase}
+.cut::before{content:'\2702'; font-size:15px; color:var(--ink); transform:rotate(-8deg)}
+.cut .dash{flex:1; height:0; border-top:1.5px dashed rgba(22,19,15,.3)}
 
 /* ---------- hero ---------- */
-header{padding:clamp(64px,13vw,150px) 0 clamp(40px,6vw,70px)}
-.eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:uppercase;
-  color:var(--fg-faint); margin-bottom:26px; display:flex; align-items:center; gap:12px}
-.eyebrow::before{content:''; width:28px; height:1px; background:var(--accent)}
-h1{font-family:var(--serif); font-weight:400; letter-spacing:-.025em; line-height:.96;
-  font-size:clamp(50px,11vw,124px); margin-bottom:28px}
-h1 .q{color:var(--accent); font-style:italic}
-.lede{font-size:clamp(18px,2.1vw,23px); line-height:1.45; max-width:21ch; color:var(--fg); font-weight:300; margin-bottom:14px}
-.lede b{font-weight:400; color:#fff; border-bottom:1px solid var(--accent-dim)}
-.sub{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-faint); margin-bottom:34px}
-.meta{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono); font-size:12px; color:var(--fg-dim)}
-.meta a{text-decoration:none; border-bottom:1px solid var(--line-2); padding-bottom:2px; transition:.18s}
-.meta a:hover{color:var(--accent); border-color:var(--accent)}
-.dl{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
-  color:var(--ink); background:var(--accent); text-decoration:none; padding:10px 18px;
-  display:inline-block; transition:.18s; border:1px solid var(--accent)}
-.dl:hover{background:transparent; color:var(--accent)}
-
-/* ---------- capabilities ---------- */
-.cap-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1px; background:var(--line)}
-.cap{background:var(--ink); padding:26px 24px 30px; transition:background .25s}
-.cap:hover{background:var(--ink-2)}
-.cap h3{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; font-weight:500}
-.cap p{font-size:15px; line-height:1.55; color:var(--fg-dim)}
-
-/* ---------- companies ---------- */
-/* No boxes. Where a logo is a wordmark it IS the name, so it sits in the
-   heading slot. Logos are sized by height so wide and stacked marks can
-   both sit in the same list without one dwarfing the other. */
-.co{display:flex; justify-content:space-between; align-items:flex-start; gap:clamp(18px,4vw,48px);
-  padding:22px 0; border-bottom:1px solid var(--line)}
-.co:first-of-type{border-top:1px solid var(--line)}
-.co-id{min-width:0}
-.co-logo{display:block; margin-bottom:11px; width:auto}
-.co-logo.wide{height:21px}
-.co-logo.tall{height:48px}
-.co-name{font-family:var(--serif); font-size:clamp(20px,2.1vw,25px); font-weight:400;
-  letter-spacing:-.012em; line-height:1.15; margin-bottom:8px}
-.co-role{font-family:var(--mono); font-size:11.5px; color:var(--fg-dim); line-height:1.65}
-.co-role em{color:var(--fg-faint); font-style:normal}
-.co-when{font-family:var(--mono); font-size:11px; color:var(--fg-faint);
-  white-space:nowrap; padding-top:4px; letter-spacing:.03em}
-.more{margin-top:4px}
-.more summary{padding:18px 0 0}
-
-/* ---------- filter ---------- */
-.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:34px}
-.filters button{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-  background:transparent; color:var(--fg-dim); border:1px solid var(--line-2);
-  padding:8px 15px; cursor:pointer; transition:.18s; border-radius:1px}
-.filters button:hover{color:var(--fg); border-color:var(--fg-faint)}
-.filters button[aria-pressed="true"]{background:var(--accent); color:#0b0a0f; border-color:var(--accent); font-weight:500}
-.count{font-family:var(--mono); font-size:11px; color:var(--fg-faint); margin-left:auto; align-self:center}
-
-/* ---------- projects ---------- */
-.work{display:grid; gap:1px; background:var(--line)}
-.item{background:var(--ink); padding:clamp(26px,3.4vw,40px) clamp(22px,3vw,38px);
-  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:clamp(18px,4vw,52px);
-  transition:background .25s}
-.item:hover{background:var(--ink-2)}
-.item[hidden]{display:none}
-.i-left{min-width:0; position:sticky; top:40px; align-self:start}
-.tag{font-family:var(--mono); font-size:10px; letter-spacing:.17em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:14px}
-.item h3{font-family:var(--serif); font-size:clamp(23px,2.6vw,31px); font-weight:400; letter-spacing:-.015em; line-height:1.14; margin-bottom:10px}
-.role{font-family:var(--mono); font-size:11.5px; color:var(--fg-dim); line-height:1.75}
-.role em{color:var(--fg-faint); font-style:normal}
-.i-right{min-width:0}
-.i-right p{font-size:15.5px; line-height:1.6; color:var(--fg-dim); margin-bottom:14px}
-.i-right p:last-child{margin-bottom:0}
-.i-right p.punch{font-family:var(--serif); font-size:clamp(22px,2.7vw,31px); line-height:1.22;
-  color:#fff; letter-spacing:-.018em; margin-bottom:22px; max-width:26ch}
-.i-right strong{color:var(--fg); font-weight:400}
-.appicon{width:42px; height:42px; border-radius:9px; margin-bottom:14px; display:block}
-
-/* progressive disclosure — detail is there if you want it, folded if you don't */
-details{margin-top:4px}
-details summary{font-family:var(--mono); font-size:11px; letter-spacing:.11em; text-transform:uppercase;
-  color:var(--fg-faint); cursor:pointer; list-style:none; display:inline-flex; align-items:center;
-  gap:8px; padding:7px 0; transition:.18s; user-select:none}
-details summary::-webkit-details-marker{display:none}
-details summary::before{content:'+'; color:var(--accent); font-size:13px; line-height:1}
-details[open] summary::before{content:'–'}
-details summary:hover{color:var(--fg)}
-details .body{padding-top:10px}
-details[open] .body{animation:fade .35s ease}
-@keyframes fade{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
-
-.links{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px}
-.links a{font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase;
-  color:var(--fg-dim); text-decoration:none; border:1px solid var(--line-2);
-  padding:8px 14px; transition:.18s; display:inline-flex; align-items:center; gap:7px}
-.links a:hover{color:var(--accent); border-color:var(--accent)}
-.links a::after{content:'↗'; font-size:10px; opacity:.6}
-
-.shots{display:flex; gap:10px; overflow-x:auto; padding-bottom:10px; margin-bottom:22px;
-  scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
-.shots::-webkit-scrollbar{height:4px}
-.shots::-webkit-scrollbar-thumb{background:var(--line-2)}
-.shots img{height:290px; width:auto; flex:0 0 auto; border:1px solid var(--line-2);
-  border-radius:3px; scroll-snap-align:start; background:var(--ink-2)}
-.photo{width:100%; height:auto; border:1px solid var(--line-2); border-radius:3px; margin-bottom:22px; display:block}
-
-.figs{display:flex; flex-wrap:wrap; gap:8px 30px; margin-top:22px; padding-top:18px; border-top:1px solid var(--line)}
-.fig b{display:block; font-family:var(--mono); font-size:16px; font-weight:500; color:var(--accent); letter-spacing:-.01em}
-.fig span{font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase; color:var(--fg-faint)}
-
-/* ---------- now / stack ---------- */
-.now{border-left:2px solid var(--accent); padding-left:clamp(18px,3vw,30px); max-width:62ch}
-.now p{font-size:16.5px; line-height:1.65; color:var(--fg-dim)}
-.now p + p{margin-top:13px}
-.now strong{color:var(--fg); font-weight:400}
-.stack{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:34px 48px}
-.stack h3{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; font-weight:500}
-.stack ul{list-style:none; display:flex; flex-wrap:wrap; gap:7px}
-.stack li{font-family:var(--mono); font-size:12px; color:var(--fg-dim); border:1px solid var(--line-2); padding:5px 10px; border-radius:1px}
-
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line); padding:clamp(60px,9vw,110px) 0 clamp(60px,7vw,90px)}
-.cta{font-family:var(--serif); font-size:clamp(30px,5.6vw,62px); font-weight:400; letter-spacing:-.02em; line-height:1.06; margin-bottom:32px; max-width:17ch}
-.cta a{color:var(--accent); text-decoration:none; border-bottom:2px solid transparent; transition:.2s}
-.cta a:hover{border-color:var(--accent)}
-.foot-meta{display:flex; flex-wrap:wrap; gap:12px 30px; font-family:var(--mono); font-size:12px; color:var(--fg-faint); margin-top:40px; padding-top:26px; border-top:1px solid var(--line)}
-.foot-meta a{text-decoration:none; color:var(--fg-dim); transition:.18s}
-.foot-meta a:hover{color:var(--accent)}
-
-/* ---------- motion ---------- */
-@media (prefers-reduced-motion:no-preference){
-  .rise{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.7,.3,1) forwards}
-  @keyframes rise{to{opacity:1; transform:none}}
-  .d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}.d4{animation-delay:.32s}
-  .js .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.3,1)}
-  .js .reveal.in{opacity:1; transform:none}
+header{padding:18px 0 clamp(70px,24vh,250px); position:relative;
+  min-height:100%; display:flex; flex-direction:column}
+/* ---------- cut-out name ---------- */
+/* Every letter is snipped from a different source: different face, different
+   stock, different angle. The grid underneath keeps it from reading as a mess. */
+.name{position:relative; display:block; margin-top:auto;
+  font-size:clamp(54px,12.4vw,150px); line-height:.9; text-transform:uppercase}
+.name .ln{display:block; white-space:nowrap}
+.name .l2{margin-left:clamp(104px,25vw,330px)}
+.ct{display:inline-block; vertical-align:baseline; position:relative;
+  padding:.03em .07em .06em; margin-right:-.01em}
+.ct.blk{font-family:var(--display); letter-spacing:-.03em}
+.ct.ser{font-family:var(--serif); font-weight:400}
+.ct.serit{font-family:var(--serif); font-style:italic}
+.ct.mono{font-family:var(--mono); font-weight:700; font-size:.78em; letter-spacing:-.02em}
+.ct.body{font-family:var(--body); font-weight:500}
+.ct.bebas{font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:.01em}
+.ct.abril{font-family:'Abril Fatface',Georgia,serif}
+/* cut from different-sized sources */
+.ct.sm{font-size:.74em}  .ct.md{font-size:.88em}  .ct.lg{font-size:1.14em}
+/* the stocks each letter was cut from */
+.ct.red{background:var(--red);  color:var(--paper-2)}
+.ct.blue{background:var(--blue); color:var(--paper-2)}
+.ct.ink{background:var(--ink);  color:var(--paper-2)}
+.ct.pap{background:var(--paper-2); box-shadow:2px 2.5px 0 rgba(22,19,15,.14)}
+/* a scissor-cut edge is never straight */
+.ct.red,.ct.blue,.ct.ink,.ct.pap{
+  clip-path:polygon(1.5% 2%, 99% 0%, 100% 97%, 2% 100%)}
+.name .nick{
+  display:inline-block; width:auto; position:absolute; z-index:3; background:var(--red); color:var(--paper-2);
+  font-family:var(--display); text-transform:uppercase;
+  font-size:clamp(15px,2.9vw,37px); letter-spacing:.012em; line-height:1;
+  padding:.2em .32em .25em; transform:rotate(-3.2deg);
+  top:54%; left:0;
+  box-shadow:3px 4px 0 rgba(22,19,15,.17);
 }
-@media (max-width:820px){
-  .item{grid-template-columns:1fr; gap:18px}
-  .i-left{position:static}
-  .co{flex-direction:column; gap:8px; padding:18px 0}
-  .co-when{padding-top:0; order:-1}
-  .co-logo.tall{height:40px}
-  .sec-note{display:none}
+.name .nick::before,.name .nick::after{
+  content:''; position:absolute; width:62px; height:21px; background:var(--tape);
+  box-shadow:0 1px 2px rgba(22,19,15,.14);
+  border-left:1px dashed rgba(22,19,15,.09); border-right:1px dashed rgba(22,19,15,.09);
+}
+.name .nick::before{top:-11px; left:-16px; transform:rotate(-24deg)}
+.name .nick::after{bottom:-11px; right:-18px; transform:rotate(-20deg)}
+
+.heroline{margin-top:clamp(34px,5.5vw,62px); display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(20px,4vw,56px);
+  align-items:start}
+.lede{font-family:var(--hand); font-weight:700; font-size:clamp(30px,4.6vw,55px);
+  line-height:1.05; letter-spacing:0; max-width:19ch; color:var(--ink)}
+.lede em{font-style:normal; color:var(--red)}
+.lede .u{background:linear-gradient(transparent 62%,rgba(47,75,216,.26) 62%)}
+
+.note{font-family:var(--hand); font-size:clamp(18px,2.3vw,25px); line-height:1.18;
+  color:var(--blue); position:relative}
+.note.pad{padding-top:40px}
+.arrow{position:absolute; stroke:var(--blue); fill:none; stroke-width:1.9; stroke-linecap:round}
+#heroArrow{left:-104px; top:-4px; transform:scaleX(-1)}
+
+.disc{display:flex; flex-wrap:wrap; gap:6px 0; margin-top:clamp(28px,4vw,42px);
+  font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--ink-soft)}
+.disc span{padding-right:14px; margin-right:14px; border-right:1px solid rgba(22,19,15,.2)}
+.disc span:last-child{border:0}
+
+/* taped tabs — links that look stuck on */
+.tabs{display:flex; flex-wrap:wrap; gap:11px; margin-top:clamp(26px,3.6vw,38px)}
+header .postrow{margin-bottom:auto}
+.tab{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; text-decoration:none; background:var(--paper-2);
+  border:1.5px solid var(--ink); padding:9px 15px; display:inline-flex; align-items:center; gap:8px;
+  box-shadow:2.5px 3px 0 var(--ink); transition:transform .14s, box-shadow .14s}
+.tab:nth-child(odd){transform:rotate(-.8deg)}
+.tab:nth-child(even){transform:rotate(.7deg)}
+.tab:hover{transform:translate(-1px,-1px) rotate(0); box-shadow:4px 5px 0 var(--red)}
+.tab.fill{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.tab.fill:hover{box-shadow:4px 5px 0 var(--red)}
+.tab::after{content:'\2197'; font-size:10px; opacity:.55}
+.tab.dl::after{content:'\2193'}
+
+/* ---------- project ---------- */
+.proj{padding-bottom:clamp(60px,8vw,100px); position:relative}
+.p-head{display:flex; align-items:flex-end; gap:16px; margin-bottom:clamp(14px,2vw,22px)}
+.p-num{font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.18em;
+  color:var(--red); padding-bottom:7px; white-space:nowrap}
+.p-rule{flex:1; height:0; border-top:1.5px solid var(--ink); margin-bottom:9px; opacity:.85}
+.p-where{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-faint); padding-bottom:7px; white-space:nowrap}
+
+.p-title{display:flex; align-items:center; flex-wrap:wrap; gap:clamp(14px,2.6vw,30px)}
+.p-title h2{font-family:var(--display); font-size:clamp(38px,7.6vw,88px); line-height:.9;
+  letter-spacing:-.035em; text-transform:uppercase}
+.p-icon{width:clamp(44px,5vw,60px); height:clamp(44px,5vw,60px); border-radius:13px;
+  border:1.5px solid var(--ink); box-shadow:2.5px 3px 0 var(--ink); transform:rotate(-3deg)}
+
+/* rubber stamp — distressed with a noise mask so it isn't a clean box */
+.stamp{font-family:var(--display); font-size:clamp(13px,1.5vw,17px); letter-spacing:.09em;
+  text-transform:uppercase; color:var(--red); border:3.5px solid var(--red);
+  padding:7px 13px 6px; transform:rotate(-6.5deg); opacity:1; white-space:nowrap;
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.07' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -0.85 1.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23r)'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.07' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -0.85 1.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23r)'/%3E%3C/svg%3E");
+  -webkit-mask-size:100% 100%; mask-size:100% 100%}
+
+.punch{font-family:var(--serif); font-size:clamp(25px,4vw,46px); line-height:1.06;
+  letter-spacing:-.016em; max-width:24ch; margin:clamp(20px,3vw,30px) 0 clamp(26px,4vw,38px)}
+.punch i{color:var(--red)}
+
+/* the photo pile — screenshots as taped prints */
+.pile{display:flex; align-items:flex-start; padding:14px 0 26px; position:relative}
+.pile .pic{
+  flex:0 0 auto; background:var(--paper-2); padding:7px 7px 24px;
+  box-shadow:3px 4px 0 rgba(22,19,15,.15), 0 10px 22px -12px rgba(22,19,15,.4);
+  position:relative; transition:transform .22s cubic-bezier(.2,.7,.3,1), z-index 0s;
+}
+.pile .pic img{width:clamp(118px,15.5vw,172px); height:auto; background:#ddd7cb}
+.pile .pic figcaption{position:absolute; bottom:6px; left:8px; right:8px;
+  font-family:var(--hand); font-size:14.5px; line-height:1; color:var(--ink-soft);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pile .pic:not(:first-child) figcaption{text-align:right}
+.pile .pic:nth-child(1){transform:rotate(-3.2deg); z-index:4}
+.pile .pic:nth-child(2){transform:rotate(1.8deg); margin-left:-22px; z-index:3}
+.pile .pic:nth-child(3){transform:rotate(-1.2deg); margin-left:-18px; z-index:2}
+.pile .pic:nth-child(4){transform:rotate(2.6deg); margin-left:-24px; z-index:1}
+.pile .pic:hover{transform:rotate(0) translateY(-7px) scale(1.035); z-index:9}
+/* every print gets its own staple, each at a slightly different angle so the
+   pile reads as stapled by hand rather than stamped by a machine. */
+.pile .pic::before{content:''; position:absolute; top:-2px; left:30%; width:18px; height:8px;
+  border:2.6px solid #51505a; border-bottom:0; border-radius:1.5px; z-index:8;
+  filter:drop-shadow(0 1.5px 0 rgba(22,19,15,.3))}
+.pile .pic:nth-child(1)::before{transform:rotate(-8deg)}
+.pile .pic:nth-child(2)::before{transform:rotate(6deg);  left:34%}
+.pile .pic:nth-child(3)::before{transform:rotate(-3deg); left:28%}
+.pile .pic:nth-child(4)::before{transform:rotate(9deg);  left:36%}
+
+/* thumbtack — reusable, currently pinning the guide portrait */
+.tack{position:absolute; width:15px; height:15px; border-radius:50%; z-index:10;
+  background:radial-gradient(circle at 34% 30%, #ff9a84 0%, var(--red) 55%, #8d2414 100%);
+  box-shadow:0 2px 3px rgba(22,19,15,.45), inset 0 -1px 1.5px rgba(0,0,0,.3)}
+.tack::after{content:''; position:absolute; inset:5.5px; border-radius:50%;
+  background:rgba(22,19,15,.35)}
+
+.p-body{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(22px,4vw,58px); align-items:start; margin-top:clamp(12px,2vw,20px)}
+.p-body p{color:var(--ink-soft); margin-bottom:14px; max-width:46ch}
+.p-body p:last-child{margin-bottom:0}
+.p-body strong{color:var(--ink); font-weight:500}
+/* drop cap — print furniture, cheap and it changes the whole texture */
+.p-body .first::first-letter{
+  font-family:var(--display); float:left; font-size:3.05em; line-height:.76;
+  padding:.07em .11em 0 0; color:var(--red)}
+
+/* stickers */
+.stickers{display:flex; flex-wrap:wrap; gap:clamp(12px,2vw,22px); margin-top:clamp(30px,4.5vw,44px)}
+.sticker{width:clamp(96px,11.5vw,124px); height:clamp(96px,11.5vw,124px); border-radius:50%;
+  border:2px solid var(--ink); display:grid; place-items:center; text-align:center;
+  background:var(--paper-2); padding:8px; box-shadow:2.5px 3px 0 var(--ink)}
+.sticker:nth-child(1){transform:rotate(-5deg)}
+.sticker:nth-child(2){transform:rotate(3.5deg)}
+.sticker:nth-child(3){transform:rotate(-2deg)}
+.sticker b{display:block; font-family:var(--display); font-size:clamp(13px,1.6vw,18px);
+  line-height:.98; letter-spacing:-.01em; text-transform:uppercase}
+.sticker span{display:block; font-family:var(--mono); font-size:8.5px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:5px}
+.sticker.red{background:var(--red); border-color:var(--red); color:var(--paper-2)}
+.sticker.red span{color:rgba(247,243,234,.72)}
+.sticker.blue{background:var(--blue); border-color:var(--blue); color:var(--paper-2)}
+.sticker.blue span{color:rgba(247,243,234,.72)}
+
+
+.foot{font-family:var(--mono); font-size:10.5px; letter-spacing:.17em; text-transform:uppercase;
+  color:var(--ink-faint); padding:0 0 clamp(44px,7vw,80px)}
+
+/* ---------- rubber stamp ---------- */
+/* alpha = 1.62 - 1.75*noise, so it actually reaches 0 in places. The earlier
+   version never dropped below .66, which is why it did nothing. Large soft
+   blobs keep the impression solid across most of its area; three seeds so no
+   two words ink the same. */
+.rub{display:inline-block; border:3px solid currentColor; padding:7px 14px 6px;
+  font-family:var(--display); font-size:clamp(11px,1.15vw,14px); letter-spacing:.09em;
+  text-transform:uppercase; line-height:1.1;
+  -webkit-mask-image:var(--ink); mask-image:var(--ink);
+  -webkit-mask-size:100% 100%; mask-size:100% 100%}
+.rub.r{color:var(--red);  text-shadow:.8px .6px 0 rgba(224,67,42,.35)}
+.rub.b{color:var(--blue); text-shadow:.8px .6px 0 rgba(47,75,216,.35)}
+.ink1{--ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='70'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .038' numOctaves='3' seed='4'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.75 1.62'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
+.ink2{--ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='70'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.034 .024' numOctaves='3' seed='17'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.9 1.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
+.ink3{--ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='70'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.027 .048' numOctaves='3' seed='29'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.65 1.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
+.stamprow{display:flex; flex-wrap:wrap; gap:clamp(10px,1.4vw,18px); align-items:center;
+  margin-top:clamp(28px,4vw,42px)}
+
+/* ---------- postage ---------- */
+/* the shadow lives on the wrapper: filter runs before mask on the same element,
+   so a shadow set here would be cut away with the perforations. */
+.pw{display:inline-block; filter:drop-shadow(2px 3px 0 rgba(22,19,15,.17));
+  transition:transform .18s cubic-bezier(.2,.7,.3,1)}
+.pw:hover{transform:translateY(-4px) rotate(0deg)}
+.ps{display:block; text-decoration:none; color:var(--ink); background:#fbf8f1;
+  width:clamp(104px,10.2vw,146px); font-size:clamp(8.6px,.84vw,11.4px);
+  --h:.45em; --s:1.18em;
+  padding:.62em .62em 1.15em; box-sizing:border-box; position:relative;
+  -webkit-mask:
+    radial-gradient(circle var(--h) at 50% 0,   #0000 97%, #000) 50% 0   /var(--s) 100%,
+    radial-gradient(circle var(--h) at 50% 100%,#0000 97%, #000) 50% 100%/var(--s) 100%,
+    radial-gradient(circle var(--h) at 0 50%,   #0000 97%, #000) 0 50%   /100% var(--s),
+    radial-gradient(circle var(--h) at 100% 50%,#0000 97%, #000) 100% 50%/100% var(--s);
+  mask:
+    radial-gradient(circle var(--h) at 50% 0,   #0000 97%, #000) 50% 0   /var(--s) 100%,
+    radial-gradient(circle var(--h) at 50% 100%,#0000 97%, #000) 50% 100%/var(--s) 100%,
+    radial-gradient(circle var(--h) at 0 50%,   #0000 97%, #000) 0 50%   /100% var(--s),
+    radial-gradient(circle var(--h) at 100% 50%,#0000 97%, #000) 100% 50%/100% var(--s);
+  -webkit-mask-composite:source-in; mask-composite:intersect}
+.pan{display:block; position:relative; height:7.2em; overflow:hidden}
+/* press variation: straight alpha, no blend mode. The page grain already sits
+   over everything, so this layer only does the thin and heavy patches. */
+.pan::after{content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    radial-gradient(ellipse 58% 46% at 27% 23%, rgba(255,255,255,.26), transparent 66%),
+    radial-gradient(ellipse 42% 36% at 83% 77%, rgba(0,0,0,.2),        transparent 70%),
+    radial-gradient(circle .9px at 23% 67%, rgba(255,255,255,.55), transparent),
+    radial-gradient(circle .7px at 70% 33%, rgba(255,255,255,.5),  transparent),
+    radial-gradient(circle .6px at 54% 83%, rgba(0,0,0,.35),       transparent)}
+.pan svg{position:absolute; left:50%; top:46%; width:58%; height:auto;
+  transform:translate(-50%,-50%)}
+.pan .place{position:absolute; left:0; right:0; bottom:.3em; text-align:center;
+  font-family:var(--mono); font-weight:700; font-size:.64em; letter-spacing:.2em;
+  color:rgba(251,248,241,.92)}
+.pan .rule{position:absolute; left:.5em; right:.5em; bottom:1.75em; height:1px;
+  background:rgba(251,248,241,.4)}
+.ps .den{display:block; font-family:var(--display); font-size:1.26em; line-height:1.1;
+  letter-spacing:-.015em; text-transform:uppercase; margin-top:.46em; text-align:center}
+.ps .cap{display:block; font-family:var(--mono); font-size:.6em; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); text-align:center; margin-top:.3em}
+.ps .val{position:absolute; top:.5em; right:.6em; font-family:var(--display);
+  font-size:.7em; color:rgba(251,248,241,.95); z-index:2}
+.pmark{position:absolute; right:.3em; top:.4em; width:4.6em; height:4.6em; border-radius:50%;
+  border:2px solid rgba(22,19,15,.5); transform:rotate(-14deg); z-index:3;
+  font-family:var(--mono); font-weight:700; font-size:.72em; color:rgba(22,19,15,.6);
+  display:grid; place-items:center; line-height:1.1; text-align:center; letter-spacing:.04em;
+  box-shadow:inset 0 0 0 1px rgba(22,19,15,.12)}
+.postrow{display:flex; flex-wrap:wrap; gap:clamp(9px,1.1vw,15px); align-items:flex-start;
+  margin-top:clamp(22px,3vw,34px)}
+
+/* ---------- contents ---------- */
+.idx{min-height:100%; display:flex; flex-direction:column;
+  padding:clamp(22px,3vw,36px) 0 clamp(26px,3.6vw,50px)}
+.idx-h{margin:clamp(4px,.9vw,11px) 0 clamp(11px,1.7vw,21px);
+  font-size:clamp(30px,5.4vw,66px); line-height:.9; text-transform:uppercase}
+.idx-grid{display:grid; grid-template-columns:1fr 1fr 1fr;
+  gap:clamp(20px,2.8vw,44px); align-items:start; margin-bottom:auto}
+.idx-cap{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink-faint); padding-bottom:7px;
+  border-bottom:1.5px solid var(--ink); margin-bottom:11px}
+.idx-cap + .ch{margin-top:0}
+.idx-cap.later{margin-top:clamp(14px,1.9vw,24px)}
+
+/* a chapter is the company; the spreads under it are its sections */
+.ch{margin-bottom:clamp(9px,1.2vw,14px)}
+.ch-top{display:flex; align-items:baseline; gap:0}
+.ch-top b{font-family:var(--serif); font-weight:400; font-size:clamp(15px,1.45vw,19px);
+  line-height:1.1; letter-spacing:-.012em; flex:none}
+.ch-top .dots{flex:1; min-width:14px; margin:0 9px 5px;
+  border-bottom:1.5px dotted rgba(22,19,15,.26)}
+.ch-top i{font-family:var(--mono); font-style:normal; font-size:9px; letter-spacing:.06em;
+  color:var(--ink-soft); white-space:nowrap; flex:none}
+.ch-role{font-family:var(--mono); font-size:8.5px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:2px}
+
+.ch-list{list-style:none; margin:7px 0 0; padding:0 0 0 13px;
+  border-left:1.5px solid rgba(22,19,15,.14)}
+.ch-list a{display:flex; align-items:baseline; gap:0; text-decoration:none; color:inherit;
+  padding:3.2px 0}
+.ch-list a:hover .nm{color:var(--red)}
+.ch-list a:hover .dots{border-color:var(--red)}
+.ch-list .n{font-family:var(--mono); font-size:8.5px; font-weight:700; color:var(--red);
+  width:21px; flex:none; letter-spacing:.05em}
+.ch-list .nm{font-family:var(--body); font-weight:500; font-size:13px; line-height:1.2;
+  flex:none; transition:color .14s}
+.ch-list .dots{flex:1; min-width:12px; margin:0 8px 4px;
+  border-bottom:1.5px dotted rgba(22,19,15,.26); transition:border-color .14s}
+.ch-list .mt{font-family:var(--mono); font-size:8px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--ink-faint); white-space:nowrap; flex:none}
+.ch-list .mt b{color:var(--red); font-weight:700}
+
+@media (max-width:860px){
+  .idx-grid{grid-template-columns:1fr; gap:24px}
+  .idx{min-height:0}
+}
+
+/* ---------- wip note ---------- */
+.wip{position:fixed; left:50%; bottom:clamp(30px,3.4vw,44px); z-index:926;
+  transform:translateX(-50%) rotate(-1.1deg); font-family:var(--hand);
+  font-size:clamp(13px,1.45vw,18px); color:var(--blue); white-space:nowrap}
+.wip a{color:var(--blue); text-underline-offset:3px; text-decoration-thickness:1px}
+.wip a:hover{color:var(--red)}
+@media (max-width:620px){
+  .wip{font-size:12px; white-space:normal; text-align:center; width:calc(100vw - 150px);
+    bottom:26px}
+}
+
+/* ---------- the book ---------- */
+/* Leaves are stacked and hinged on the left edge, where the binder holes are.
+   A turned leaf keeps a low z-index so it piles up under the ones already
+   turned, which is what a real book does. */
+.book{position:fixed; inset:0; perspective:2400px; perspective-origin:50% 42%}
+.leaf{position:absolute; inset:0; transform-style:preserve-3d;
+  transform-origin:left center; transform:rotateY(0deg);
+  transition:transform 1.05s cubic-bezier(.33,.02,.25,1); will-change:transform}
+.leaf.turned{transform:rotateY(-172deg)}
+.face{position:absolute; inset:0; backface-visibility:hidden; background:var(--paper);
+  box-shadow:1px 0 0 rgba(22,19,15,.07)}
+.face.front{overflow:hidden}
+.face.back{transform:rotateY(180deg);
+  background:var(--paper) linear-gradient(to left, rgba(22,19,15,.05), transparent 24%)}
+.scroll{height:100%; overflow-y:auto; overflow-x:hidden; scrollbar-width:thin}
+.scroll::-webkit-scrollbar{width:5px}
+.scroll::-webkit-scrollbar-thumb{background:rgba(22,19,15,.18)}
+/* the shadow the turning leaf casts into the gutter */
+.leaf::before{content:''; position:absolute; inset:0; pointer-events:none; z-index:2;
+  background:linear-gradient(to right, rgba(22,19,15,.09), transparent 11%);
+  opacity:.9}
+
+@media (prefers-reduced-motion:reduce){
+  .leaf{transition:none}
+}
+
+/* ---------- turning ---------- */
+/* the page itself is the control: a lifted corner you grab and drag. */
+.book{touch-action:pan-y}
+.corner{position:fixed; right:0; bottom:0; width:92px; height:92px; z-index:925;
+  border:0; padding:0; background:none; cursor:grab; -webkit-tap-highlight-color:transparent}
+.corner::before{content:''; position:absolute; right:0; bottom:0;
+  border-style:solid; border-width:0 0 54px 54px;
+  border-color:transparent transparent var(--paper-2) transparent;
+  filter:drop-shadow(-3px -3px 4px rgba(22,19,15,.22));
+  transition:border-width .22s cubic-bezier(.2,.7,.3,1)}
+.corner:hover::before,.corner:focus-visible::before{border-width:0 0 80px 80px}
+.corner::after{content:''; position:absolute; right:7px; bottom:7px; width:17px; height:17px;
+  border-right:2px solid var(--ink-faint); border-bottom:2px solid var(--ink-faint);
+  border-bottom-right-radius:3px; opacity:.5; transition:opacity .2s}
+.corner:hover::after{opacity:0}
+.corner[disabled]{display:none}
+/* the back corner lifts from the left; clicking it brings the PREVIOUS sheet
+   back over this one, rather than folding the current page away. */
+.corner.back{left:0; right:auto}
+.corner.back::before{left:0; right:auto;
+  border-width:0 54px 54px 0;
+  border-color:transparent transparent var(--paper-2) transparent;
+  filter:drop-shadow(3px -3px 4px rgba(22,19,15,.22))}
+.corner.back:hover::before,.corner.back:focus-visible::before{border-width:0 80px 80px 0}
+.corner.back::after{left:7px; right:auto;
+  border-left:2px solid var(--ink-faint); border-right:0;
+  border-bottom-right-radius:0; border-bottom-left-radius:3px}
+.dragging,.dragging *{cursor:grabbing !important}
+
+.pgbar{position:fixed; left:50%; transform:translateX(-50%); bottom:clamp(10px,1.4vw,18px);
+  z-index:926; display:flex; align-items:center; gap:6px}
+.pgnum{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; color:var(--ink-faint)}
+@media (max-width:860px){
+  .corner{width:72px; height:72px}
+  .corner::before{border-width:0 0 42px 42px}
+  .pgbar{bottom:8px}
+}
+
+/* ---------- album ---------- */
+/* binder holes down the page edge — the cheapest, strongest "this is an album" signal */
+.binder{position:fixed; left:0; top:0; bottom:0; width:38px; z-index:920; pointer-events:none;
+  display:flex; flex-direction:column; justify-content:space-around; align-items:center}
+.binder i{width:16px; height:16px; border-radius:50%; background:#e3dccd;
+  box-shadow:inset 1.5px 1.5px 2.5px rgba(22,19,15,.38), 0 1px 0 rgba(255,255,255,.55)}
+@media (max-width:1180px){ .binder{display:none} }
+
+
+/* ---------- intro gate ---------- */
+.gate{position:fixed; inset:0; z-index:940}
+.gate[hidden]{display:none}
+.g-next{position:absolute; right:11px; bottom:8px; font-family:var(--mono); font-size:10px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint)}
+.g-next.on{animation:blink 1.1s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.g-skip{position:absolute; top:5px; right:30px; border:0; background:none; font-family:var(--mono);
+  font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+  cursor:pointer; padding:4px}
+.g-skip:hover{color:var(--red)}
+
+/* ---------- guide ---------- */
+/* Visual-novel box: centred, wide, with the page dimmed behind it so it reads
+   as the thing you are meant to be looking at. */
+.guide{position:fixed; left:50%; bottom:clamp(18px,2.6vw,36px); z-index:950;
+  width:min(840px,92vw); display:flex; align-items:flex-end; gap:0;
+  opacity:0; transform:translateX(-50%) translateY(16px);
+  transition:opacity .34s ease, transform .34s cubic-bezier(.2,.7,.3,1)}
+.guide.in{opacity:1; transform:translateX(-50%)}
+.guide[hidden]{display:none}
+/* the portrait is a pasted print, overlapping the box like a VN character */
+.g-pic{width:clamp(104px,13vw,172px); height:auto; flex:none; background:var(--paper-2);
+  border:5px solid var(--paper-2); transform:rotate(-2.6deg); margin-right:-16px; z-index:2;
+  box-shadow:3px 4px 0 rgba(22,19,15,.16), 0 14px 26px -14px rgba(22,19,15,.55)}
+.g-box{position:relative; flex:1; min-width:0; background:var(--paper-2);
+  border:2.5px solid var(--ink); box-shadow:5px 6px 0 var(--ink);
+  padding:16px 44px 20px 26px}
+.g-text{font-size:clamp(15px,1.45vw,18.5px); line-height:1.5; color:var(--ink); min-height:3em}
+.g-who{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--red); font-weight:700; display:block; margin-bottom:6px}
+.g-x{position:absolute; top:6px; right:9px; width:24px; height:24px; border:0; background:none;
+  font-family:var(--mono); font-size:17px; line-height:1; color:var(--ink-faint);
+  cursor:pointer; padding:0; transition:color .15s}
+.g-x:hover{color:var(--red)}
+.g-skip{position:absolute; top:8px; right:36px; border:0; background:none; font-family:var(--mono);
+  font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
+  cursor:pointer; padding:4px}
+.g-skip:hover{color:var(--red)}
+/* the only state the reader needs: a blinking marker means this line is done */
+.g-next{position:absolute; right:16px; bottom:13px; width:0; height:0;
+  border-left:8px solid transparent; border-right:8px solid transparent;
+  border-top:10px solid var(--red); opacity:0; transition:opacity .18s}
+.g-next.on{opacity:1; animation:bob 1.05s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* dim only while the intro is running */
+.gate{background:rgba(22,19,15,0); transition:background .45s ease}
+.gate.dim{background:rgba(22,19,15,.4)}
+
+@media (max-width:860px){
+  .guide{left:50%; bottom:10px; width:calc(100vw - 20px)}
+  .g-pic{width:76px; border-width:4px; margin-right:-10px}
+  .g-box{padding:12px 32px 16px 16px}
+  .g-text{font-size:14.5px; min-height:3.2em}
+  .g-next{right:12px; bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){ .guide{transition:none} }
+
+@media (max-width:860px){
+  .heroline,.p-body{grid-template-columns:1fr; gap:22px}
+  .note.pad{padding-top:6px}
+  #heroArrow{left:0; top:-40px; transform:scaleX(-1) rotate(48deg)}
+  .lede{max-width:none}
+  .pile{overflow-x:auto; overflow-y:hidden; padding-bottom:30px; margin:0 calc(var(--pad)*-1);
+    padding-left:var(--pad); padding-right:var(--pad); scroll-snap-type:x proximity}
+  .pile .pic{scroll-snap-align:center}
+  .pile .pic:nth-child(n){margin-left:-14px}
+  .pile .pic:nth-child(1){margin-left:0}
+  .name .nick{top:52%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  .pile .pic:hover{transform:none}
 }
 </style>
 </head>
 <body>
-<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js');</script>
 
-<div class="wrap">
+<div class="binder" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<div class="gate" id="gate" hidden></div>
 
-<header>
-  <div class="eyebrow rise d1">Karachi, Pakistan &nbsp;·&nbsp; GMT+5 &nbsp;·&nbsp; Open to hybrid or remote</div>
-  <h1 class="rise d2">Arqum <span class="q">“Arkham”</span><br>Khan</h1>
-  <p class="lede rise d3">I build things from zero and <b>get them shipped.</b></p>
-  <p class="sub rise d3">Product · AI engineering · Brand · Community</p>
-  <div class="meta rise d4">
-    <a href="mailto:arkham.workmail@gmail.com">arkham.workmail@gmail.com</a>
-    <a href="https://linkedin.com/in/arkhamkxd" target="_blank" rel="noopener">linkedin.com/in/arkhamkxd</a>
-    <a href="https://github.com/arkhamkxd" target="_blank" rel="noopener">github.com/arkhamkxd</a>
+<div class="book" id="book">
+  <section class="leaf">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <header>
+  <div class="masthead">
+    <b>Arqum Khan</b><span>№ 01</span><div class="bar"></div>
+    <span>Karachi · GMT+5</span><span>Product &amp; AI</span>
   </div>
-  <div style="margin-top:30px"><a class="dl rise d4" href="Arqum Khan CV.pdf" download>Download CV ↓</a></div>
-</header>
+    <h1 class="name" aria-label="Arqum Khan">
+      <span class="ln" aria-hidden="true"><span class="ct blk lg"      style="transform:rotate(-3deg) translateY(.015em)">A</span><span
+        class="ct abril red md"  style="transform:rotate(2.5deg) translateY(-.045em)">R</span><span
+        class="ct body"          style="transform:rotate(-1deg) translateY(.03em)">Q</span><span
+        class="ct bebas ink lg"  style="transform:rotate(3.5deg) translateY(-.02em)">U</span><span
+        class="ct blk md"        style="transform:rotate(-2deg) translateY(.022em)">M</span></span>
+      <span class="ln l2" aria-hidden="true"><span class="ct serit blue lg" style="transform:rotate(3deg) translateY(-.035em)">K</span><span
+        class="ct abril ink"     style="transform:rotate(-4deg) translateY(.028em)">H</span><span
+        class="ct ser pap md"    style="transform:rotate(2deg) translateY(-.04em)">A</span><span
+        class="ct mono sm"       style="transform:rotate(-2.5deg) translateY(.03em)">N</span></span>
+      <span class="nick">Arkham</span>
+    </h1>
 
-<!-- 01 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">01</div>
-    <h2 class="sec-title">What I actually do</h2>
-    <div class="sec-note">Four disciplines, one method</div>
-  </div>
-  <div class="cap-grid">
-    <div class="cap"><h3>Product</h3><p>Own the thing end to end — discovery, specs, roadmap, release. Usually the only person in the room who speaks to business, design and engineering.</p></div>
-    <div class="cap"><h3>AI &amp; Engineering</h3><p>LLM integration, conversational agents, local models, data pipelines. Computer Systems Engineering degree; I ship code, not just specs.</p></div>
-    <div class="cap"><h3>Brand &amp; Design</h3><p>Identity, collateral, creative direction, and once an entire retail interior. Design that has to survive contact with a real business.</p></div>
-    <div class="cap"><h3>Community</h3><p>Built one of Pakistan's most active developer chapters from zero, and co-founded Karachi's first Figma community.</p></div>
-  </div>
-</section>
+    <div class="heroline">
+      <p class="lede">I build things from zero and <em>get them shipped.</em></p>
+      <p class="note pad">
+        <svg class="arrow" id="heroArrow" width="120" height="50" viewBox="0 0 120 50" aria-hidden="true">
+          <path d="M112 10C80 6 34 14 6 40"/>
+          <path d="M6 40 19.5 36.4M6 40 9.6 26.5"/>
+        </svg>
+        and I write the code,<br>not just the spec
+      </p>
+    </div>
 
-<!-- 02 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">02</div>
-    <h2 class="sec-title">Where I've worked</h2>
-    <div class="sec-note">2018 — present</div>
-  </div>
+    <div class="stamprow">
+      <span class="rub r ink1" style="transform:rotate(-4.5deg)">Product</span>
+      <span class="rub b ink2" style="transform:rotate(2.8deg)">AI Engineering</span>
+      <span class="rub r ink3" style="transform:rotate(-2.2deg)">Brand</span>
+      <span class="rub b ink1" style="transform:rotate(3.6deg)">Community</span>
+    </div>
 
-  <div class="co">
-    <div class="co-id">
-      <img class="co-logo wide" src="img/logo/wondertree.svg" alt="WonderTree">
-      <div class="co-role">Product &amp; Growth Manager <em>· therapeutic games for children with special needs</em></div>
+    <div class="postrow">
+      <span class="pw" style="transform:rotate(-1.8deg)">
+        <a class="ps" href="Arqum Khan CV.pdf" download>
+          <span class="pan" style="background:var(--red)"><span class="val">01</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="13" y="6" width="22" height="31" rx="2" fill="none" stroke="#fbf8f1" stroke-width="2.6"/><path d="M18.5 15h11M18.5 21.5h11M18.5 28h6.5" stroke="#fbf8f1" stroke-width="2.6" stroke-linecap="round"/></svg>
+            <span class="rule"></span><span class="place">KARACHI</span></span>
+          <span class="den">CV</span><span class="cap">PDF</span>
+          <span class="pmark">KHI<br>2026</span>
+        </a>
+      </span>
+      <span class="pw" style="transform:rotate(1.4deg)">
+        <a class="ps" href="mailto:arkham.workmail@gmail.com">
+          <span class="pan" style="background:var(--blue)"><span class="val">02</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="13" width="34" height="22" rx="1.5" fill="none" stroke="#fbf8f1" stroke-width="2.6"/><path d="M8.5 15L24 26.5 39.5 15" fill="none" stroke="#fbf8f1" stroke-width="2.6" stroke-linejoin="round"/></svg>
+            <span class="rule"></span><span class="place">PAR AVION</span></span>
+          <span class="den">Email</span><span class="cap">Say hello</span>
+        </a>
+      </span>
+      <span class="pw" style="transform:rotate(-1deg)">
+        <a class="ps" href="https://linkedin.com/in/arkhamkxd" target="_blank" rel="noopener">
+          <span class="pan" style="background:#3f8f6f"><span class="val">03</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 38V11h11v27M25 38V20h11v18M7 38h34" fill="none" stroke="#fbf8f1" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M15.5 16.5h4M15.5 23h4M15.5 29.5h4M28.5 25.5h4M28.5 31.5h4" stroke="#fbf8f1" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="rule"></span><span class="place">NETWORK</span></span>
+          <span class="den">LinkedIn</span><span class="cap">Profile</span>
+        </a>
+      </span>
+      <span class="pw" style="transform:rotate(1.9deg)">
+        <a class="ps" href="https://github.com/arkhamkxd" target="_blank" rel="noopener">
+          <span class="pan" style="background:#c4851f"><span class="val">04</span>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="27" rx="2" fill="none" stroke="#fbf8f1" stroke-width="2.6"/><path d="M6 17.5h36" stroke="#fbf8f1" stroke-width="2.6"/><path d="M13 24l4.5 4.5L13 33M22.5 33h11" fill="none" stroke="#fbf8f1" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="rule"></span><span class="place">SOURCE</span></span>
+          <span class="den">GitHub</span><span class="cap">Code</span>
+        </a>
+      </span>
     </div>
-    <div class="co-when">Jan 2026 —</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <img class="co-logo wide" src="img/logo/shipkaro.svg" alt="ShipKaro">
-      <div class="co-role">Product Engineer <em>· product studio, formerly RemoteKaro</em></div>
-    </div>
-    <div class="co-when">2024 — 2026</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <img class="co-logo tall" src="img/logo/tabeeb.svg" alt="Tabeeb Medicos">
-      <div class="co-role">Brand &amp; Retail Design <em>· contract</em></div>
-    </div>
-    <div class="co-when">2025</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Friends of Figma, Karachi</div>
-      <div class="co-role">Co-Founder &amp; Co-Lead <em>· selected and funded by Figma</em></div>
-    </div>
-    <div class="co-when">2024 —</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Lappy.pk</div>
-      <div class="co-role">Co-Founder <em>· computer hardware import and wholesale</em></div>
-    </div>
-    <div class="co-when">2023 —</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Passed Recordings</div>
-      <div class="co-role">Brand &amp; Community Manager <em>· independent record label</em></div>
-    </div>
-    <div class="co-when">2023 — 2025</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Al Rahim Textile</div>
-      <div class="co-role">Product Engineer <em>· manufacturer supplying Target and Walmart</em></div>
-    </div>
-    <div class="co-when">2023 — 2024</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Google Developer Student Clubs, DUET</div>
-      <div class="co-role">Founding Lead <em>· built from zero</em></div>
-    </div>
-    <div class="co-when">2022 — 2023</div>
-  </div>
-  <details class="more">
-    <summary>Earlier roles (5)</summary>
-    <div class="body">
-    <div class="co">
-      <div class="co-id">
-        <div class="co-name">Kamion Pharma</div>
-        <div class="co-role">Media Director <em>· contract, market-entry campaign</em></div>
-      </div>
-      <div class="co-when">2025</div>
-    </div>
-    <div class="co">
-      <div class="co-id">
-        <div class="co-name">Frutaz / AFABCO</div>
-        <div class="co-role">Media Director <em>· contract, AFABCO International Conference</em></div>
-      </div>
-      <div class="co-when">2023</div>
-    </div>
-    <div class="co">
-      <div class="co-id">
-        <div class="co-name">MLSA Online</div>
-        <div class="co-role">Founder <em>· DevCon Pakistan, 20+ international speakers</em></div>
-      </div>
-      <div class="co-when">2023</div>
-    </div>
-    <div class="co">
-      <div class="co-id">
-        <div class="co-name">Anjuman Mufad-e-Niswan</div>
-        <div class="co-role">IT Manager <em>· internship, NGO tech upskilling for women</em></div>
-      </div>
-      <div class="co-when">2022</div>
-    </div>
-    <div class="co">
-      <div class="co-id">
-        <div class="co-name">Freelance</div>
-        <div class="co-role">Multimedia Producer <em>· The Hijab Company (239K) and others</em></div>
-      </div>
-      <div class="co-when">2018 — 2023</div>
-    </div>
-    </div>
-  </details>
-</section>
-
-<!-- 03 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">03</div>
-    <h2 class="sec-title">Things I've built</h2>
-    <div class="sec-note">Filter by discipline</div>
-  </div>
-
-  <div class="filters" id="filters">
-    <button aria-pressed="true" data-f="all">All</button>
-    <button aria-pressed="false" data-f="ai">AI &amp; Engineering</button>
-    <button aria-pressed="false" data-f="product">Product</button>
-    <button aria-pressed="false" data-f="brand">Brand &amp; Design</button>
-    <button aria-pressed="false" data-f="community">Community</button>
-    <div class="count" id="count"></div>
-  </div>
-
-  <div class="work" id="work">
-
-    <article class="item" data-k="ai product">
-      <div class="i-left">
-        <img class="appicon" src="img/mydiary-icon.webp" alt="" width="42" height="42" loading="lazy">
-        <span class="tag">AI &amp; Engineering</span>
-        <h3>MyDiary AI</h3>
-        <p class="role">ShipKaro<br><em>Shipped to Google Play · Acquired</em></p>
-        <div class="links">
-          <a href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
-          <a href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
+  </header>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf" data-face="point" data-say="Start anywhere. 03 is the one that got bought.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <section class="idx" id="contents">
+    <div class="cut"><div class="dash"></div><span>Contents</span></div>
+    <h2 class="idx-h name" aria-label="Contents"><span aria-hidden="true"><span class="ct blk lg" style="transform:rotate(-2.6deg) translateY(.015em)">C</span><span class="ct abril red md" style="transform:rotate(2.2deg) translateY(-.04em)">O</span><span class="ct body" style="transform:rotate(-1deg) translateY(.028em)">N</span><span class="ct bebas ink lg" style="transform:rotate(3deg) translateY(-.02em)">T</span><span class="ct serit blue" style="transform:rotate(-3.4deg) translateY(.025em)">E</span><span class="ct ser pap md" style="transform:rotate(1.8deg) translateY(-.035em)">N</span><span class="ct blk md" style="transform:rotate(-2deg) translateY(.02em)">T</span><span class="ct mono sm" style="transform:rotate(2.6deg) translateY(.03em)">S</span></span></h2>
+    <div class="idx-grid">
+      <div>
+        <div class="idx-cap">Work</div>
+        <div class="ch">
+          <div class="ch-top"><b>WonderTree</b><span class="dots"></span><i>2026—</i></div>
+          <div class="ch-role">Product &amp; Growth Manager</div>
+          <ul class="ch-list">
+            <li><a href="#p-platform"><span class="n">01</span><span class="nm">The platform rebuild</span><span class="dots"></span><span class="mt">64 releases</span></a></li>
+            <li><a href="#p-assistant"><span class="n">02</span><span class="nm">Conversational assistant</span><span class="dots"></span><span class="mt">Node · Cosmos</span></a></li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>ShipKaro</b><span class="dots"></span><i>2024–26</i></div>
+          <div class="ch-role">Product Manager &amp; Engineer</div>
+          <ul class="ch-list">
+            <li><a href="#p-mydiary"><span class="n">03</span><span class="nm">MyDiary AI</span><span class="dots"></span><span class="mt"><b>Acquired</b></span></a></li>
+            <li><a href="#p-focus5"><span class="n">04</span><span class="nm">Focus5</span><span class="dots"></span><span class="mt">Google Play</span></a></li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>Al Rahim Textile</b><span class="dots"></span><i>2023–24</i></div>
+          <div class="ch-role">Product Engineer</div>
+          <ul class="ch-list">
+            <li><a href="#p-alrahim"><span class="n">05</span><span class="nm">AI quality platform</span><span class="dots"></span><span class="mt"><b>Resold</b></span></a></li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>Passed Recordings</b><span class="dots"></span><i>2023–25</i></div>
+          <div class="ch-role">Brand &amp; Community Manager</div>
+          <ul class="ch-list">
+            <li><a href="#p-passed"><span class="n">06</span><span class="nm">Brand, site, release pipeline</span><span class="dots"></span><span class="mt">+47% revenue</span></a></li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>Anjuman Mufad-e-Niswan</b><span class="dots"></span><i>2022</i></div>
+          <div class="ch-role">IT Manager · internship</div>
         </div>
       </div>
-      <div class="i-right">
-        <p class="punch">An audio journal that listens back.</p>
-        <div class="shots">
-          <img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-2.webp" alt="MyDiary AI progress view" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-3.webp" alt="MyDiary AI language settings" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-4.webp" alt="MyDiary AI backup and restore" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-5.webp" alt="MyDiary AI screen" loading="lazy" width="440" height="956">
-          <img src="img/mydiary-6.webp" alt="MyDiary AI screen" loading="lazy" width="440" height="956">
+      <div>
+        <div class="idx-cap">Community</div>
+        <div class="ch">
+          <div class="ch-top"><b>Friends of Figma, Karachi</b><span class="dots"></span><i>2024—</i></div>
+          <div class="ch-role">Co-Founder &amp; Co-Lead</div>
+          <ul class="ch-list">
+            <li><a href="#p-fof"><span class="n">07</span><span class="nm">Karachi&rsquo;s Figma community</span><span class="dots"></span><span class="mt"><b>Backed by Figma</b></span></a></li>
+          </ul>
         </div>
-        <details>
-          <summary>How it works</summary>
-          <div class="body">
-            <p>Speech captured and transcribed, then passed to an <strong>LLM that writes back</strong> — so the journal answers instead of just recording.</p>
-            <p>My highest-input product at the studio, concept through to store listing. <strong>It was acquired.</strong></p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>Acquired</b><span>outcome</span></div>
-          <div class="fig"><b>Speech + LLM</b><span>stack</span></div>
-          <div class="fig"><b>Google Play</b><span>shipped</span></div>
+        <div class="ch">
+          <div class="ch-top"><b>GDSC DUET</b><span class="dots"></span><i>2022–23</i></div>
+          <div class="ch-role">Founding Lead · student</div>
+          <ul class="ch-list">
+            <li><a href="#p-gdsc"><span class="n">08</span><span class="nm">Building the chapter</span><span class="dots"></span><span class="mt">3,000 attendees</span></a></li>
+          </ul>
         </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="ai product">
-      <div class="i-left">
-        <img class="appicon" src="img/focus5-icon.webp" alt="" width="42" height="42" loading="lazy">
-        <span class="tag">Product · AI</span>
-        <h3>Focus5</h3>
-        <p class="role">ShipKaro<br><em>Shipped to Google Play</em></p>
-        <div class="links">
-          <a href="https://play.google.com/store/apps/details?id=dev.shipkaro.focus5" target="_blank" rel="noopener">Google Play</a>
+        <div class="ch">
+          <div class="ch-top"><b>GDGoC UIT</b><span class="dots"></span><i>2024–26</i></div>
+          <div class="ch-role">Mentor · student</div>
+          <ul class="ch-list">
+            <li><a href="#p-gdgoc"><span class="n">09</span><span class="nm">Industry access and funding</span><span class="dots"></span><span class="mt">Paid client work</span></a></li>
+          </ul>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>MLSA Online</b><span class="dots"></span><i>2023</i></div>
+          <div class="ch-role">Founder · DevCon Pakistan</div>
         </div>
       </div>
-      <div class="i-right">
-        <p class="punch">A planner built the other way round — you only get five.</p>
-        <div class="shots">
-          <img src="img/f5-1.webp" alt="Focus5 — plan five tasks a day" loading="lazy" width="440" height="782">
-          <img src="img/f5-2.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
-          <img src="img/f5-3.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
-          <img src="img/f5-4.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
-          <img src="img/f5-5.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
-          <img src="img/f5-6.webp" alt="Focus5 screen" loading="lazy" width="440" height="782">
+      <div>
+        <div class="idx-cap">Contract</div>
+        <div class="ch">
+          <div class="ch-top"><b>Tabeeb Medicos</b><span class="dots"></span><i>2025</i></div>
+          <div class="ch-role">Brand &amp; Retail Design</div>
+          <ul class="ch-list">
+            <li><a href="#p-tabeeb"><span class="n">10</span><span class="nm">The store, end to end</span><span class="dots"></span><span class="mt">Still trading</span></a></li>
+          </ul>
         </div>
-        <details>
-          <summary>The idea</summary>
-          <div class="body">
-            <p>Most planners let you add everything, so you end the day having finished none of it. Focus5 caps you at five and makes you choose — <strong>the constraint is the product</strong>.</p>
-            <p>Speak a brain-dump and it turns that into tasks. Categories, streaks, and a progress view that shows how far you've actually come.</p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>5</b><span>tasks, hard cap</span></div>
-          <div class="fig"><b>Voice → tasks</b><span>capture</span></div>
-          <div class="fig"><b>Google Play</b><span>shipped</span></div>
+        <div class="ch">
+          <div class="ch-top"><b>Hope &amp; Cope</b><span class="dots"></span><i>2026</i></div>
+          <div class="ch-role">Product Manager</div>
         </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="ai product">
-      <div class="i-left">
-        <span class="tag">AI &amp; Engineering</span>
-        <h3>AI quality platform</h3>
-        <p class="role">Al Rahim Textile<br><em>Aug 2023 — Aug 2024 · Karachi</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">I was nineteen, and a manufacturer needed to know what customers actually said.</p>
-        <details>
-          <summary>What I built</summary>
-          <div class="body">
-            <p>So I built the thing that found out — <strong>data pipeline, sentiment and defect analysis, a chatbot, and a configurable web application</strong>.</p>
-            <p><strong>Technical lead across both modules</strong>, and the only point of contact between the university and industry sides, through delivery and on-site demos. Dawood University's first industry-collaborated final year project with official certification.</p>
-            <p><strong>The client resold it to their US trade partner.</strong></p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>8 / 2</b><span>people / teams</span></div>
-          <div class="fig"><b>1st</b><span>industry FYP at DUET</span></div>
-          <div class="fig"><b>Resold</b><span>by the client</span></div>
+        <div class="ch">
+          <div class="ch-top"><b>Kamion Pharma</b><span class="dots"></span><i>2025</i></div>
+          <div class="ch-role">Media Director</div>
+        </div>
+        <div class="ch">
+          <div class="ch-top"><b>Frutaz / AFABCO</b><span class="dots"></span><i>2023</i></div>
+          <div class="ch-role">Media Director</div>
+        </div>
+        <div class="idx-cap later">Venture</div>
+        <div class="ch">
+          <div class="ch-top"><b>Lappy.pk</b><span class="dots"></span><i>2023—</i></div>
+          <div class="ch-role">Co-Founder</div>
+        </div>
+        <div class="idx-cap later">Freelance</div>
+        <div class="ch">
+          <div class="ch-top"><b>Freelance</b><span class="dots"></span><i>2018–23</i></div>
+          <div class="ch-role">Multimedia Producer</div>
         </div>
       </div>
-    </article>
-
-    <article class="item" data-k="ai">
-      <div class="i-left">
-        <span class="tag">AI &amp; Engineering</span>
-        <h3>Conversational assistant</h3>
-        <p class="role">WonderTree<br><em>Node · Express · Cosmos DB</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">Not a wrapper around a prompt.</p>
-        <details>
-          <summary>What's in it</summary>
-          <div class="body">
-            <p>A context-grounded assistant that answers from the product's own content — with a dedicated security module, CRM integration and a test suite. <strong>Built to be audited.</strong></p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>Node · Cosmos</b><span>stack</span></div>
-          <div class="fig"><b>Tested</b><span>+ security module</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="product">
-      <div class="i-left">
-        <span class="tag">Product · Growth</span>
-        <h3>WonderTree platform</h3>
-        <p class="role">WonderTree<br><em>Jan 2026 — present</em></p>
-        <div class="links"><a href="https://wondertree.co" target="_blank" rel="noopener">wondertree.co</a></div>
-      </div>
-      <div class="i-right">
-        <p class="punch">Replaced a WordPress stack with something we actually control.</p>
-        <details>
-          <summary>What changed</summary>
-          <div class="body">
-            <p>A <strong>custom content system across 64 releases</strong>, plus the <strong>Arabic layer</strong> that opened a second-language market. Consolidated 20 competing pages into 4 and rebuilt the architecture.</p>
-            <p>Built the company's first combined product, behaviour and search review — it surfaced a <strong>69% activation gap</strong> nobody had measured. Proposed the move from a 14-day trial to freemium; approved in principle.</p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>64</b><span>releases</span></div>
-          <div class="fig"><b>+152%</b><span>organic search</span></div>
-          <div class="fig"><b>69%</b><span>activation gap found</span></div>
-          <div class="fig"><b>en + ar</b><span>two markets</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="brand">
-      <div class="i-left">
-        <span class="tag">Brand &amp; Design</span>
-        <h3>Tabeeb Medicos</h3>
-        <p class="role">Brand &amp; Retail Design<br><em>2025 · Karachi</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">A pharmacy existed as an idea and a rented room. I designed everything else.</p>
-        <img class="photo" src="img/tabeeb-1.webp" alt="Tabeeb Medicos — the finished store" loading="lazy" width="1100" height="828">
-        <details>
-          <summary>The brief</summary>
-          <div class="body">
-            <p>Identity, collateral, counters, cabinets, shelving, and how a customer moves through the space — fitted to one room and a real budget. To work out what good looked like we studied the largest pharmacy chain in the country.</p>
-            <p><strong>It opened. It makes money.</strong></p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>100%</b><span>of the design</span></div>
-          <div class="fig"><b>Profitable</b><span>still trading</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="community">
-      <div class="i-left">
-        <span class="tag">Community</span>
-        <h3>GDSC DUET</h3>
-        <p class="role">Founding Lead<br><em>2022 — 2023 · Built from zero</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">A university with no industry access. I went and got some.</p>
-        <details>
-          <summary>What it took</summary>
-          <div class="body">
-            <p><strong>30 events in one tenure, 3,000 unique attendees</strong>, a team of 30+. Distributed <strong>500 DataCamp licences</strong> free to students in Syria, Egypt, Brazil and Pakistan, and enrolled 500+ in Google Career Certificates.</p>
-            <p>Secured <strong>PKR 250,000+</strong> in sponsorship and spent every rupee of it on the students.</p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>600+</b><span>members</span></div>
-          <div class="fig"><b>3,000</b><span>attendees</span></div>
-          <div class="fig"><b>500</b><span>licences distributed</span></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="item" data-k="brand community">
-      <div class="i-left">
-        <span class="tag">Brand · Community</span>
-        <h3>Passed Recordings</h3>
-        <p class="role">Brand &amp; Community Manager<br><em>Apr 2023 — Aug 2025 · Remote, global</em></p>
-      </div>
-      <div class="i-right">
-        <p class="punch">I worked for free for a year because I believed in it. Then it started paying.</p>
-        <details>
-          <summary>What I owned</summary>
-          <div class="body">
-            <p>Brand, website, creative direction, artist relations and the release pipeline for a team across <strong>Scandinavia, Europe, the US and the UK</strong>. Built <strong>Ambient Soundscapes</strong>, a community of roughly a thousand people worldwide.</p>
-          </div>
-        </details>
-        <div class="figs">
-          <div class="fig"><b>+27%</b><span>audience</span></div>
-          <div class="fig"><b>+47%</b><span>revenue</span></div>
-          <div class="fig"><b>~1,000</b><span>community built</span></div>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<!-- 04 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">04</div>
-    <h2 class="sec-title">Currently</h2>
-  </div>
-  <div class="now">
-    <p>Building a <strong>Model Context Protocol server</strong> so an agent can work directly against the tools I use at work — I already run MCP integrations daily against Search Console, Microsoft 365 and browser automation.</p>
-    <p>Adding <strong>retrieval-augmented generation</strong> to the assistant above, so it answers from embedded documentation rather than fixed context.</p>
-    <p>Running <strong>local models through Ollama</strong> for work that shouldn't leave the machine.</p>
-  </div>
-</section>
-
-<!-- 05 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">05</div>
-    <h2 class="sec-title">Stack</h2>
-    <div class="sec-note">Things I have actually shipped with</div>
-  </div>
-  <div class="stack">
-    <div><h3>Engineering</h3><ul>
-      <li>TypeScript</li><li>JavaScript / Node</li><li>Python</li><li>Express</li><li>Handlebars</li>
-      <li>Dart / Flutter</li><li>React Native</li><li>REST APIs</li><li>SQL / SQLite</li><li>Cosmos DB</li><li>Git</li></ul></div>
-    <div><h3>AI</h3><ul>
-      <li>LLM integration</li><li>Gemini</li><li>Llama</li><li>Ollama — local models</li>
-      <li>Model Context Protocol</li><li>Prompt engineering</li><li>Function calling</li>
-      <li>Speech to text</li><li>Sentiment analysis</li><li>Data pipelines</li></ul></div>
-    <div><h3>Product</h3><ul>
-      <li>PRD / BRD</li><li>Roadmapping</li><li>Backlog</li><li>Agile</li><li>Scrum</li>
-      <li>Jira</li><li>ClickUp</li><li>Technical SEO</li><li>Web analytics</li><li>Pricing</li></ul></div>
-    <div><h3>Design</h3><ul>
-      <li>Figma</li><li>Brand identity</li><li>Creative direction</li><li>UX</li><li>Wireframing</li><li>Spatial / retail design</li></ul></div>
-  </div>
-</section>
-
-<!-- 06 -->
-<section class="sec reveal">
-  <div class="sec-head">
-    <div class="sec-num">06</div>
-    <h2 class="sec-title">Education</h2>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Dawood University of Engineering &amp; Technology</div>
-      <div class="co-role">BE, Computer Systems Engineering <em>· Karachi</em></div>
     </div>
-    <div class="co-when">2024</div>
-  </div>
-  <div class="co">
-    <div class="co-id">
-      <div class="co-name">Google UX Design</div>
-      <div class="co-role">Specialisation <em>· Coursera</em></div>
+  </section>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf" data-face="grin" data-say="This one got bought. Still the thing I'm proudest of.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-mydiary">
+    <div class="p-head">
+      <div class="p-num">№ 01</div>
+      <div class="p-rule"></div>
+      <div class="p-where">ShipKaro · AI &amp; Engineering</div>
     </div>
-    <div class="co-when">—</div>
-  </div>
-</section>
 
-<footer class="reveal">
-  <p class="cta">Looking for a team worth building for. <a href="mailto:arkham.workmail@gmail.com">Say hello →</a></p>
-  <div class="foot-meta">
-    <a href="mailto:arkham.workmail@gmail.com">arkham.workmail@gmail.com</a>
-    <a href="https://linkedin.com/in/arkhamkxd" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/arkhamkxd" target="_blank" rel="noopener">GitHub</a>
-    <a href="Arqum Khan CV.pdf" download>CV (PDF)</a>
-    <span>Karachi · GMT+5</span>
-  </div>
-</footer>
+    <div class="p-title">
+      <img class="p-icon" src="img/mydiary-icon.webp" alt="" width="60" height="60">
+      <h2>MyDiary AI</h2>
+      <div class="stamp">Acquired</div>
+    </div>
 
+    <p class="punch">An audio journal that <i>listens back.</i></p>
+
+    <div class="pile">
+      <figure class="pic"><img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts" width="440" height="956" loading="lazy"><figcaption>it asks first</figcaption></figure>
+      <figure class="pic"><img src="img/mydiary-2.webp" alt="MyDiary AI progress view" width="440" height="956" loading="lazy"><figcaption>progress</figcaption></figure>
+      <figure class="pic"><img src="img/mydiary-3.webp" alt="MyDiary AI language settings" width="440" height="956" loading="lazy"><figcaption>7 languages</figcaption></figure>
+      <figure class="pic"><img src="img/mydiary-4.webp" alt="MyDiary AI backup and restore" width="440" height="956" loading="lazy"><figcaption>your data, yours</figcaption></figure>
+    </div>
+
+    <div class="p-body">
+      <div>
+        <p class="first">Speech is captured and transcribed, then passed to an <strong>LLM that writes back</strong> — so the journal answers you instead of just recording what you said.</p>
+        <p>My highest-input product at the studio: concept, spec, build, store listing. <strong>Then somebody bought it.</strong></p>
+      </div>
+      <div>
+        <p class="note" style="margin-bottom:18px">
+          <svg class="arrow" width="104" height="54" viewBox="0 0 104 54" aria-hidden="true"
+               style="left:4px;top:26px">
+            <path d="M96 6C72 20 40 18 18 46"/>
+            <path d="M18 46 30.1 41.2M18 46 19.8 33.1"/>
+          </svg>
+          I shipped this one myself —<br>spec, code, listing
+        </p>
+        <div class="stickers">
+          <div class="sticker red"><div><b>Acquired</b><span>outcome</span></div></div>
+          <div class="sticker"><div><b>Speech<br>+ LLM</b><span>stack</span></div></div>
+          <div class="sticker blue"><div><b>Google<br>Play</b><span>shipped</span></div></div>
+        </div>
+        <div class="tabs">
+          <a class="tab" href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
+          <a class="tab" href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
+        </div>
+      </div>
+    </div>
+  </article>
+  <div class="foot">More spreads being added · Karachi · GMT+5</div>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+</div>
+
+<button class="corner back" id="cornerPrev" aria-label="Previous page"></button>
+<button class="corner" id="cornerNext" aria-label="Next page"></button>
+<div class="wip">rebuilding this in the open — <a href="v1.html">the previous version is still here</a></div>
+<div class="pgbar"><span class="pgnum" id="pgNum" aria-live="polite">01 / 03</span></div>
+
+
+<div class="guide" id="guide" hidden>
+  <span class="tack" style="left:50px;top:-5px"></span>
+    <img class="g-pic" id="guidePic" src="img/me-neutral.webp" alt="" width="150" height="150">
+  <div class="g-box">
+    <span class="g-who">Arqum</span>
+    <p class="g-text" id="guideText" aria-live="polite"></p>
+    <button class="g-x" id="guideClose" aria-label="Dismiss">&times;</button>
+    <button class="g-skip" id="guideSkip" hidden>Skip</button>
+    <span class="g-next" id="guideNext" hidden aria-hidden="true"></span>
+  </div>
 </div>
 
 <script>
-const items = [...document.querySelectorAll('.item')];
-const count = document.getElementById('count');
-document.getElementById('filters').addEventListener('click', e => {
-  const btn = e.target.closest('button'); if (!btn) return;
-  document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
-  const f = btn.dataset.f;
-  let n = 0;
-  items.forEach(it => {
-    const show = f === 'all' || it.dataset.k.split(' ').includes(f);
-    it.hidden = !show; if (show) n++;
-  });
-  count.textContent = f === 'all' ? '' : n + (n === 1 ? ' project' : ' projects');
-});
+/* Guide. The intro runs as a click-through RPG sequence that gates clicks until it
+   ends; afterwards the same box carries scroll-triggered asides. */
+(function(){
+  var g=document.getElementById('guide'),  pic=document.getElementById('guidePic'),
+      txt=document.getElementById('guideText'), gate=document.getElementById('gate'),
+      next=document.getElementById('guideNext'), skip=document.getElementById('guideSkip');
+  var dead=false, timer=null, typer=null, typing=false, full='', step=-1, running=false;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const reveals = document.querySelectorAll('.reveal');
-if (document.documentElement.classList.contains('js') && 'IntersectionObserver' in window) {
-  const io = new IntersectionObserver(es => es.forEach(en => {
-    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-  }), { rootMargin: '0px 0px -8% 0px' });
-  reveals.forEach(el => io.observe(el));
-  setTimeout(() => reveals.forEach(el => el.classList.add('in')), 2500);
-} else {
-  reveals.forEach(el => el.classList.add('in'));
-}
+  var intro=[
+    ['neutral', "Hey. I'm Arqum."],
+    ['grin',    "Product manager who builds. Two apps on Google Play \u2014 one of them got acquired."],
+    ['point',   "Scroll down and I'll walk you through the work."]
+  ];
+
+  /* ?intro=1 wipes both flags so the whole thing replays in the same tab */
+  var force=/[?&]intro=1/.test(location.search);
+  if(force){ try{ sessionStorage.removeItem('guideOff'); sessionStorage.removeItem('introDone'); }catch(e){} }
+  try{ if(sessionStorage.getItem('guideOff')==='1') dead=true; }catch(e){}
+
+  function show(face,line,after){
+    if(dead) return;
+    clearTimeout(timer); clearInterval(typer);
+    pic.src='img/me-'+face+'.webp';
+    g.hidden=false;
+    requestAnimationFrame(function(){ g.classList.add('in'); });
+    full=line; next.classList.remove('on');
+    if(reduce){ txt.textContent=line; typing=false; if(after) after(); return; }
+    txt.textContent=''; typing=true; var i=0;
+    typer=setInterval(function(){
+      i++; txt.textContent=line.slice(0,i);
+      if(i>=line.length){ clearInterval(typer); typing=false; if(after) after(); }
+    },12);
+  }
+  function finishLine(){ clearInterval(typer); typing=false; txt.textContent=full; next.classList.add('on'); }
+  function hide(){ g.classList.remove('in'); setTimeout(function(){ g.hidden=true; },340); }
+
+  /* ---- intro ---- */
+  function nextLine(){
+    step++;
+    if(step>=intro.length){ endIntro(); return; }
+    show(intro[step][0], intro[step][1], function(){ next.classList.add('on'); });
+  }
+  function endIntro(){
+    running=false; gate.classList.remove('dim'); gate.hidden=true;
+    next.hidden=true; skip.hidden=true;
+    next.classList.remove('on');
+    try{ sessionStorage.setItem('introDone','1'); }catch(e){}
+    hide();
+  }
+  function advance(){
+    if(!running) return;
+    if(typing){ finishLine(); return; }   /* click mid-type completes the line */
+    nextLine();
+  }
+  gate.addEventListener('click',advance);
+  g.addEventListener('click',advance);
+  skip.addEventListener('click',function(e){ e.stopPropagation(); endIntro(); hide(); });
+  document.addEventListener('keydown',function(e){
+    if(!running) return;
+    if(e.key==='Escape'){ endIntro(); hide(); }
+    else if(e.key===' '||e.key==='Enter'){ e.preventDefault(); advance(); }
+  });
+
+  var seen=false; try{ seen=sessionStorage.getItem('introDone')==='1'; }catch(e){}
+  if(!dead && !seen) setTimeout(function(){
+    running=true; gate.hidden=false; gate.classList.add('dim');
+    next.hidden=false; skip.hidden=false; nextLine();
+  },900);
+
+  /* ---- scroll asides ---- */
+  function say(face,line){
+    if(dead||running) return;
+    show(face,line); timer=setTimeout(hide,10000);
+  }
+  document.getElementById('guideClose').addEventListener('click',function(e){
+    e.stopPropagation(); dead=true;
+    clearTimeout(timer); clearInterval(typer);
+    if(running) endIntro();
+    hide();
+    try{ sessionStorage.setItem('guideOff','1'); }catch(e){}
+  });
+  window.guideSay=say;   /* the book calls this on each turn */
+})();
 </script>
-<script src="cat.js"></script>
+
+<script>
+/* The book. Pages are leaves hinged at the spine; nothing scrolls the document.
+   A leaf taller than the window scrolls inside itself, and only turns once that
+   inner scroll has bottomed out. */
+(function(){
+  var book=document.getElementById('book');
+  var leaves=[].slice.call(book.querySelectorAll('.leaf'));
+  var num=document.getElementById('pgNum');
+  var prev=document.getElementById('cornerPrev'), next=document.getElementById('cornerNext');
+  var n=leaves.length, cur=0, busy=false;
+  function pad(i){ return (i<10?'0':'')+i; }
+
+  function layout(){
+    leaves.forEach(function(l,i){
+      var turned=i<cur;
+      l.classList.toggle('turned',turned);
+      l.style.zIndex = turned ? i : (n-i);
+      l.querySelector('.face.front').setAttribute('aria-hidden', i===cur?'false':'true');
+    });
+    num.textContent=pad(cur+1)+' / '+pad(n);
+    prev.disabled=(cur===0); next.disabled=(cur===n-1);
+  }
+  function go(d){
+    var t=cur+d;
+    if(busy||t<0||t>=n) return;
+    busy=true; cur=t; layout();
+    var sc=leaves[cur].querySelector('.scroll'); if(sc) sc.scrollTop=0;
+    var d=leaves[cur].dataset;
+    if(window.guideSay && d.say) setTimeout(function(){ window.guideSay(d.face,d.say); },520);
+    setTimeout(function(){ busy=false; },1080);
+  }
+  window.bookGo=go;
+
+  prev.addEventListener('click',function(){ go(-1); });
+  next.addEventListener('click',function(){ go(1); });
+
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest('input,textarea')) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); go(1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(-1); }
+  });
+
+  /* wheel turns the page, but only once the leaf itself has nothing left to scroll */
+  var wheelLock=0;
+  book.addEventListener('wheel',function(e){
+    var sc=leaves[cur].querySelector('.scroll');
+    var top=true, bottom=true;
+    if(sc){
+      top = sc.scrollTop<=1;
+      bottom = sc.scrollTop+sc.clientHeight >= sc.scrollHeight-1;
+    }
+    var now=Date.now();
+    if(e.deltaY>0 && bottom){ e.preventDefault(); if(now-wheelLock>560){ wheelLock=now; go(1); } }
+    else if(e.deltaY<0 && top){ e.preventDefault(); if(now-wheelLock>560){ wheelLock=now; go(-1); } }
+  },{passive:false});
+
+
+  /* --- drag to turn --- */
+  /* The leaf follows the pointer. Past a fifth of the width it completes,
+     otherwise it falls back. Dragging right pulls the previous page back. */
+  var drag=null;
+  book.addEventListener('pointerdown',function(e){
+    if(busy||e.button) return;
+    if(e.target.closest('a,button,input,textarea,.guide,.gate')) return;
+    drag={x0:e.clientX,y0:e.clientY,on:false,leaf:null,dir:0};
+  });
+  window.addEventListener('pointermove',function(e){
+    if(!drag) return;
+    var dx=e.clientX-drag.x0, dy=e.clientY-drag.y0;
+    if(!drag.on){
+      if(Math.abs(dx)<10||Math.abs(dx)<=Math.abs(dy)) return;
+      var dir=dx<0?1:-1, i=dir===1?cur:cur-1;
+      if(i<0||i>=n){ drag=null; return; }
+      drag.dir=dir; drag.leaf=leaves[i]; drag.on=true;
+      drag.leaf.style.transition='none';
+      drag.leaf.style.zIndex=99;
+      document.body.classList.add('dragging');
+    }
+    var a=drag.dir===1 ? dx/innerWidth*210 : -172+dx/innerWidth*210;
+    drag.leaf.style.transform='rotateY('+Math.max(-172,Math.min(0,a))+'deg)';
+  },{passive:true});
+  function endDrag(e){
+    if(!drag) return;
+    var d=drag; drag=null;
+    document.body.classList.remove('dragging');
+    if(!d.on) return;
+    d.leaf.style.transition='';
+    d.leaf.style.transform='';
+    d.leaf.style.zIndex='';
+    var dx=(e.clientX||d.x0)-d.x0;
+    if(Math.abs(dx)>innerWidth*0.2) go(d.dir); else layout();
+  }
+  window.addEventListener('pointerup',endDrag);
+  window.addEventListener('pointercancel',endDrag);
+
+  book.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>58 && Math.abs(dx)>Math.abs(dy)*1.6) go(dx<0?1:-1);
+    x0=y0=null;
+  },{passive:true});
+
+  /* contents links turn to the page instead of jumping */
+  document.querySelectorAll('.ch-list a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.getElementById(a.getAttribute('href').slice(1));
+      if(!t) return;
+      e.preventDefault();
+      var leaf=t.closest('.leaf');
+      var i=leaves.indexOf(leaf);
+      if(i>-1 && i!==cur) go(i-cur);
+    });
+  });
+
+  layout();
+})();
+</script>
+
 </body>
 </html>
