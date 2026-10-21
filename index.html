@@ -66,20 +66,20 @@ a,button,summary,.pic,.opt,[role=button]{cursor:url("data:image/svg+xml,%3Csvg x
 .masthead b{color:var(--ink); font-weight:700}
 
 /* scissor cut-line — the zine signature, used sparingly */
-.cut{display:flex; align-items:center; gap:10px; margin:clamp(22px,3vw,34px) 0;
+.cut{display:flex; align-items:center; gap:10px; margin:clamp(11px,min(3vw,2.2vh),34px) 0;
   font-family:var(--mono); font-size:11px; letter-spacing:.2em; color:var(--ink-faint);
   text-transform:uppercase}
 .cut::before{content:'\2702'; font-size:15px; color:var(--ink); transform:rotate(-8deg)}
 .cut .dash{flex:1; height:0; border-top:1.5px dashed rgba(22,19,15,.3)}
 
 /* ---------- hero ---------- */
-header{padding:18px 0 clamp(70px,24vh,250px); position:relative;
+header{padding:18px 0 clamp(50px,6.4vh,96px); position:relative;
   min-height:100%; display:flex; flex-direction:column}
 /* ---------- cut-out name ---------- */
 /* Every letter is snipped from a different source: different face, different
    stock, different angle. The grid underneath keeps it from reading as a mess. */
 .name{position:relative; display:block; margin-top:auto;
-  font-size:clamp(54px,12.4vw,150px); line-height:.9; text-transform:uppercase}
+  font-size:clamp(54px,min(12.4vw,14.7vh),150px); line-height:.9; text-transform:uppercase}
 .name .ln{display:block; white-space:nowrap}
 .name .l2{margin-left:clamp(104px,25vw,330px)}
 .ct{display:inline-block; vertical-align:baseline; position:relative;
@@ -117,7 +117,7 @@ header{padding:18px 0 clamp(70px,24vh,250px); position:relative;
 .name .nick::before{top:-11px; left:-16px; transform:rotate(-24deg)}
 .name .nick::after{bottom:-11px; right:-18px; transform:rotate(-20deg)}
 
-.heroline{margin-top:clamp(34px,5.5vw,62px); display:grid;
+.heroline{margin-top:clamp(17px,min(5.5vw,3.9vh),62px); display:grid;
   grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(20px,4vw,56px);
   align-items:start}
 .lede{font-family:var(--hand); font-weight:700; font-size:clamp(30px,4.6vw,55px);
@@ -153,16 +153,16 @@ header .postrow{margin-bottom:auto}
 .tab.dl::after{content:'\2193'}
 
 /* ---------- project ---------- */
-.proj{padding-bottom:clamp(60px,8vw,100px); position:relative}
-.p-head{display:flex; align-items:flex-end; gap:16px; margin-bottom:clamp(14px,2vw,22px)}
+.proj{padding-bottom:clamp(54px,6.2vh,96px); position:relative}
+.p-head{display:flex; align-items:flex-end; gap:16px; margin-bottom:clamp(10px,min(2vw,1.9vh),22px)}
 .p-num{font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.18em;
   color:var(--red); padding-bottom:7px; white-space:nowrap}
 .p-rule{flex:1; height:0; border-top:1.5px solid var(--ink); margin-bottom:9px; opacity:.85}
 .p-where{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
   color:var(--ink-faint); padding-bottom:7px; white-space:nowrap}
 
-.p-title{display:flex; align-items:center; flex-wrap:wrap; gap:clamp(14px,2.6vw,30px)}
-.p-title h2{font-family:var(--display); font-size:clamp(38px,7.6vw,88px); line-height:.9;
+.p-title{display:flex; align-items:center; flex-wrap:wrap; gap:clamp(11px,min(2.6vw,2.1vh),30px)}
+.p-title h2{font-family:var(--display); font-size:clamp(38px,min(7.6vw,9.4vh),88px); line-height:.9;
   letter-spacing:-.035em; text-transform:uppercase}
 .p-icon{width:clamp(44px,5vw,60px); height:clamp(44px,5vw,60px); border-radius:13px;
   border:1.5px solid var(--ink); box-shadow:2.5px 3px 0 var(--ink); transform:rotate(-3deg)}
@@ -175,8 +175,9 @@ header .postrow{margin-bottom:auto}
   mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.07' numOctaves='3'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -0.85 1.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23r)'/%3E%3C/svg%3E");
   -webkit-mask-size:100% 100%; mask-size:100% 100%}
 
-.punch{font-family:var(--serif); font-size:clamp(25px,4vw,46px); line-height:1.06;
-  letter-spacing:-.016em; max-width:24ch; margin:clamp(20px,3vw,30px) 0 clamp(26px,4vw,38px)}
+.punch{font-family:var(--serif); font-size:clamp(25px,min(4vw,5.1vh),46px); line-height:1.06;
+  letter-spacing:-.016em; max-width:24ch;
+  margin:clamp(13px,min(3vw,2.4vh),30px) 0 clamp(17px,min(4vw,3.1vh),38px)}
 .punch i{color:var(--red)}
 
 /* the photo pile — screenshots as taped prints */
@@ -223,6 +224,260 @@ header .postrow{margin-bottom:auto}
   font-family:var(--display); float:left; font-size:3.05em; line-height:.76;
   padding:.07em .11em 0 0; color:var(--red)}
 
+
+
+
+
+/* ---------- a project is one deliverable, not a job ---------- */
+/* Same furniture as a work spread, but the artifact is bigger and there are
+   fewer facts, so the two never read as the same weight. */
+.p-kind{font-family:var(--mono); font-size:8.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--red); border:1.5px solid var(--red); padding:3px 7px 2px; margin-left:14px;
+  white-space:nowrap}
+.spec.project .deck{--ch:clamp(212px,34vh,340px)}
+.spec.project .p-title h2{font-size:clamp(28px,3.9vw,48px)}
+
+/* a film still, for work that is a video rather than a screen */
+.deck.film{--ar:1.78; --ch:clamp(168px,27vh,268px)}
+.deck-card .play{position:absolute; left:calc(50% - 28px); top:calc(50% - 34px);
+  width:56px; height:56px; border-radius:50%; background:rgba(224,67,42,.93); z-index:5;
+  display:grid; place-items:center; box-shadow:0 7px 18px -7px rgba(22,19,15,.65)}
+/* the slot's note clears the play badge instead of sitting under it */
+.deck.film .ph span{margin-top:58px}
+.deck-card .play::after{content:''; border-left:17px solid var(--paper);
+  border-top:11px solid transparent; border-bottom:11px solid transparent; margin-left:5px}
+
+/* ---------- the short entries, four to a page ---------- */
+.also{display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(18px,2.6vh,30px) clamp(28px,4.4vw,62px); margin-top:clamp(18px,2.6vh,30px)}
+.also > div{border-top:2px solid var(--ink); padding-top:clamp(10px,1.5vh,15px)}
+.also h3{margin:0; font-family:var(--display); font-size:clamp(19px,2.1vw,28px);
+  line-height:.95; letter-spacing:-.03em; text-transform:uppercase}
+.also .meta{font-family:var(--mono); font-size:9px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:8px}
+.also p{margin:9px 0 0; color:var(--ink-soft); font-size:clamp(14px,1.1vw,16px); line-height:1.42}
+.also strong{color:var(--ink); font-weight:500}
+
+/* ---------- back to the index ---------- */
+/* A paper tab in the bottom margin, next to the page number. Same furniture as
+   every other button on the site; the vertical ribbon was unreadable at this
+   size and sat on top of the running head. */
+.ribbon{position:fixed; left:clamp(70px,7.4vw,116px); bottom:clamp(13px,1.9vw,22px);
+  z-index:931; display:flex; align-items:center; gap:7px; cursor:pointer;
+  padding:8px 13px 7px; border:2px solid var(--ink); background:var(--paper-2);
+  box-shadow:3px 3.5px 0 var(--ink); color:var(--ink);
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
+  transition:transform .14s ease, box-shadow .14s ease}
+.ribbon::before{content:''; width:0; height:0; border-right:6px solid var(--red);
+  border-top:4.5px solid transparent; border-bottom:4.5px solid transparent}
+.ribbon:hover{transform:translate(-1px,-1px); box-shadow:4px 4.5px 0 var(--ink)}
+.ribbon:active{transform:translate(1px,1.5px); box-shadow:2px 2px 0 var(--ink)}
+.ribbon[hidden]{display:none}
+@media (max-width:860px){ .ribbon{left:62px; bottom:9px; padding:6px 10px 5px} }
+
+/* every chapter heading in the index is a link once it has somewhere to go */
+.ch-top a{text-decoration:none; color:inherit; display:inline-block}
+.ch-top a:hover b{color:var(--red)}
+.ch-top a:focus-visible{outline:2px solid var(--red); outline-offset:3px}
+
+/* ---------- partner logos ---------- */
+/* Logos turn up in every shape, colour and aspect. The band fixes the HEIGHT
+   only, caps the width, and drops them all to one ink tone, so a wordmark and
+   a square block sit on the same line without either shouting. */
+.logos{margin-top:clamp(11px,1.6vh,18px); border-top:1px solid rgba(22,19,15,.22);
+  padding-top:clamp(9px,1.4vh,14px)}
+.logos-k{font-family:var(--mono); font-size:9px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); margin-bottom:11px}
+.logo-row{display:flex; flex-wrap:wrap; align-items:center;
+  gap:clamp(11px,1.5vh,16px) clamp(16px,2.2vw,30px)}
+.logo{height:clamp(19px,2.5vh,29px); display:flex; align-items:center}
+.logo img{height:100%; width:auto; max-width:140px; object-fit:contain;
+  filter:grayscale(1) contrast(1.08); opacity:.72; transition:opacity .2s, filter .2s}
+.logo:hover img{filter:none; opacity:1}
+/* until the file arrives, a slot that names the logo it is holding space for */
+.logo .slot{height:100%; display:flex; align-items:center; padding:0 9px;
+  border:1.5px dashed rgba(22,19,15,.3); font-family:var(--mono); font-size:8.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); white-space:nowrap}
+
+/* ---------- community spread: the numbers are the picture ---------- */
+/* On a community page the evidence is reach, not screenshots, so the figures
+   get display type and the photographs play support. */
+.nums{display:flex; margin-top:clamp(16px,2.4vh,28px);
+  border-top:2px solid var(--ink); border-bottom:2px solid var(--ink)}
+.nums > div{flex:1; min-width:0; padding:clamp(13px,1.9vh,19px) clamp(13px,1.7vw,22px);
+  border-right:1px solid rgba(22,19,15,.22)}
+.nums > div:first-child{padding-left:0}
+.nums > div:last-child{padding-right:0; border-right:0}
+.nums b{display:block; font-family:var(--display); font-size:clamp(27px,min(3.8vw,5.3vh),54px);
+  line-height:.86; letter-spacing:-.035em; color:var(--ink)}
+.nums .r b{color:var(--red)}
+.nums .b b{color:var(--blue)}
+.nums span{display:block; font-family:var(--mono); font-size:9px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:9px; line-height:1.65}
+
+.cm-sub{font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:11px}
+.cm-row{display:flex; align-items:flex-start; gap:clamp(18px,min(3.2vw,3vh),44px);
+  margin-top:clamp(18px,2.8vh,34px)}
+.cm-row .shot{flex:0 0 auto}
+.cm-row .story{flex:1; min-width:0}
+.cm-row .story p{color:var(--ink-soft); font-size:clamp(14px,min(1.15vw,1.88vh),16.5px);
+  line-height:1.45; margin-bottom:12px}
+.cm-row .story p:last-child{margin-bottom:0}
+.cm-row .story strong{color:var(--ink); font-weight:500}
+.cm-row .story .hand{font-family:var(--hand); font-size:20px; color:var(--blue)}
+.partners{font-family:var(--mono); font-size:9px; letter-spacing:.11em; line-height:1.95;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:12px;
+  border-top:1px solid rgba(22,19,15,.22); padding-top:10px}
+.cm-ph{height:clamp(128px,19.5vh,190px); width:auto; aspect-ratio:4/3}
+
+/* ---------- mounted prints & gaps ---------- */
+/* A photo we don't have yet is still part of the page: the gap is cut to the
+   right size and says what belongs in it. Dropping the real image in later
+   changes nothing around it. */
+.shot{background:var(--paper-2); padding:8px 8px 26px; position:relative;
+  box-shadow:3px 4px 0 rgba(22,19,15,.15), 0 10px 22px -12px rgba(22,19,15,.4)}
+.shot img{display:block; width:100%; height:auto; background:#ddd7cb}
+.shot figcaption{position:absolute; bottom:7px; left:9px; right:9px;
+  font-family:var(--hand); font-size:14.5px; line-height:1; color:var(--ink-soft);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+
+.ph{position:relative; display:grid; place-items:center; padding:20px; text-align:center;
+  background:repeating-linear-gradient(45deg, transparent 0 10px,
+             rgba(22,19,15,.032) 10px 20px), #e7e1d5;
+  border:2px dashed rgba(22,19,15,.32)}
+.ph span{font-family:var(--hand); font-size:clamp(14px,1.45vw,17px); line-height:1.3;
+  color:var(--ink-soft); max-width:28ch}
+/* the frame is waiting for a photograph; what belongs in it lives in
+   data-want, which the asset list is generated from, not on the page */
+.ph[data-want]::after{content:'PHOTOGRAPH'; width:auto; height:auto; border:0;
+  top:50%; left:50%; right:auto; bottom:auto; transform:translate(-50%,-50%);
+  font-family:var(--mono); font-size:9px; letter-spacing:.3em;
+  color:var(--ink-faint); opacity:.42}
+/* ...so the bottom-right crop mark moves to its own element */
+.ph[data-want]::before{top:8px; left:8px; border-right:0; border-bottom:0}
+/* crop marks, so an empty frame reads as print furniture rather than a broken image */
+.ph::before,.ph::after{content:''; position:absolute; width:15px; height:15px;
+  border:1.5px solid var(--ink-faint); opacity:.5}
+.ph::before{top:8px; left:8px; border-right:0; border-bottom:0}
+.ph::after{bottom:8px; right:8px; border-left:0; border-top:0}
+/* ---------- product spread: a deck of prints beside a specimen label ------- */
+/* Everything is sized off viewport height so the spread lands on one screen
+   without an inner scrollbar. */
+.spec{display:grid; grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(30px,4.6vw,66px); align-items:start; padding-top:clamp(16px,2.4vh,30px)}
+
+.deck{--ar:.5627; --ch:clamp(252px,53vh,528px); --cw:calc(var(--ch) * var(--ar));
+  position:relative; width:calc(var(--cw) + 40px); height:calc(var(--ch) + 63px)}
+.deck-mount{position:absolute; left:0; top:0; width:calc(var(--cw) + 22px);
+  height:calc(var(--ch) + 45px); background:#e9e3d6;
+  border:2px dashed rgba(22,19,15,.26)}
+/* each print is a button: the top one is what you click */
+.deck-card{position:absolute; left:0; top:0; margin:0; border:0; padding:11px 11px 34px;
+  background:var(--paper-2); display:block; text-align:left; font:inherit; color:inherit;
+  box-shadow:5px 7px 0 rgba(22,19,15,.14), 0 22px 40px -20px rgba(22,19,15,.55);
+  transition:transform .58s cubic-bezier(.22,.68,.3,1), opacity .42s ease}
+.deck-card img{display:block; height:var(--ch); width:auto; background:#ddd7cb}
+/* documents sit closer to A4 than to a phone, and a gap stands in for one
+   until the scan arrives */
+.deck.docs{--ar:.74; --ch:clamp(228px,44vh,424px)}
+/* browser shots are landscape, so the pile turns on its side */
+.deck.wide{--ar:1.58; --ch:clamp(188px,29vh,292px)}
+.deck-card .ph{height:var(--ch); width:var(--cw); font-size:clamp(13px,1.15vw,16px)}
+.deck-card .clip{top:-14px; left:26px; z-index:6}
+.deck-card .cap{position:absolute; bottom:9px; left:13px; right:13px;
+  font-family:var(--hand); font-size:16px; line-height:1; color:var(--ink-soft);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.deck-reset{position:absolute; left:calc((var(--cw) + 22px) / 2 - 43px);
+  top:calc((var(--ch) + 45px) / 2 - 43px); width:86px; height:86px; z-index:40;
+  display:grid; place-items:center; padding:0; cursor:pointer;
+  border:3px solid var(--red); border-radius:50%; background:var(--paper-2);
+  box-shadow:3px 4px 0 rgba(22,19,15,.16)}
+.deck-reset[hidden]{display:none}
+.deck-reset:hover{background:var(--paper)}
+.deck-bar{display:flex; align-items:center; gap:13px; margin-top:14px;
+  width:calc(var(--cw) + 22px); min-height:22px}
+.deck-left{font-family:var(--mono); font-size:10px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint); white-space:nowrap}
+.deck-bar .ln{flex:1; height:0; border-top:1px solid rgba(22,19,15,.25)}
+.deck-hint{font-family:var(--hand); font-size:19px; color:var(--blue); white-space:nowrap}
+
+/* the label: rules and small caps, no badges */
+.spec-rows{margin:0; border-top:2px solid var(--ink)}
+.spec-rows > div{display:flex; gap:clamp(16px,2vw,26px);
+  padding:clamp(9px,1.4vh,15px) 0; border-bottom:1px solid rgba(22,19,15,.22)}
+.spec-rows > div:last-child{border-bottom:2px solid var(--ink)}
+.spec-rows dt{flex:0 0 clamp(84px,9vw,116px); font-family:var(--mono); font-size:9.5px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-faint); padding-top:4px}
+.spec-rows dd{flex:1; margin:0; font-size:clamp(15px,min(1.25vw,2.05vh),18px); line-height:1.42;
+  color:var(--ink-soft)}
+.spec-rows dd strong{color:var(--ink); font-weight:500}
+.spec .punch{margin:clamp(12px,1.8vh,20px) 0 clamp(16px,2.4vh,28px)}
+.spec .tabs{margin-top:clamp(14px,2vh,24px)}
+.spec .flow{margin-top:clamp(14px,2vh,24px); margin-bottom:0}
+/* work that is real but not shipped belongs in the margin, not in the table */
+.side-note{margin-top:clamp(10px,1.5vh,16px); padding-left:13px;
+  border-left:2.5px solid var(--blue); font-family:var(--hand);
+  font-size:clamp(14px,1.2vw,17px); line-height:1.35; color:var(--blue); max-width:52ch}
+.side-note b{font-weight:700}
+/* two-line titles need the label dialled down or the spread outgrows the screen */
+.spec.tight .p-title h2{font-size:clamp(30px,min(4.4vw,5.7vh),54px)}
+.spec.tight .punch{font-size:clamp(21px,min(2.7vw,3.55vh),32px); margin:clamp(8px,1.2vh,14px) 0 clamp(10px,1.5vh,17px)}
+.spec.tight .spec-rows > div{padding:clamp(5px,.86vh,9px) 0}
+.spec.tight .spec-rows dd{font-size:clamp(13.4px,min(1.15vw,1.8vh),16.5px)}
+
+/* one screen, one page: only pages marked .fit are guaranteed to fit */
+.leaf.fit .scroll{overflow:hidden}
+
+.ph.wide{aspect-ratio:3.4}
+.ph.r43{aspect-ratio:4/3}
+.ph.doc{aspect-ratio:1/1.32}
+
+.band{margin:clamp(16px,2.4vw,26px) 0 clamp(18px,2.6vw,28px); transform:rotate(-.7deg)}
+.strip{display:flex; flex-wrap:wrap; gap:clamp(12px,1.8vw,20px);
+  margin-bottom:clamp(20px,3vw,32px)}
+.strip > *{flex:1 1 190px}
+.strip > *:nth-child(2n){transform:rotate(1.3deg)}
+.strip > *:nth-child(3n){transform:rotate(-1.6deg)}
+
+/* ---------- community page: the numbers are the picture ---------- */
+.slabs{display:flex; flex-wrap:wrap; gap:clamp(18px,3.4vw,46px);
+  margin:clamp(18px,2.6vw,30px) 0 clamp(14px,2vw,22px)}
+.slab{min-width:112px; max-width:23ch}
+.slab b{display:block; font-family:var(--display); font-size:clamp(34px,5.2vw,60px);
+  line-height:.86; letter-spacing:-.03em; color:var(--ink)}
+.slab.r b{color:var(--red)}
+.slab.b b{color:var(--blue)}
+.slab span{display:block; margin-top:8px; font-family:var(--mono); font-size:9.5px;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--ink-faint); line-height:1.6}
+
+/* ---------- client page: the document is the proof ---------- */
+.docrow{display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  gap:clamp(22px,4vw,54px); align-items:start;
+  margin:clamp(14px,2vw,22px) 0 clamp(18px,2.6vw,28px)}
+.docmount{position:relative; transform:rotate(-1.7deg)}
+/* paperclip holding the certificate to the page */
+.clip{position:absolute; top:-15px; left:24px; width:21px; height:45px; z-index:6;
+  border:2.5px solid #83808a; border-radius:11px 11px 9px 9px; transform:rotate(-7deg)}
+.clip::after{content:''; position:absolute; left:4px; top:8px; width:13px; height:29px;
+  border:2.5px solid #a5a2ac; border-top:0; border-radius:0 0 7px 7px}
+
+/* a pipeline sketched on the page, for work with no screen worth showing */
+.flow{display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  margin:0 0 clamp(16px,2.4vw,24px)}
+.flow i{font-style:normal; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink); border:2px solid var(--ink);
+  padding:7px 10px; background:var(--paper-2); box-shadow:2px 2.5px 0 var(--ink)}
+.flow i:nth-child(4n+2){transform:rotate(-1.5deg)}
+.flow i:nth-child(4n+4){transform:rotate(1.3deg)}
+.flow u{text-decoration:none; color:var(--red); font-size:16px; line-height:1}
+
+@media (max-width:860px){
+  .docrow{grid-template-columns:1fr}
+  .slab b{font-size:40px}
+}
+
+
 /* stickers */
 .stickers{display:flex; flex-wrap:wrap; gap:clamp(12px,2vw,22px); margin-top:clamp(30px,4.5vw,44px)}
 .sticker{width:clamp(96px,11.5vw,124px); height:clamp(96px,11.5vw,124px); border-radius:50%;
@@ -260,7 +515,7 @@ header .postrow{margin-bottom:auto}
 .ink2{--ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='70'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.034 .024' numOctaves='3' seed='17'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.9 1.72'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
 .ink3{--ink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='70'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.027 .048' numOctaves='3' seed='29'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -1.65 1.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E")}
 .stamprow{display:flex; flex-wrap:wrap; gap:clamp(10px,1.4vw,18px); align-items:center;
-  margin-top:clamp(28px,4vw,42px)}
+  margin-top:clamp(17px,min(4vw,3.1vh),42px)}
 
 /* ---------- postage ---------- */
 /* the shadow lives on the wrapper: filter runs before mask on the same element,
@@ -312,63 +567,56 @@ header .postrow{margin-bottom:auto}
   display:grid; place-items:center; line-height:1.1; text-align:center; letter-spacing:.04em;
   box-shadow:inset 0 0 0 1px rgba(22,19,15,.12)}
 .postrow{display:flex; flex-wrap:wrap; gap:clamp(9px,1.1vw,15px); align-items:flex-start;
-  margin-top:clamp(22px,3vw,34px)}
+  margin-top:clamp(14px,min(3vw,2.5vh),34px)}
 
 /* ---------- contents ---------- */
 .idx{min-height:100%; display:flex; flex-direction:column;
-  padding:clamp(22px,3vw,36px) 0 clamp(26px,3.6vw,50px)}
-.idx-h{margin:clamp(4px,.9vw,11px) 0 clamp(11px,1.7vw,21px);
-  font-size:clamp(30px,5.4vw,66px); line-height:.9; text-transform:uppercase}
+  padding:clamp(9px,1.3vh,26px) 0 clamp(48px,5.4vh,60px)}
+.idx-h{margin:clamp(3px,.7vw,9px) 0 clamp(9px,1.4vw,18px);
+  font-size:clamp(28px,min(5.4vw,5.5vh),66px); line-height:.9; text-transform:uppercase}
 .idx-grid{display:grid; grid-template-columns:1fr 1fr 1fr;
   gap:clamp(20px,2.8vw,44px); align-items:start; margin-bottom:auto}
 .idx-cap{font-family:var(--mono); font-size:10px; font-weight:700; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--ink-faint); padding-bottom:7px;
-  border-bottom:1.5px solid var(--ink); margin-bottom:11px}
+  text-transform:uppercase; color:var(--ink-faint); padding-bottom:clamp(4px,.8vh,7px);
+  border-bottom:1.5px solid var(--ink); margin-bottom:clamp(6px,1.2vh,11px)}
 .idx-cap + .ch{margin-top:0}
-.idx-cap.later{margin-top:clamp(14px,1.9vw,24px)}
+.idx-cap.later{margin-top:clamp(8px,min(1.9vw,1.5vh),24px)}
 
 /* a chapter is the company; the spreads under it are its sections */
-.ch{margin-bottom:clamp(9px,1.2vw,14px)}
+.ch{margin-bottom:clamp(4px,.78vh,12px)}
 .ch-top{display:flex; align-items:baseline; gap:0}
-.ch-top b{font-family:var(--serif); font-weight:400; font-size:clamp(15px,1.45vw,19px);
+.ch-top b{font-family:var(--serif); font-weight:400; font-size:clamp(14px,min(1.45vw,2.08vh),19px);
   line-height:1.1; letter-spacing:-.012em; flex:none}
 .ch-top .dots{flex:1; min-width:14px; margin:0 9px 5px;
   border-bottom:1.5px dotted rgba(22,19,15,.26)}
 .ch-top i{font-family:var(--mono); font-style:normal; font-size:9px; letter-spacing:.06em;
   color:var(--ink-soft); white-space:nowrap; flex:none}
-.ch-role{font-family:var(--mono); font-size:8.5px; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--ink-faint); margin-top:2px}
+.ch-role{font-family:var(--mono); font-size:8px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-faint); margin-top:1px; line-height:1.35}
 
-.ch-list{list-style:none; margin:7px 0 0; padding:0 0 0 13px;
+.ch-list{list-style:none; margin:clamp(3px,.75vh,7px) 0 0; padding:0 0 0 13px;
   border-left:1.5px solid rgba(22,19,15,.14)}
 .ch-list a{display:flex; align-items:baseline; gap:0; text-decoration:none; color:inherit;
-  padding:3.2px 0}
+  padding:clamp(1.5px,.35vh,3.2px) 0}
 .ch-list a:hover .nm{color:var(--red)}
 .ch-list a:hover .dots{border-color:var(--red)}
 .ch-list .n{font-family:var(--mono); font-size:8.5px; font-weight:700; color:var(--red);
   width:21px; flex:none; letter-spacing:.05em}
-.ch-list .nm{font-family:var(--body); font-weight:500; font-size:13px; line-height:1.2;
+.ch-list .nm{font-family:var(--body); font-weight:500; font-size:clamp(11.8px,1.62vh,13px); line-height:1.2;
   flex:none; transition:color .14s}
 .ch-list .dots{flex:1; min-width:12px; margin:0 8px 4px;
   border-bottom:1.5px dotted rgba(22,19,15,.26); transition:border-color .14s}
 .ch-list .mt{font-family:var(--mono); font-size:8px; letter-spacing:.13em; text-transform:uppercase;
   color:var(--ink-faint); white-space:nowrap; flex:none}
 .ch-list .mt b{color:var(--red); font-weight:700}
+.ch-mt{display:none}
+/* the wrapper exists so the phone can make a rail of these; on a wide screen
+   it steps out of the way and the figures stay flex children of .cm-row */
+.cm-shots{display:contents}
 
 @media (max-width:860px){
   .idx-grid{grid-template-columns:1fr; gap:24px}
   .idx{min-height:0}
-}
-
-/* ---------- wip note ---------- */
-.wip{position:fixed; left:50%; bottom:clamp(30px,3.4vw,44px); z-index:926;
-  transform:translateX(-50%) rotate(-1.1deg); font-family:var(--hand);
-  font-size:clamp(13px,1.45vw,18px); color:var(--blue); white-space:nowrap}
-.wip a{color:var(--blue); text-underline-offset:3px; text-decoration-thickness:1px}
-.wip a:hover{color:var(--red)}
-@media (max-width:620px){
-  .wip{font-size:12px; white-space:normal; text-align:center; width:calc(100vw - 150px);
-    bottom:26px}
 }
 
 /* ---------- the book ---------- */
@@ -399,7 +647,7 @@ header .postrow{margin-bottom:auto}
 
 /* ---------- turning ---------- */
 /* the page itself is the control: a lifted corner you grab and drag. */
-.book{touch-action:pan-y}
+.book{touch-action:none}
 .corner{position:fixed; right:0; bottom:0; width:92px; height:92px; z-index:925;
   border:0; padding:0; background:none; cursor:grab; -webkit-tap-highlight-color:transparent}
 .corner::before{content:''; position:absolute; right:0; bottom:0;
@@ -519,6 +767,165 @@ header .postrow{margin-bottom:auto}
   *{transition:none!important}
   .pile .pic:hover{transform:none}
 }
+/* ======================= phone ======================= */
+/* A page is still one screen here. The photographs leave the vertical budget
+   and become a horizontal rail — swipe it, tap a card, or use the arrows. */
+@media (max-width:900px){
+  /* words first, pictures under them */
+  /* minmax(0,..) or the rail's max-content width drags the whole column wide */
+  .spec,.spec.tight,.spec.project{grid-template-columns:minmax(0,1fr);
+    gap:7px}
+  .spec > div{min-width:0}
+  .p-head{margin-bottom:6px; gap:10px}
+  /* the cover's bottom padding dates from the scrolling era; .wrap already
+     keeps the ribbon's band clear */
+  header{padding-bottom:10px !important}
+  .heroline{margin-top:clamp(14px,2.6vh,34px) !important}
+  .stamprow{margin-top:clamp(12px,2.2vh,28px) !important}
+  .postrow{margin-top:clamp(10px,1.8vh,22px) !important}
+  .p-where{font-size:9px; letter-spacing:.12em; min-width:0;
+    overflow:hidden; text-overflow:ellipsis}
+  /* the stamp beside the title already says this */
+  .p-kind{display:none}
+  .p-num{font-size:10px}
+  .deck-bar{margin-top:clamp(4px,.9vh,6px)}
+  .cm-sub{margin-top:6px !important}
+  .cm-row .story{margin-top:clamp(6px,1.2vh,9px)}
+  .spec > div:first-child{order:2}
+  .spec .p-title h2,.spec.tight .p-title h2{font-size:clamp(22px,min(6.8vw,4.1vh),46px)}
+  .p-title{gap:9px}
+  .stamp{font-size:11px; padding:4px 9px}
+  .p-icon{width:34px; height:34px}
+  .punch,.spec.tight .punch{font-size:clamp(13.5px,min(4.2vw,2.4vh),30px);
+    margin:clamp(4px,.8vh,12px) 0 clamp(6px,1.1vh,16px)}
+  .spec-rows > div,.spec.tight .spec-rows > div{display:block; padding:2px 0}
+  .spec-rows dt{margin-bottom:1px; font-size:clamp(7.5px,.95vh,10px)}
+  .spec-rows dd,.spec.tight .spec-rows dd{font-size:clamp(10.1px,min(1.36vh,3.2vw),16px);
+    line-height:1.3}
+  .side-note{font-size:clamp(10px,min(1.34vh,3.1vw),16px); margin-top:clamp(5px,.9vh,12px);
+    padding-left:9px; line-height:1.3}
+  .flow{margin-top:clamp(6px,1.2vh,10px) !important; gap:5px}
+  .flow i{font-size:8px; padding:4px 7px}
+  .flow u{font-size:13px}
+  .links{margin-top:10px; gap:8px}
+  .links a{font-size:9px; padding:7px 11px}
+  /* the contents tab is fixed over the bottom of every page */
+  .wrap{padding-bottom:clamp(28px,4.2vh,38px)}
+
+  /* the pile stops being a pile */
+  .deck{--rh:clamp(132px,min(19.5vh,44vw),300px);
+    /* landscape plates say as much in far less height */
+
+    display:flex; width:auto; height:auto; gap:9px;
+    overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory;
+    scroll-padding-left:var(--pad); scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    margin:0 calc(var(--pad) * -1); padding:3px var(--pad) 0}
+  .deck::-webkit-scrollbar{display:none}
+  .deck-mount,.deck-reset{display:none}
+  .deck-card{position:static; flex:0 0 auto; scroll-snap-align:start;
+    padding:6px 6px 8px; box-shadow:3px 4px 0 rgba(22,19,15,.13)}
+  .deck-card .ph{height:var(--rh); width:calc(var(--rh) * var(--ar));
+    font-size:clamp(11px,min(1.3vh,2.6vw),15px); padding:12px}
+  .deck-card img{height:var(--rh); width:auto}
+  .deck.docs{--rh:clamp(118px,min(17vh,38vw),260px)}
+  .deck.wide{--rh:clamp(86px,min(12vh,24vw),190px)}
+  .deck.film{--rh:clamp(82px,min(11.4vh,22vw),180px)}
+  .deck.film .ph span{margin-top:42px}
+  .deck-card .cap{display:none}
+  /* placeholder notes are longer than the boxes they stand in */
+  .ph{overflow:hidden}
+  .deck-card .clip{display:none}
+  .deck-bar{margin-top:9px; gap:9px}
+  .deck-hint{display:none}
+  .deck-left{font-size:9px}
+
+  /* same rail, for the community photographs */
+  .cm-shots{display:flex; gap:9px; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; scroll-padding-left:var(--pad); scrollbar-width:none;
+    margin:0 calc(var(--pad) * -1); padding:3px var(--pad) 0}
+  .cm-shots::-webkit-scrollbar{display:none}
+  .cm-shots .shot{flex:0 0 auto; transform:none !important; scroll-snap-align:start;
+    padding:6px 6px 22px}
+  .cm-shots .cm-ph{width:auto !important; height:clamp(82px,min(10.9vh,25vw),230px);
+    padding:9px; font-size:clamp(10.5px,1.2vh,14px)}
+  .cm-shots figcaption{bottom:5px; left:8px; right:8px;
+    font-size:clamp(8px,1.02vh,10.5px); white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis}
+  .cm-row{display:block}
+  .cm-row .story{margin-top:11px}
+  .cm-row .story p{font-size:clamp(10.1px,min(1.36vh,3.2vw),16px); line-height:1.38;
+    margin-bottom:clamp(4px,.7vh,9px)}
+  .p-title h2{font-size:clamp(24px,min(7.8vw,4.6vh),52px)}
+  .cm-sub{font-size:clamp(8.5px,1.05vh,11px); letter-spacing:.1em;
+    margin-top:clamp(6px,1vh,13px); line-height:1.45}
+
+  /* four figures across a phone is three too many */
+  .nums{margin-top:clamp(6px,1.2vh,10px); flex-wrap:wrap; row-gap:clamp(5px,1vh,9px)}
+  .nums > div{flex:1 1 44%; min-width:128px; padding:clamp(5px,.9vh,8px) 12px 0;
+    border-right:0; border-bottom:0}
+  .nums > div:nth-child(odd){padding-left:0}
+  .nums > div:nth-child(even){padding-right:0}
+  .nums b{font-size:clamp(16px,min(5.6vw,3vh),42px)}
+  .nums span{font-size:clamp(7.5px,.95vh,10px); margin-top:3px; line-height:1.45}
+
+  /* the contents is a menu on a phone: company, year, and where it goes.
+     The job title lives on the page itself, so it stands down here. */
+  /* the big CONTENTS already says it; the dashed cut line is desktop furniture */
+  .idx .cut{display:none}
+  .idx{padding:6px 0 0}
+  .cut{margin:9px 0 0}
+  .idx-h{margin:clamp(5px,1vh,14px) 0 clamp(6px,1.2vh,18px);
+    font-size:clamp(26px,min(10.4vw,5.1vh),62px)}
+  .idx-grid{grid-template-columns:1fr; gap:0}
+  .idx-cap{font-size:8px; margin-bottom:4px}
+  .idx-cap.later,.idx-cap:not(:first-child){margin-top:clamp(6px,1.1vh,9px)}
+  .ch{margin-bottom:clamp(1px,.25vh,3px)}
+  .ch-role{display:none}
+  .ch-top b{font-size:clamp(11.9px,min(1.66vh,3.6vw),19px); line-height:1.25}
+  /* one entry, one line — the heading is already the link */
+  .ch:has(.ch-list li:only-child) .ch-list{display:none}
+  .ch-mt{display:inline; font-family:var(--mono); font-size:7.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--ink-faint); margin-left:9px}
+  .ch-mt b{color:var(--red); font-weight:700}
+  .ch-top i{font-size:8.5px}
+  .ch-list{margin-top:2px; padding-left:10px}
+  .ch-list li + li{margin-top:2px}
+  .ch-list .nm{font-size:clamp(10.6px,min(1.42vh,3.2vw),15px)}
+  .ch-list .mt{font-size:7.5px}
+
+  .logos{margin-top:clamp(5px,1vh,7px); padding-top:clamp(4px,.8vh,6px)}
+  .logos-k{font-size:7.5px; margin-bottom:6px}
+  .logo{height:clamp(13px,2vh,24px)}
+  .logo-row{gap:clamp(6px,1.1vh,9px) 13px}
+
+  /* the way back sits in the middle of the thumb's reach */
+  .ribbon{left:50%; right:auto; transform:translateX(-50%); bottom:9px;
+    padding:9px 16px 8px; font-size:9px}
+  .ribbon:active{transform:translateX(-50%) translate(2px,2.5px)}
+  .pgbar{left:auto; right:11px; transform:none; bottom:15px}
+  .corner{width:58px; height:58px}
+  .corner::before{border-width:0 0 34px 34px}
+  .corner.back::before{border-width:0 34px 34px 0}
+}
+
+/* the rail's arrows — built by script, only on a phone */
+.rail-nav{display:flex; gap:5px; flex:none}
+.rail-nav button{width:27px; height:27px; display:grid; place-items:center;
+  border:1.5px solid var(--ink); background:var(--paper-2); color:var(--ink);
+  font-family:var(--mono); font-size:12px; line-height:1; padding:0; cursor:pointer}
+.rail-nav button:disabled{opacity:.3}
+.cm-bar{display:flex; align-items:center; gap:9px; margin-top:9px}
+.cm-bar .ln{flex:1; height:0; border-top:1px solid rgba(22,19,15,.25)}
+.cm-bar .deck-left{font-family:var(--mono); font-size:9px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-faint)}
+
+/* The one-screen rule holds down to a ~700px-tall viewport. Below that the
+   only way to fit this much text is type nobody can read, so those few short
+   screens get their scrollbar back instead. */
+@media (max-height:700px){
+  .leaf.fit .scroll{overflow-y:auto}
+  .book{touch-action:pan-y}
+}
 </style>
 </head>
 <body>
@@ -527,7 +934,7 @@ header .postrow{margin-bottom:auto}
 <div class="gate" id="gate" hidden></div>
 
 <div class="book" id="book">
-  <section class="leaf">
+  <section class="leaf fit">
     <div class="face front"><div class="scroll"><div class="wrap">
   <header>
   <div class="masthead">
@@ -604,7 +1011,7 @@ header .postrow{margin-bottom:auto}
     </div></div></div>
     <div class="face back" aria-hidden="true"></div>
   </section>
-  <section class="leaf" data-face="point" data-say="Start anywhere. 03 is the one that got bought.">
+  <section class="leaf fit" data-face="point" data-say="Start anywhere. 03 is the one that got bought.">
     <div class="face front"><div class="scroll"><div class="wrap">
   <section class="idx" id="contents">
     <div class="cut"><div class="dash"></div><span>Contents</span></div>
@@ -613,98 +1020,118 @@ header .postrow{margin-bottom:auto}
       <div>
         <div class="idx-cap">Work</div>
         <div class="ch">
-          <div class="ch-top"><b>WonderTree</b><span class="dots"></span><i>2026—</i></div>
+          <div class="ch-top"><a href="#p-platform"><b>WonderTree</b></a><span class="dots"></span><i>2026—</i></div>
           <div class="ch-role">Product &amp; Growth Manager</div>
           <ul class="ch-list">
-            <li><a href="#p-platform"><span class="n">01</span><span class="nm">The platform rebuild</span><span class="dots"></span><span class="mt">64 releases</span></a></li>
-            <li><a href="#p-assistant"><span class="n">02</span><span class="nm">Conversational assistant</span><span class="dots"></span><span class="mt">Node · Cosmos</span></a></li>
+            <li><a href="#p-platform"><span class="n">01</span><span class="nm">The platform rebuild</span><span class="dots"></span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>ShipKaro</b><span class="dots"></span><i>2024–26</i></div>
+          <div class="ch-top"><a href="#p-mydiary"><b>ShipKaro</b></a><span class="dots"></span><i>2024–26</i></div>
           <div class="ch-role">Product Manager &amp; Engineer</div>
           <ul class="ch-list">
-            <li><a href="#p-mydiary"><span class="n">03</span><span class="nm">MyDiary AI</span><span class="dots"></span><span class="mt"><b>Acquired</b></span></a></li>
-            <li><a href="#p-focus5"><span class="n">04</span><span class="nm">Focus5</span><span class="dots"></span><span class="mt">Google Play</span></a></li>
+            <li><a href="#p-mydiary"><span class="n">02</span><span class="nm">MyDiary AI</span><span class="dots"></span><span class="mt"><b>Acquired</b></span></a></li>
+            <li><a href="#p-focus5"><span class="n">03</span><span class="nm">Focus5</span><span class="dots"></span><span class="mt">Google Play</span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Al Rahim Textile</b><span class="dots"></span><i>2023–24</i></div>
+          <div class="ch-top"><a href="#p-alrahim"><b>Al Rahim Textile</b></a><span class="dots"></span><i>2023–24</i><span class="ch-mt"><b>Resold</b></span></div>
           <div class="ch-role">Product Engineer</div>
           <ul class="ch-list">
-            <li><a href="#p-alrahim"><span class="n">05</span><span class="nm">AI quality platform</span><span class="dots"></span><span class="mt"><b>Resold</b></span></a></li>
+            <li><a href="#p-alrahim"><span class="n">04</span><span class="nm">AI quality platform</span><span class="dots"></span><span class="mt"><b>Resold</b></span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Passed Recordings</b><span class="dots"></span><i>2023–25</i></div>
+          <div class="ch-top"><a href="#p-passed"><b>Passed Recordings</b></a><span class="dots"></span><i>2023–25</i><span class="ch-mt">+24,118%</span></div>
           <div class="ch-role">Brand &amp; Community Manager</div>
           <ul class="ch-list">
-            <li><a href="#p-passed"><span class="n">06</span><span class="nm">Brand, site, release pipeline</span><span class="dots"></span><span class="mt">+47% revenue</span></a></li>
+            <li><a href="#p-passed"><span class="n">05</span><span class="nm">The label&rsquo;s audience</span><span class="dots"></span><span class="mt">+24,118%</span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Anjuman Mufad-e-Niswan</b><span class="dots"></span><i>2022</i></div>
+          <div class="ch-top"><a href="#p-anjuman"><b>Anjuman Mufad-e-Niswan</b></a><span class="dots"></span><i>2022</i><span class="ch-mt">Rebuilt</span></div>
           <div class="ch-role">IT Manager · internship</div>
+          <ul class="ch-list">
+            <li><a href="#p-anjuman"><span class="n">06</span><span class="nm">Lab, servers, and a database</span><span class="dots"></span><span class="mt">Rebuilt</span></a></li>
+          </ul>
         </div>
       </div>
       <div>
         <div class="idx-cap">Community</div>
         <div class="ch">
-          <div class="ch-top"><b>Friends of Figma, Karachi</b><span class="dots"></span><i>2024—</i></div>
+          <div class="ch-top"><a href="#p-fof"><b>Friends of Figma, Karachi</b></a><span class="dots"></span><i>2024—</i><span class="ch-mt"><b>Backed by Figma</b></span></div>
           <div class="ch-role">Co-Founder &amp; Co-Lead</div>
           <ul class="ch-list">
             <li><a href="#p-fof"><span class="n">07</span><span class="nm">Karachi&rsquo;s Figma community</span><span class="dots"></span><span class="mt"><b>Backed by Figma</b></span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>GDSC DUET</b><span class="dots"></span><i>2022–23</i></div>
+          <div class="ch-top"><a href="#p-gdsc"><b>GDSC DUET</b></a><span class="dots"></span><i>2022–23</i><span class="ch-mt">Backed by Google</span></div>
           <div class="ch-role">Founding Lead · student</div>
           <ul class="ch-list">
-            <li><a href="#p-gdsc"><span class="n">08</span><span class="nm">Building the chapter</span><span class="dots"></span><span class="mt">3,000 attendees</span></a></li>
+            <li><a href="#p-gdsc"><span class="n">08</span><span class="nm">Building the chapter</span><span class="dots"></span><span class="mt">Backed by Google</span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>GDGoC UIT</b><span class="dots"></span><i>2024–26</i></div>
+          <div class="ch-top"><a href="#p-gdgoc"><b>GDGoC UIT</b></a><span class="dots"></span><i>2024–26</i><span class="ch-mt">Paid client work</span></div>
           <div class="ch-role">Mentor · student</div>
           <ul class="ch-list">
             <li><a href="#p-gdgoc"><span class="n">09</span><span class="nm">Industry access and funding</span><span class="dots"></span><span class="mt">Paid client work</span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>MLSA Online</b><span class="dots"></span><i>2023</i></div>
-          <div class="ch-role">Founder · DevCon Pakistan</div>
+          <div class="ch-top"><a href="#p-mlsa"><b>MLSA Online</b></a><span class="dots"></span><i>2023</i><span class="ch-mt">20+ speakers</span></div>
+          <div class="ch-role">Founder · Backed by Microsoft</div>
+          <ul class="ch-list">
+            <li><a href="#p-mlsa"><span class="n">10</span><span class="nm">DevCon Pakistan</span><span class="dots"></span><span class="mt">20+ speakers</span></a></li>
+          </ul>
         </div>
       </div>
       <div>
-        <div class="idx-cap">Contract</div>
+<div class="idx-cap">Venture</div>
         <div class="ch">
-          <div class="ch-top"><b>Tabeeb Medicos</b><span class="dots"></span><i>2025</i></div>
+          <div class="ch-top"><a href="#p-lappy"><b>Lappy PK</b></a><span class="dots"></span><i>2023—</i><span class="ch-mt">Still trading</span></div>
+          <div class="ch-role">Co-Founder</div>
+          <ul class="ch-list">
+            <li><a href="#p-lappy"><span class="n">11</span><span class="nm">Import and wholesale</span><span class="dots"></span><span class="mt">Still trading</span></a></li>
+          </ul>
+        </div>
+        <div class="idx-cap later">Contract</div>
+        <div class="ch">
+          <div class="ch-top"><a href="#p-tabeeb"><b>Tabeeb Medicos</b></a><span class="dots"></span><i>2025</i><span class="ch-mt">Still trading</span></div>
           <div class="ch-role">Brand &amp; Retail Design</div>
           <ul class="ch-list">
-            <li><a href="#p-tabeeb"><span class="n">10</span><span class="nm">The store, end to end</span><span class="dots"></span><span class="mt">Still trading</span></a></li>
+            <li><a href="#p-tabeeb"><span class="n">12</span><span class="nm">Brand, print and the room</span><span class="dots"></span><span class="mt">Still trading</span></a></li>
           </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Hope &amp; Cope</b><span class="dots"></span><i>2026</i></div>
+          <div class="ch-top"><a href="#p-hopecope"><b>Hope &amp; Cope</b></a><span class="dots"></span><i>2026</i><span class="ch-mt">Delivered</span></div>
           <div class="ch-role">Product Manager</div>
+          <ul class="ch-list">
+            <li><a href="#p-hopecope"><span class="n">13</span><span class="nm">The clinic&rsquo;s site</span><span class="dots"></span><span class="mt">Delivered</span></a></li>
+          </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Kamion Pharma</b><span class="dots"></span><i>2025</i></div>
+          <div class="ch-top"><a href="#p-kamion"><b>Kamion Pharma</b></a><span class="dots"></span><i>2025</i><span class="ch-mt">On film</span></div>
           <div class="ch-role">Media Director</div>
+          <ul class="ch-list">
+            <li><a href="#p-kamion"><span class="n">14</span><span class="nm">Market-entry campaign</span><span class="dots"></span><span class="mt">On film</span></a></li>
+          </ul>
         </div>
         <div class="ch">
-          <div class="ch-top"><b>Frutaz / AFABCO</b><span class="dots"></span><i>2023</i></div>
+          <div class="ch-top"><a href="#p-frutaz"><b>Frutaz / AFABCO</b></a><span class="dots"></span><i>2023</i><span class="ch-mt">Awarded</span></div>
           <div class="ch-role">Media Director</div>
+          <ul class="ch-list">
+            <li><a href="#p-frutaz"><span class="n">15</span><span class="nm">AFABCO International Conference</span><span class="dots"></span><span class="mt">Awarded</span></a></li>
+          </ul>
         </div>
-        <div class="idx-cap later">Venture</div>
+                <div class="idx-cap later">Freelance</div>
         <div class="ch">
-          <div class="ch-top"><b>Lappy.pk</b><span class="dots"></span><i>2023—</i></div>
-          <div class="ch-role">Co-Founder</div>
-        </div>
-        <div class="idx-cap later">Freelance</div>
-        <div class="ch">
-          <div class="ch-top"><b>Freelance</b><span class="dots"></span><i>2018–23</i></div>
+          <div class="ch-top"><a href="#p-freelance"><b>Freelance</b></a><span class="dots"></span><i>2018–23</i><span class="ch-mt">239K followers</span></div>
           <div class="ch-role">Multimedia Producer</div>
+          <ul class="ch-list">
+            <li><a href="#p-freelance"><span class="n">16</span><span class="nm">Brands, social and video</span><span class="dots"></span><span class="mt">239K followers</span></a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -712,57 +1139,951 @@ header .postrow{margin-bottom:auto}
     </div></div></div>
     <div class="face back" aria-hidden="true"></div>
   </section>
-  <section class="leaf" data-face="grin" data-say="This one got bought. Still the thing I'm proudest of.">
+    <section class="leaf fit" data-face="neutral" data-say="Current job. I rebuilt the platform without ever taking it offline.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-platform">
+    <div class="p-head">
+      <div class="p-num">&#8470; 01</div>
+      <div class="p-rule"></div>
+      <div class="p-where">WonderTree &middot; Product &amp; Growth</div>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck wide">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-392px,-120px) rotate(-16deg)">
+          <span class="ph" data-want="the site as it stands now &mdash; full-width browser shot of the homepage"></span>
+          <span class="cap">what it looks like today</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.9" data-fly="translate(-356px,-92px) rotate(-12deg)">
+          <span class="ph" data-want="before and after &mdash; the old WordPress homepage beside the new one, same crop"></span>
+          <span class="cap">the one it replaced</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-408px,-142px) rotate(-21deg)">
+          <span class="ph" data-want="the Arabic layout &mdash; any page in RTL, so the mirrored nav is visible"></span>
+          <span class="cap">right to left, same build</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.6" data-fly="translate(-340px,-106px) rotate(-10deg)">
+          <span class="ph" data-want="Search Console &mdash; the clicks and impressions curve, May onward"></span>
+          <span class="cap">what it did to traffic</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put the screenshots back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>The platform rebuild</h2>
+        <div class="stamp">Live</div>
+      </div>
+
+      <p class="punch">A WordPress site, replaced a page at a time &mdash; <i>without ever taking it down.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The job</dt><dd>An ed-tech platform for children with special needs, running on WordPress, with twenty pages competing for the same search terms.</dd></div>
+        <div><dt>The rebuild</dt><dd>A custom content system &mdash; Handlebars, a local JSON store &mdash; shipped <strong>alongside the live WordPress site, so nothing ever went dark.</strong> 81 commits, May to October.</dd></div>
+        <div><dt>What it moved</dt><dd>Twenty competing pages consolidated into four. Organic traffic <strong>up 152% since May</strong>, at the site&rsquo;s highest recorded click-through rate. Shipped the <strong>Arabic layer</strong> that opened a second-language channel.</dd></div>
+        <div><dt>What I found</dt><dd>Built the company&rsquo;s first combined product, behaviour and search review. It surfaced a <strong>69% activation gap</strong> nobody had measured.</dd></div>
+      </dl>
+      <p class="side-note">Also in flight &mdash; a <b>conversational assistant</b> on Node and Cosmos, and the move from a 14-day trial to <b>freemium</b>, which I proposed and now lead. Neither live yet.</p>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+<section class="leaf fit" data-face="grin" data-say="This one got bought. Still the thing I'm proudest of.">
     <div class="face front"><div class="scroll"><div class="wrap">
   <article class="proj" id="p-mydiary">
     <div class="p-head">
-      <div class="p-num">№ 01</div>
+      <div class="p-num">&#8470; 02</div>
       <div class="p-rule"></div>
-      <div class="p-where">ShipKaro · AI &amp; Engineering</div>
+      <div class="p-where">ShipKaro &middot; AI &amp; Engineering</div>
     </div>
 
-    <div class="p-title">
-      <img class="p-icon" src="img/mydiary-icon.webp" alt="" width="60" height="60">
-      <h2>MyDiary AI</h2>
-      <div class="stamp">Acquired</div>
-    </div>
-
-    <p class="punch">An audio journal that <i>listens back.</i></p>
-
-    <div class="pile">
-      <figure class="pic"><img src="img/mydiary-1.webp" alt="MyDiary AI — therapist-style prompts" width="440" height="956" loading="lazy"><figcaption>it asks first</figcaption></figure>
-      <figure class="pic"><img src="img/mydiary-2.webp" alt="MyDiary AI progress view" width="440" height="956" loading="lazy"><figcaption>progress</figcaption></figure>
-      <figure class="pic"><img src="img/mydiary-3.webp" alt="MyDiary AI language settings" width="440" height="956" loading="lazy"><figcaption>7 languages</figcaption></figure>
-      <figure class="pic"><img src="img/mydiary-4.webp" alt="MyDiary AI backup and restore" width="440" height="956" loading="lazy"><figcaption>your data, yours</figcaption></figure>
-    </div>
-
-    <div class="p-body">
-      <div>
-        <p class="first">Speech is captured and transcribed, then passed to an <strong>LLM that writes back</strong> — so the journal answers you instead of just recording what you said.</p>
-        <p>My highest-input product at the studio: concept, spec, build, store listing. <strong>Then somebody bought it.</strong></p>
-      </div>
-      <div>
-        <p class="note" style="margin-bottom:18px">
-          <svg class="arrow" width="104" height="54" viewBox="0 0 104 54" aria-hidden="true"
-               style="left:4px;top:26px">
-            <path d="M96 6C72 20 40 18 18 46"/>
-            <path d="M18 46 30.1 41.2M18 46 19.8 33.1"/>
+    <div class="spec">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-352px,-126px) rotate(-19deg)">
+          <img src="img/mydiary-1.webp" alt="MyDiary AI &mdash; therapist-style follow-up questions" width="440" height="782" loading="lazy">
+          <span class="cap">it asks what a therapist would</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.9" data-fly="translate(-318px,-88px) rotate(-13deg)">
+          <img src="img/mydiary-6.webp" alt="MyDiary AI &mdash; recording a spoken entry" width="440" height="782" loading="lazy">
+          <span class="cap">too busy to write &mdash; speak</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.7" data-fly="translate(-368px,-148px) rotate(-24deg)">
+          <img src="img/mydiary-5.webp" alt="MyDiary AI &mdash; suggested prompts" width="440" height="782" loading="lazy">
+          <span class="cap">stuck? it picks the question</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.3" data-fly="translate(-302px,-108px) rotate(-11deg)">
+          <img src="img/mydiary-2.webp" alt="MyDiary AI &mdash; progress over time" width="440" height="782" loading="lazy">
+          <span class="cap">every dot is a day</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-1.2" data-fly="translate(-344px,-132px) rotate(-17deg)">
+          <img src="img/mydiary-3.webp" alt="MyDiary AI &mdash; language settings" width="440" height="782" loading="lazy">
+          <span class="cap">think in your language</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.8" data-fly="translate(-326px,-96px) rotate(-22deg)">
+          <img src="img/mydiary-4.webp" alt="MyDiary AI &mdash; backup and restore" width="440" height="782" loading="lazy">
+          <span class="cap">your phone, your drive</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put the screenshots back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          I shipped this one myself —<br>spec, code, listing
-        </p>
-        <div class="stickers">
-          <div class="sticker red"><div><b>Acquired</b><span>outcome</span></div></div>
-          <div class="sticker"><div><b>Speech<br>+ LLM</b><span>stack</span></div></div>
-          <div class="sticker blue"><div><b>Google<br>Play</b><span>shipped</span></div></div>
-        </div>
-        <div class="tabs">
-          <a class="tab" href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
-          <a class="tab" href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click the photo &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <img class="p-icon" src="img/mydiary-icon.webp" alt="" width="60" height="60">
+        <h2>MyDiary AI</h2>
+        <div class="stamp">Acquired</div>
+      </div>
+
+      <p class="punch">An audio journal that <i>listens back.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The idea</dt><dd>Speech is captured and transcribed, then handed to an <strong>LLM that writes back</strong> &mdash; so the journal answers you instead of just recording what you said.</dd></div>
+        <div><dt>Capture</dt><dd>Speak an entry, or let it pick the question when you&rsquo;re stuck. Seven languages, and the data stays on your phone and your drive.</dd></div>
+        <div><dt>My part</dt><dd>Concept, spec, build, store listing. My highest-input product at the studio.</dd></div>
+        <div><dt>After</dt><dd><strong>Somebody bought it.</strong></dd></div>
+      </dl>
+      <div class="tabs">
+        <a class="tab" href="https://play.google.com/store/apps/details?id=com.remotekaro.mydiaryai" target="_blank" rel="noopener">Google Play</a>
+        <a class="tab" href="https://shipkaro.dev/mydiaryai" target="_blank" rel="noopener">Product site</a>
+      </div>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="brow" data-say="Same studio, opposite idea — this one says no for you.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-focus5">
+    <div class="p-head">
+      <div class="p-num">&#8470; 03</div>
+      <div class="p-rule"></div>
+      <div class="p-where">ShipKaro &middot; Product</div>
+    </div>
+
+    <div class="spec">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-352px,-126px) rotate(-19deg)">
+          <img src="img/f5-1.webp" alt="Focus5 &mdash; the day, capped at five tasks" width="440" height="782" loading="lazy">
+          <span class="cap">five slots, that&rsquo;s the day</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.9" data-fly="translate(-318px,-88px) rotate(-13deg)">
+          <img src="img/f5-2.webp" alt="Focus5 &mdash; brain dump, captured by voice" width="440" height="782" loading="lazy">
+          <span class="cap">talk at it, it writes the list</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.7" data-fly="translate(-368px,-148px) rotate(-24deg)">
+          <img src="img/f5-4.webp" alt="Focus5 &mdash; insights, streak and focus time" width="440" height="782" loading="lazy">
+          <span class="cap">a nine-day streak</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.3" data-fly="translate(-302px,-108px) rotate(-11deg)">
+          <img src="img/f5-6.webp" alt="Focus5 &mdash; one task, one timer" width="440" height="782" loading="lazy">
+          <span class="cap">one task, one timer</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put the screenshots back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click the photo &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <img class="p-icon" src="img/focus5-icon.webp" alt="" width="60" height="60">
+        <h2>Focus5</h2>
+        <div class="stamp">Google Play</div>
+      </div>
+
+      <p class="punch">Five tasks a day. <i>The limit is the feature.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The idea</dt><dd>Every other planner lets you add everything, so you end the day having finished none of it. This one <strong>stops at five</strong> and makes you choose.</dd></div>
+        <div><dt>Capture</dt><dd>Speak a brain-dump and it comes back as a list. Categories, a focus timer, and a streak you can actually see.</dd></div>
+        <div><dt>My part</dt><dd>Spec, build and store listing. Start to finish, mine.</dd></div>
+        <div><dt>Shipped</dt><dd>Live on Google Play, under ShipKaro.</dd></div>
+      </dl>
+      <div class="tabs">
+        <a class="tab" href="https://play.google.com/store/apps/details?id=dev.shipkaro.focus5" target="_blank" rel="noopener">Open in Google Play</a>
+      </div>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="point" data-say="A factory, eight people, and the first industry project my university ever certified.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-alrahim">
+    <div class="p-head">
+      <div class="p-num">&#8470; 04</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Al Rahim Textile &middot; AI &amp; Engineering</div>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck docs">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.4" data-fly="translate(-372px,-118px) rotate(-18deg)">
+          <span class="clip" aria-hidden="true"></span>
+          <span class="ph" data-want="the completion certificate &mdash; flat scan, whole page, both seals visible"></span>
+          <span class="cap">the first of its kind at DUET</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.1" data-fly="translate(-336px,-92px) rotate(-13deg)">
+          <span class="ph" data-want="me presenting at the on-site demo &mdash; their floor or their meeting room"></span>
+          <span class="cap">demo day on site</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.4" data-fly="translate(-388px,-140px) rotate(-23deg)">
+          <span class="ph" data-want="the dashboard &mdash; any screen showing the sentiment or defect view"></span>
+          <span class="cap">what it actually looked like</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.6" data-fly="translate(-318px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="the four of us who delivered it"></span>
+          <span class="cap">my half of the eight</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put the paperwork back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more in the file</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>Feedback,<br>read by machine</h2>
+        <div class="stamp">Resold</div>
+      </div>
+
+      <p class="punch">A textile manufacturer supplying Target and Walmart <i>couldn&rsquo;t read its own customers.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The job</dt><dd>Reviews arrived faster than anyone could read them, in several languages, across every account.</dd></div>
+        <div><dt>The build</dt><dd>Scrapes the sources, scores sentiment, <strong>flags recurring defects</strong>, answers in a chatbot &mdash; all behind a configurable web app.</dd></div>
+        <div><dt>My part</dt><dd>Technical lead over <strong>eight people in two modules</strong>, and the only line between the university and the factory.</dd></div>
+        <div><dt>After</dt><dd><strong>DUET&rsquo;s first industry-collaborated final year project to be formally certified.</strong> Al Rahim resold it to their US trade partner.</dd></div>
+      </dl>
+      <div class="flow">
+        <i>scrape</i><u>&rarr;</u><i>database</i><u>&rarr;</u><i>sentiment</i><u>&rarr;</u><i>defects</i><u>&rarr;</u><i>chatbot</i>
+      </div>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="grin" data-say="The label years. Ninety days that went vertical.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-passed">
+    <div class="p-head">
+      <div class="p-num">&#8470; 05</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Passed Recordings &middot; Brand &amp; Community</div>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="release artwork &mdash; four to six covers, square, as a grid or flat-lay"></span>
+          <span class="cap">the catalogue</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="the YouTube analytics screen &mdash; the 90-day views curve"></span>
+          <span class="cap">fifty thousand views</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="the Pandora / featured-spins screen"></span>
+          <span class="cap">ninety-seven thousand spins</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="the label site as it looked"></span>
+          <span class="cap">the site</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>Twenty-four<br>thousand percent</h2>
+        <div class="stamp">Grew</div>
+      </div>
+
+      <p class="punch">An independent label, and <i>ninety days that changed its numbers.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The job</dt><dd>An international independent label &mdash; team across Scandinavia, Europe, the US and the UK. I ran audience, releases and artist relations.</dd></div>
+        <div><dt>What moved</dt><dd><strong>50,616 YouTube views in ninety days, up 24,118%</strong> on the quarter before. Pandora streams up <strong>6,062%</strong>. <strong>97,159 total spins</strong>, 882 of them featured, at an <strong>81% thumb-up rate</strong>.</dd></div>
+        <div><dt>Built</dt><dd><strong>Ambient Soundscapes</strong>, an online community of roughly 1,000 people worldwide, and got the label into the Sofar and Ableton User Group communities.</dd></div>
+        <div><dt>Over the year</dt><dd>Release and promotion pipelines, artist relations, outreach and campaigns, video and creative direction. <strong>27% audience growth, 47% revenue growth.</strong></dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="neutral" data-say="First one. A lab, a database, and a class to teach.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-anjuman">
+    <div class="p-head">
+      <div class="p-num">&#8470; 06</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Anjuman Mufad-e-Niswan &middot; IT</div>
+      <span class="p-kind">Internship</span>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck wide">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the lab itself &mdash; the room, the machines"></span>
+          <span class="cap">the room</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="a class in session"></span>
+          <span class="cap">the point of it</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="the team or the staff you worked with"></span>
+          <span class="cap">the people</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="anything from the programme &mdash; certificates, materials"></span>
+          <span class="cap">the programme</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>The lab,<br>rebuilt</h2>
+        <div class="stamp">Internship</div>
+      </div>
+
+      <p class="punch">A computer lab that barely worked, <i>for women learning to use one.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The place</dt><dd>A Karachi NGO running technology upskilling programmes for women, on infrastructure that kept failing.</dd></div>
+        <div><dt>What I did</dt><dd>Rebuilt the <strong>lab and server infrastructure</strong> from the ground up, and built the <strong>records database</strong> the programme ran on.</dd></div>
+        <div><dt>And then</dt><dd>Taught the computer literacy classes the whole thing existed to support.</dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="grin" data-say="No Figma community existed here. We applied cold and got it.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-fof">
+    <div class="p-head">
+      <div class="p-num">&#8470; 07</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Friends of Figma &middot; Community</div>
+    </div>
+
+    <div class="p-title"><h2>Friends of Figma, Karachi</h2></div>
+    <div class="cm-sub">Co-Founder &amp; Co-Lead &middot; 2024 &ndash; present &middot; backed by Figma</div>
+
+    <div class="nums">
+      <div class="r"><b>700+</b><span>members in the chapter</span></div>
+      <div><b>10,000+</b><span>attendees across our events since 2024</span></div>
+      <div class="b"><b>Top 5</b><span>most active Figma chapters worldwide</span></div>
+      <div><b>9</b><span>companies and institutions we work with</span></div>
+    </div>
+
+    <div class="cm-row">
+      <div class="cm-shots">
+        <figure class="shot" style="transform:rotate(-1.6deg)">
+          <div class="ph cm-ph" style="width:clamp(220px,28vw,300px)" data-want="the room, full &mdash; widest shot you have, taken from the back so the crowd fills the frame"></div>
+          <figcaption>a Karachi chapter night</figcaption>
+        </figure>
+        <figure class="shot" style="transform:rotate(2.0deg)">
+          <div class="ph cm-ph" style="width:clamp(170px,21vw,228px)" data-want="me on the mic, mid-talk, audience in frame"></div>
+          <figcaption>running the night</figcaption>
+        </figure>
+      </div>
+      <div class="story">
+        <p class="first">Karachi is the biggest city in the country and had no Figma design community at all. I applied to start one <strong>cold &mdash; no referral, no introduction.</strong></p>
+        <p>Figma shortlisted three finalists and couldn&rsquo;t pick between them, so all three of us run it together &mdash; as far as anyone can tell, <strong>unique among Friends of Figma chapters.</strong> We put Karachi designers in front of people they&rsquo;d otherwise never meet, from local product designers to designers working in the US.</p>
+        <div class="logos">
+          <div class="logos-k">Partners and collaborators</div>
+          <div class="logo-row">
+            <span class="logo"><span class="slot">10Pearls</span></span>
+            <span class="logo"><span class="slot">Katalyst Labs</span></span>
+            <span class="logo"><span class="slot">Social Champ</span></span>
+            <span class="logo"><span class="slot">Ashrei Tech</span></span>
+            <span class="logo"><span class="slot">Frontmatter.io</span></span>
+            <span class="logo"><span class="slot">WonderTree</span></span>
+            <span class="logo"><span class="slot">Nutrilov</span></span>
+            <span class="logo"><span class="slot">GDG Kolachi</span></span>
+            <span class="logo"><span class="slot">Indus Valley</span></span>
+          </div>
         </div>
       </div>
     </div>
   </article>
-  <div class="foot">More spreads being added · Karachi · GMT+5</div>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="point" data-say="Six hundred members, and not one of them was there when I started.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-gdsc">
+    <div class="p-head">
+      <div class="p-num">&#8470; 08</div>
+      <div class="p-rule"></div>
+      <div class="p-where">GDSC DUET &middot; Community &middot; Student</div>
+    </div>
+
+    <div class="p-title"><h2>Google Developer Student Clubs, DUET</h2></div>
+    <div class="cm-sub">Founding Lead &middot; 2022&ndash;23 &middot; built from nothing</div>
+
+    <div class="nums">
+      <div class="r"><b>600+</b><span>members, and a team of thirty</span></div>
+      <div><b>3,000</b><span>people through thirty events in one tenure</span></div>
+      <div class="b"><b>$150k</b><span>of DataCamp licences &mdash; 500 of them, worldwide</span></div>
+      <div><b>250k</b><span>rupees+ raised in corporate sponsorship</span></div>
+    </div>
+
+    <div class="cm-row">
+      <div class="cm-shots">
+        <figure class="shot" style="transform:rotate(-1.5deg)">
+          <div class="ph cm-ph" style="width:clamp(220px,28vw,300px)" data-want="the biggest room you filled &mdash; shot from the back so the crowd fills the frame"></div>
+          <figcaption>a full house</figcaption>
+        </figure>
+        <figure class="shot" style="transform:rotate(1.9deg)">
+          <div class="ph cm-ph" style="width:clamp(170px,21vw,228px)" data-want="the core team &mdash; as many of the thirty as fit in one frame"></div>
+          <figcaption>the thirty who ran it</figcaption>
+        </figure>
+      </div>
+      <div class="story">
+        <p class="first">One of Pakistan&rsquo;s most active chapters, started from nothing. I went at industry directly rather than waiting for a budget &mdash; sponsorship, licences, partnerships.</p>
+        <p>Then turned those relationships into <strong>internships for the graduating batch</strong> and industry-sponsored final year projects. DataCamp made me their onboarding contact for new Pakistani chapters.</p>
+        <div class="logos">
+          <div class="logos-k">Partners and sponsors</div>
+          <div class="logo-row">
+            <span class="logo"><span class="slot">Google</span></span>
+            <span class="logo"><span class="slot">DataCamp</span></span>
+            <span class="logo"><span class="slot">Sastaticket.pk</span></span>
+            <span class="logo"><span class="slot">PAFLA</span></span>
+            <span class="logo"><span class="slot">FutureFest</span></span>
+            <span class="logo"><span class="slot">Hail Technologies</span></span>
+            <span class="logo"><span class="slot">Give My Certificate</span></span>
+            <span class="logo"><span class="slot">Flutter Karachi</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="brow" data-say="Same playbook, handed to the next chapter.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-gdgoc">
+    <div class="p-head">
+      <div class="p-num">&#8470; 09</div>
+      <div class="p-rule"></div>
+      <div class="p-where">GDGoC UIT &middot; Community &middot; Student</div>
+    </div>
+
+    <div class="p-title"><h2>Google Developer Groups on Campus, UIT</h2></div>
+    <div class="cm-sub">Mentor &middot; 2024&ndash;26 &middot; chapter now closed</div>
+
+    <div class="nums">
+      <div class="r"><b>Paid</b><span>client work the chapter won for itself</span></div>
+      <div><b>Industry</b><span>speakers and partners introduced directly</span></div>
+      <div class="b"><b>Hired</b><span>members placed into internships and first roles</span></div>
+    </div>
+
+    <div class="cm-row">
+      <div class="cm-shots">
+        <figure class="shot" style="transform:rotate(-1.7deg)">
+          <div class="ph cm-ph" style="width:clamp(220px,28vw,300px)" data-want="a workshop in progress &mdash; students at laptops, me working with them"></div>
+          <figcaption>not a talk, a workshop</figcaption>
+        </figure>
+        <figure class="shot" style="transform:rotate(2.1deg)">
+          <div class="ph cm-ph" style="width:clamp(170px,21vw,228px)" data-want="the chapter team at an event"></div>
+          <figcaption>the people who ran it</figcaption>
+        </figure>
+      </div>
+      <div class="story">
+        <p class="first">I mentored the chapter on the model I&rsquo;d built at DUET: <strong>approach industry directly, win the funding, and deliver real projects for money</strong> rather than running talks and hoping.</p>
+        <p>It worked &mdash; the chapter took on its own paid client engagements. I introduced them to speakers and industry partners, and pushed members into internships and first roles through referrals.</p>
+      </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="grin" data-say="No campus. The whole country instead.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+    <article class="proj" id="p-mlsa">
+    <div class="p-head">
+      <div class="p-num">&#8470; 10</div>
+      <div class="p-rule"></div>
+      <div class="p-where">MLSA Online &middot; Community &middot; Student</div>
+    </div>
+
+    <div class="p-title"><h2>MLSA Online</h2></div>
+    <div class="cm-sub">Founder &middot; 2023 &middot; under Microsoft Learn Student Ambassadors</div>
+
+    <div class="nums">
+      <div class="r"><b>2 days</b><span>DevCon Pakistan, run entirely online</span></div>
+      <div><b>20+</b><span>international speakers on the programme</span></div>
+      <div class="b"><b>3</b><span>chapters co-organising it together</span></div>
+      <div><b>Sponsored</b><span>by Zindigi, secured for the conference</span></div>
+    </div>
+
+    <div class="cm-row">
+      <div class="cm-shots">
+        <figure class="shot" style="transform:rotate(-1.8deg)">
+          <div class="ph cm-ph" style="width:clamp(220px,28vw,300px)" data-want="the DevCon Pakistan title card or programme poster"></div>
+          <figcaption>two days, October 2023</figcaption>
+        </figure>
+        <figure class="shot" style="transform:rotate(2.1deg)">
+          <div class="ph cm-ph" style="width:clamp(170px,21vw,228px)" data-want="a session in progress &mdash; speaker grid or screen recording"></div>
+          <figcaption>twenty-plus speakers</figcaption>
+        </figure>
+      </div>
+      <div class="story">
+        <p class="first">I started MLSA Online after my GDSC tenure ended &mdash; <strong>a chapter with no campus</strong>, so students outside the big universities could get in.</p>
+        <p>With MLSA Pakistan and MLSA MUET Khairpur we built <strong>DevCon Pakistan</strong>, a two-day virtual developer conference. I helped design the programme and <strong>brought in Zindigi as sponsor.</strong> Twenty-plus international speakers took part, including <strong>Microsoft&rsquo;s director of Imagine Cup and Community Programs.</strong></p>
+      </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="point" data-say="This one is mine. No employer, no client.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-lappy">
+    <div class="p-head">
+      <div class="p-num">&#8470; 11</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Lappy PK &middot; Venture</div>
+      <span class="p-kind">Venture</span>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck wide">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the stock &mdash; machines in, boxed or racked"></span>
+          <span class="cap">what comes in</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="the storefront, listing or catalogue"></span>
+          <span class="cap">how it sells</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="a delivery or a client handover"></span>
+          <span class="cap">where it goes</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="you and your co-founder, working"></span>
+          <span class="cap">the two of us</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>Lappy PK</h2>
+      </div>
+
+      <p class="punch">Importing the machines, <i>and selling them.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The business</dt><dd>A computer hardware <strong>import and wholesale venture</strong>, co-founded in 2023 and trading ever since.</dd></div>
+        <div><dt>What I run</dt><dd>Sourcing and supplier relationships, pricing, sales, and the client book.</dd></div>
+        <div><dt>Why it is here</dt><dd>It is the one thing on this site that is <strong>mine</strong> &mdash; no employer, no client, no brief. It pays for itself and it keeps running.</dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="point" data-say="Brand on the walls, and the walls themselves.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-tabeeb">
+    <div class="p-head">
+      <div class="p-num">&#8470; 12</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Tabeeb Medicos &middot; Brand &amp; Retail</div>
+      <span class="p-kind">Project</span>
+    </div>
+
+    <div class="spec tight project">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the storefront at night, signage lit"></span>
+          <span class="cap">the shopfront</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="interior wide &mdash; the shelving and counters I laid out"></span>
+          <span class="cap">the room</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="flat-lay of the collateral &mdash; bags, cards, packaging"></span>
+          <span class="cap">the paper</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="the logo on its own, clean"></span>
+          <span class="cap">the mark</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>A pharmacy,<br>from the shelves up</h2>
+        <div class="stamp">Trading</div>
+      </div>
+
+      <p class="punch">Brand, collateral, <i>and the room it all sits in.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The brief</dt><dd>A new pharmacy with no identity and an empty shell of a room.</dd></div>
+        <div><dt>What I did</dt><dd>The complete brand identity and all print collateral, then the interior itself &mdash; <strong>shelving, glass counters, spatial layout</strong> &mdash; researched by walking the country&rsquo;s largest pharmacy franchise and measuring what worked.</dd></div>
+        <div><dt>Now</dt><dd>One of the owner&rsquo;s most profitable ventures, still trading.</dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="neutral" data-say="Scoped it, then ran it to launch.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-hopecope">
+    <div class="p-head">
+      <div class="p-num">&#8470; 13</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Hope &amp; Cope &middot; Product Management</div>
+      <span class="p-kind">Project</span>
+    </div>
+
+    <div class="spec tight project">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the site as delivered &mdash; full-width browser shot of the homepage"></span>
+          <span class="cap">delivered</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="the completion certificate &mdash; flat scan"></span>
+          <span class="cap">signed off</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="an inside page &mdash; services or booking"></span>
+          <span class="cap">the rest of it</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="the clinic itself, if you have a photo"></span>
+          <span class="cap">the client</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>The clinic&rsquo;s site</h2>
+        <div class="stamp">Delivered</div>
+      </div>
+
+      <p class="punch">Scoped it, built the foundation, <i>ran it to launch.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The brief</dt><dd>A psychological services clinic with no site, and a delivery team that needed something to build on.</dd></div>
+        <div><dt>What I did</dt><dd>Set the problem, <strong>built the foundation the team worked from</strong>, then ran planning, requirements coordination and progress tracking through to launch.</dd></div>
+        <div><dt>Outcome</dt><dd>Live and delivered. <strong>The client issued a certificate recognising the contribution.</strong></dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="brow" data-say="This one is a film. Click it when the cut goes up.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-kamion">
+    <div class="p-head">
+      <div class="p-num">&#8470; 14</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Kamion Pharma &middot; Media Direction</div>
+      <span class="p-kind">Project</span>
+    </div>
+
+    <div class="spec tight project">
+    <div>
+      <div class="deck film">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="play" aria-hidden="true"></span>
+          <span class="ph" data-want="the campaign film &mdash; the cut itself, or a still from it"></span>
+          <span class="cap">the film</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="a frame from the shoot"></span>
+          <span class="cap">on set</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="the deck or stills shown to investors"></span>
+          <span class="cap">what they saw</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="any print or collateral from the launch"></span>
+          <span class="cap">the rest</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>Market entry,<br>on film</h2>
+        <div class="stamp">Shipped</div>
+      </div>
+
+      <p class="punch">A launch campaign aimed at <i>the people writing the cheques.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The brief</dt><dd>Kamion Pharma entering Pakistan, needing to convince local investors it was worth backing.</dd></div>
+        <div><dt>What I did</dt><dd><strong>Creative direction and production</strong> of the market-entry campaign, end to end.</dd></div>
+        <div><dt>How it came</dt><dd>Engaged directly by a former client who had moved to the company &mdash; the second time they hired me.</dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="grin" data-say="Three countries in one room, and an award for it.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-frutaz">
+    <div class="p-head">
+      <div class="p-num">&#8470; 15</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Frutaz / AFABCO &middot; Media Direction</div>
+      <span class="p-kind">Project</span>
+    </div>
+
+    <div class="spec tight project">
+    <div>
+      <div class="deck">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the conference floor &mdash; widest shot, delegates in frame"></span>
+          <span class="cap">the room</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="the stage or backdrop with the branding on it"></span>
+          <span class="cap">the set</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="the award"></span>
+          <span class="cap">recognised</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="delegates or the team"></span>
+          <span class="cap">the people</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>An international<br>conference</h2>
+        <div class="stamp">Awarded</div>
+      </div>
+
+      <p class="punch">Three countries&rsquo; divisions, <i>in one room.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The brief</dt><dd>The AFABCO International Conference for the Aiman Foods group, with delegates from the Pakistan, UAE and South Africa divisions.</dd></div>
+        <div><dt>What I did</dt><dd><strong>Ideated and executed the whole thing</strong> &mdash; concept through to delivery on the day.</dd></div>
+        <div><dt>Outcome</dt><dd>Recognised with <strong>a company award.</strong></dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+    </div></div></div>
+    <div class="face back" aria-hidden="true"></div>
+  </section>
+  <section class="leaf fit" data-face="deadpan" data-say="Where the production side came from.">
+    <div class="face front"><div class="scroll"><div class="wrap">
+  <article class="proj" id="p-freelance">
+    <div class="p-head">
+      <div class="p-num">&#8470; 16</div>
+      <div class="p-rule"></div>
+      <div class="p-where">Freelance &middot; Multimedia</div>
+    </div>
+
+    <div class="spec tight">
+    <div>
+      <div class="deck wide">
+        <div class="deck-mount" aria-hidden="true"></div>
+        <button class="deck-card" type="button" data-tilt="-1.5" data-fly="translate(-372px,-122px) rotate(-18deg)">
+          <span class="ph" data-want="the strongest brand work &mdash; a reel still or a campaign frame"></span>
+          <span class="cap">the work</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="2.0" data-fly="translate(-336px,-90px) rotate(-12deg)">
+          <span class="ph" data-want="The Hijab Company feed or a campaign shot"></span>
+          <span class="cap">239K followers</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="-2.5" data-fly="translate(-392px,-146px) rotate(-23deg)">
+          <span class="ph" data-want="a shoot in progress"></span>
+          <span class="cap">on set</span>
+        </button>
+        <button class="deck-card" type="button" data-tilt="1.7" data-fly="translate(-316px,-104px) rotate(-10deg)">
+          <span class="ph" data-want="a grid of thumbnails from the channels"></span>
+          <span class="cap">the volume</span>
+        </button>
+        <button class="deck-reset" type="button" hidden aria-label="Put them back on the pile">
+          <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+            <path d="M31 19a12 12 0 1 1-3.6-8.6" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M28.6 3.4v7.4h-7.4" fill="none" stroke="#e0432a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="deck-bar">
+        <span class="deck-left"></span>
+        <span class="ln"></span>
+        <span class="deck-hint">click &mdash; there&rsquo;s more underneath</span>
+      </div>
+    </div>
+    <div>
+      <div class="p-title">
+        <h2>Six years of<br>other people&rsquo;s brands</h2>
+        <div class="stamp">239K</div>
+      </div>
+
+      <p class="punch">Before any of this &mdash; <i>a camera and a client list.</i></p>
+
+      <dl class="spec-rows">
+        <div><dt>The work</dt><dd>Branding, social and video for YouTube channels and Instagram brands, run alongside everything else.</dd></div>
+        <div><dt>The biggest</dt><dd><strong>The Hijab Company at 239K followers</strong>, and TheHijaabDotCom at 17.5K.</dd></div>
+        <div><dt>The span</dt><dd>From 2018 to 2023 &mdash; this is where the production side came from.</dd></div>
+      </dl>
+    </div>
+    </div>
+  </article>
+  <div class="foot">Karachi · GMT+5</div>
     </div></div></div>
     <div class="face back" aria-hidden="true"></div>
   </section>
@@ -770,7 +2091,7 @@ header .postrow{margin-bottom:auto}
 
 <button class="corner back" id="cornerPrev" aria-label="Previous page"></button>
 <button class="corner" id="cornerNext" aria-label="Next page"></button>
-<div class="wip">work in progress — more spreads going up</div>
+<button class="ribbon" id="ribbon" hidden>Contents</button>
 <div class="pgbar"><span class="pgnum" id="pgNum" aria-live="polite">01 / 03</span></div>
 
 
@@ -793,7 +2114,10 @@ header .postrow{margin-bottom:auto}
   var g=document.getElementById('guide'),  pic=document.getElementById('guidePic'),
       txt=document.getElementById('guideText'), gate=document.getElementById('gate'),
       next=document.getElementById('guideNext'), skip=document.getElementById('guideSkip');
-  var dead=false, timer=null, typer=null, typing=false, full='', step=-1, running=false;
+  /* Character parked while the spreads get built. Flip to true to bring him back:
+     the intro, the page beats and the close button all wake up again untouched. */
+  var GUIDE_ON=false;
+  var dead=!GUIDE_ON, timer=null, typer=null, typing=false, full='', step=-1, running=false;
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var intro=[
@@ -885,6 +2209,10 @@ header .postrow{margin-bottom:auto}
   var n=leaves.length, cur=0, busy=false;
   function pad(i){ return (i<10?'0':'')+i; }
 
+  /* the contents is the second leaf; the ribbon and Esc both return to it */
+  var ribbon=document.getElementById('ribbon'), CONTENTS=1;
+  if(ribbon) ribbon.addEventListener('click',function(){ if(cur!==CONTENTS) go(CONTENTS-cur); });
+
   function layout(){
     leaves.forEach(function(l,i){
       var turned=i<cur;
@@ -893,16 +2221,22 @@ header .postrow{margin-bottom:auto}
       l.querySelector('.face.front').setAttribute('aria-hidden', i===cur?'false':'true');
     });
     num.textContent=pad(cur+1)+' / '+pad(n);
+    if(ribbon) ribbon.hidden = (cur===CONTENTS);
     prev.disabled=(cur===0); next.disabled=(cur===n-1);
   }
   function go(d){
     var t=cur+d;
     if(busy||t<0||t>=n) return;
+    /* leaves about to fold away must outrank the stack they are uncovering,
+       or the turn plays out of sight behind the next page */
+    var fly=[];
+    if(d>0) for(var k=cur;k<t;k++) fly.push(leaves[k]);
     busy=true; cur=t; layout();
+    fly.forEach(function(l,k){ l.style.zIndex=500-k; });
     var sc=leaves[cur].querySelector('.scroll'); if(sc) sc.scrollTop=0;
     var d=leaves[cur].dataset;
     if(window.guideSay && d.say) setTimeout(function(){ window.guideSay(d.face,d.say); },520);
-    setTimeout(function(){ busy=false; },1080);
+    setTimeout(function(){ busy=false; layout(); },1080);
   }
   window.bookGo=go;
 
@@ -911,23 +2245,10 @@ header .postrow{margin-bottom:auto}
 
   document.addEventListener('keydown',function(e){
     if(e.target.closest('input,textarea')) return;
+    if(e.key==='Escape'){ if(cur!==CONTENTS){ e.preventDefault(); go(CONTENTS-cur); } return; }
     if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); go(1); }
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(-1); }
   });
-
-  /* wheel turns the page, but only once the leaf itself has nothing left to scroll */
-  var wheelLock=0;
-  book.addEventListener('wheel',function(e){
-    var sc=leaves[cur].querySelector('.scroll');
-    var top=true, bottom=true;
-    if(sc){
-      top = sc.scrollTop<=1;
-      bottom = sc.scrollTop+sc.clientHeight >= sc.scrollHeight-1;
-    }
-    var now=Date.now();
-    if(e.deltaY>0 && bottom){ e.preventDefault(); if(now-wheelLock>560){ wheelLock=now; go(1); } }
-    else if(e.deltaY<0 && top){ e.preventDefault(); if(now-wheelLock>560){ wheelLock=now; go(-1); } }
-  },{passive:false});
 
 
   /* --- drag to turn --- */
@@ -968,15 +2289,8 @@ header .postrow{margin-bottom:auto}
   window.addEventListener('pointerup',endDrag);
   window.addEventListener('pointercancel',endDrag);
 
-  book.addEventListener('touchend',function(e){
-    if(x0===null) return;
-    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
-    if(Math.abs(dx)>58 && Math.abs(dx)>Math.abs(dy)*1.6) go(dx<0?1:-1);
-    x0=y0=null;
-  },{passive:true});
-
   /* contents links turn to the page instead of jumping */
-  document.querySelectorAll('.ch-list a[href^="#"]').forEach(function(a){
+  document.querySelectorAll('#contents a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){
       var t=document.getElementById(a.getAttribute('href').slice(1));
       if(!t) return;
@@ -988,6 +2302,104 @@ header .postrow{margin-bottom:auto}
   });
 
   layout();
+})();
+</script>
+
+<script>
+/* A deck of prints. Click the top one and it leaves OVER the pile, uncovering
+   the next; when the pile is empty the bare mount offers to put them back. */
+document.querySelectorAll('.deck').forEach(function(deck){
+  var cards=[].slice.call(deck.querySelectorAll('.deck-card')),
+      reset=deck.querySelector('.deck-reset'),
+      bar=deck.parentNode.querySelector('.deck-bar'),
+      left=bar&&bar.querySelector('.deck-left'),
+      hint=bar&&bar.querySelector('.deck-hint'),
+      n=cards.length, gone=0,
+      phone=window.matchMedia('(max-width:900px)');
+
+  function layout(){
+    if(phone.matches){
+      /* a rail, not a pile: every card is present, reachable and tappable */
+      cards.forEach(function(c){ c.removeAttribute('style'); c.tabIndex=0;
+        c.setAttribute('aria-hidden','false'); });
+      if(reset) reset.hidden=true;
+      if(left) left.textContent=n+' photos';
+      if(hint) hint.hidden=true;
+      return;
+    }
+    cards.forEach(function(c,i){
+      var d=i-gone, top=d===0;
+      if(d<0){
+        /* above every card still stacked (those run 1..n), never beneath them */
+        c.style.transform=c.dataset.fly+' scale(.97)';
+        c.style.opacity=0; c.style.zIndex=60+i; c.style.pointerEvents='none';
+      }else{
+        var o=d*6;
+        c.style.transform='translate('+o+'px,'+(o*0.72).toFixed(1)+'px) rotate('+c.dataset.tilt+'deg)';
+        c.style.opacity=1; c.style.zIndex=n-d; c.style.pointerEvents=top?'auto':'none';
+      }
+      c.tabIndex=(d===0)?0:-1;
+      c.setAttribute('aria-hidden',(d===0)?'false':'true');
+    });
+    if(reset) reset.hidden = gone<n;
+    if(left) left.textContent = gone>=n ? 'none left on the pile' : (n-gone)+' of '+n+' left';
+    if(hint) hint.hidden = gone>0;
+  }
+
+  cards.forEach(function(c){
+    c.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(phone.matches){ railStep(deck,1); return; }   /* tap advances the rail */
+      if(gone<n){ gone++; layout(); }
+    });
+  });
+  if(reset) reset.addEventListener('click',function(e){ e.stopPropagation(); gone=0; layout(); });
+  phone.addEventListener('change',function(){ gone=0; layout(); });
+  layout();
+});
+
+/* ---- rails ---- */
+/* One scroller, two homes: the deck of prints and the community photographs.
+   Arrows for anyone who does not think to swipe. */
+function railStep(rail,dir){
+  var card=rail.querySelector(':scope > *:not(.deck-mount):not(.deck-reset)');
+  if(!card) return;
+  var w=card.getBoundingClientRect().width+9;
+  rail.scrollBy({left:dir*w, behavior:'smooth'});
+}
+(function(){
+  var phone=window.matchMedia('(max-width:900px)');
+  document.querySelectorAll('.deck, .cm-shots').forEach(function(rail){
+    var isDeck=rail.classList.contains('deck');
+    var bar=isDeck ? rail.parentNode.querySelector('.deck-bar') : null;
+    if(!bar){
+      bar=document.createElement('div');
+      bar.className='cm-bar';
+      bar.innerHTML='<span class="deck-left"></span><span class="ln"></span>';
+      rail.parentNode.insertBefore(bar,rail.nextSibling);
+      bar.querySelector('.deck-left').textContent=
+        rail.querySelectorAll('.shot').length+' photos';
+    }
+    var nav=document.createElement('div');
+    nav.className='rail-nav';
+    nav.innerHTML='<button type="button" aria-label="Previous photo">&#8249;</button>'+
+                  '<button type="button" aria-label="Next photo">&#8250;</button>';
+    bar.appendChild(nav);
+    var back=nav.children[0], fwd=nav.children[1];
+    back.addEventListener('click',function(e){ e.stopPropagation(); railStep(rail,-1); });
+    fwd.addEventListener('click',function(e){ e.stopPropagation(); railStep(rail,1); });
+    function ends(){
+      var max=rail.scrollWidth-rail.clientWidth;
+      back.disabled = rail.scrollLeft<=2;
+      fwd.disabled  = rail.scrollLeft>=max-2;
+    }
+    rail.addEventListener('scroll',ends,{passive:true});
+    function show(){ nav.style.display = phone.matches ? 'flex' : 'none';
+                     if(!isDeck) bar.style.display = phone.matches ? 'flex' : 'none';
+                     ends(); }
+    phone.addEventListener('change',show);
+    show();
+  });
 })();
 </script>
 
